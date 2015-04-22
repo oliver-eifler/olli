@@ -1,0 +1,1438 @@
+/**
+ * styles.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* Compass & mixin & config*/
+/**
+ * config.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* Compass & mixin & config*/
+/*Olli mixins'*/
+/* Color Contrast
+.my-element {
+    background: $backgroud-color;
+    color: text-contrast($backgroud-color);
+  }
+.my-element {
+    background: $backgroud-color;
+    color: text-contrast($backgroud-color, DarkSalmon);
+  } */
+/**
+ * Computes a top-shadow for a card effect.
+ *
+ * @param {Number} $depth - depth level
+ *
+ * @return {List}
+ */
+/**
+ * Computes a bottom-shadow for a card effect.
+ *
+ * @param {Number} $depth - depth level
+ *
+ * @return {List}
+ */
+/**
+ * Gives a card depth effect.
+ *
+ * @param {Number} $depth - depth level (between 1 and 5)
+ *
+ * @link http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality Google Design
+ *
+ * @requires {function} top-shadow
+ * @requires {function} bottom-shadow
+ */
+/* normalize.css v3.0.2 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+/* line 9, ../../../web-html/_assets/sass/olli/_normalize.scss */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 19, ../../../web-html/_assets/sass/olli/_normalize.scss */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 33, ../../../web-html/_assets/sass/olli/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 54, ../../../web-html/_assets/sass/olli/_normalize.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 67, ../../../web-html/_assets/sass/olli/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+/* line 77, ../../../web-html/_assets/sass/olli/_normalize.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 89, ../../../web-html/_assets/sass/olli/_normalize.scss */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 97, ../../../web-html/_assets/sass/olli/_normalize.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 109, ../../../web-html/_assets/sass/olli/_normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 117, ../../../web-html/_assets/sass/olli/_normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 126, ../../../web-html/_assets/sass/olli/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 135, ../../../web-html/_assets/sass/olli/_normalize.scss */
+h1 {
+  font-size: 2em;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 143, ../../../web-html/_assets/sass/olli/_normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 152, ../../../web-html/_assets/sass/olli/_normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 160, ../../../web-html/_assets/sass/olli/_normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 168, ../../../web-html/_assets/sass/olli/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 172, ../../../web-html/_assets/sass/olli/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 183, ../../../web-html/_assets/sass/olli/_normalize.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 191, ../../../web-html/_assets/sass/olli/_normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 202, ../../../web-html/_assets/sass/olli/_normalize.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 210, ../../../web-html/_assets/sass/olli/_normalize.scss */
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 220, ../../../web-html/_assets/sass/olli/_normalize.scss */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/*
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+*/
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 251, ../../../web-html/_assets/sass/olli/_normalize.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 265, ../../../web-html/_assets/sass/olli/_normalize.scss */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 276, ../../../web-html/_assets/sass/olli/_normalize.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 289, ../../../web-html/_assets/sass/olli/_normalize.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 301, ../../../web-html/_assets/sass/olli/_normalize.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 310, ../../../web-html/_assets/sass/olli/_normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 321, ../../../web-html/_assets/sass/olli/_normalize.scss */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 333, ../../../web-html/_assets/sass/olli/_normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 345, ../../../web-html/_assets/sass/olli/_normalize.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 356, ../../../web-html/_assets/sass/olli/_normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 369, ../../../web-html/_assets/sass/olli/_normalize.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 378, ../../../web-html/_assets/sass/olli/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 389, ../../../web-html/_assets/sass/olli/_normalize.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 398, ../../../web-html/_assets/sass/olli/_normalize.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 407, ../../../web-html/_assets/sass/olli/_normalize.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 418, ../../../web-html/_assets/sass/olli/_normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 423, ../../../web-html/_assets/sass/olli/_normalize.scss */
+td,
+th {
+  padding: 0;
+}
+
+/* Page Base Layout */
+/**
+ * styles.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* line 11, ../../../web-html/_assets/sass/page/_layout.scss */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* line 12, ../../../web-html/_assets/sass/page/_layout.scss */
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 100%;
+}
+
+/* line 18, ../../../web-html/_assets/sass/page/_layout.scss */
+html {
+  font-size: 62.5%;
+}
+
+/* line 21, ../../../web-html/_assets/sass/page/_layout.scss */
+body {
+  font-family: sans-serif;
+  font-size: 1.6em;
+  line-height: 1.5;
+  width: 100%;
+  background: #0e071b;
+  color: #9977dd;
+}
+
+/* line 29, ../../../web-html/_assets/sass/page/_layout.scss */
+.svg svg {
+  display: inline-block;
+  vertical-align: center;
+}
+
+/* line 34, ../../../web-html/_assets/sass/page/_layout.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 38, ../../../web-html/_assets/sass/page/_layout.scss */
+.Site {
+  position: relative;
+  display: table;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  /* 1 */
+  width: 100%;
+  max-width: 80em;
+  margin: 0 auto;
+  padding: 0;
+}
+/* line 48, ../../../web-html/_assets/sass/page/_layout.scss */
+.Site > * {
+  position: relative;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  /* 2 */
+  margin: 1.5em 0 0 0;
+}
+
+/* line 55, ../../../web-html/_assets/sass/page/_layout.scss */
+.Site-headerContainer {
+  -webkit-box-ordinal-group: 0;
+  -webkit-order: -1;
+      -ms-flex-order: -1;
+          order: -1;
+  z-index: 100;
+  margin: 0;
+}
+
+/* line 60, ../../../web-html/_assets/sass/page/_layout.scss */
+.Site-contentContainer {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  /* 2 */
+  z-index: 10;
+  margin: 0;
+  padding-top: 1.5em;
+}
+
+/*
+.no-flex {
+  .Site {display:table;}
+  .Site > * {display:table-row;}
+  .Site-headerContainer {display:table-caption;}
+}
+*/
+/* line 74, ../../../web-html/_assets/sass/page/_layout.scss */
+.Sheet {
+  margin: 0 auto;
+  padding: 0 1em;
+}
+/* line 79, ../../../web-html/_assets/sass/page/_layout.scss */
+.Sheet > * + * {
+  margin-top: 1.5em;
+}
+
+/* line 83, ../../../web-html/_assets/sass/page/_layout.scss */
+.Sheet-item {
+  padding: 1.5em;
+}
+
+/*Medium Display and lower*/
+@media (max-width: 42em) {
+  /* line 89, ../../../web-html/_assets/sass/page/_layout.scss */
+  .Sheet {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 40em;
+  }
+}
+@media (max-width: 20em) {
+  /* line 96, ../../../web-html/_assets/sass/page/_layout.scss */
+  .Sheet-item {
+    padding-left: .5em;
+    padding-right: .5em;
+  }
+}
+/**
+* page/_fonts.scss
+* This file is part of the Olli Lab Page
+* Copyright (c) 2014 Oliver Jean Eifler
+*
+* @version 0.0.1
+* @link http://lab.oliver-eifler.me/
+* @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+* @license http://www.opensource.org/licenses/mit-license.php MIT License
+**/
+/* Text font ROBOTO SLAB - serif */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto"), local("Roboto-Regular"), url("../fonts/roboto-v15-latin-regular.woff2") format("woff2"), url("../fonts/roboto-v15-latin-regular.woff") format("woff"), url("../fonts/roboto-v15-latin-regular.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+/* roboto-italic - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  src: local("Roboto Italic"), local("Roboto-Italic"), url("../fonts/roboto-v15-latin-italic.woff2") format("woff2"), url("../fonts/roboto-v15-latin-italic.woff") format("woff"), url("../fonts/roboto-v15-latin-italic.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Roboto Bold"), local("Roboto-Bold"), url("../fonts/roboto-v15-latin-700.woff2") format("woff2"), url("../fonts/roboto-v15-latin-700.woff") format("woff"), url("../fonts/roboto-v15-latin-700.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 700;
+  src: local("Roboto Bold Italic"), local("Roboto-BoldItalic"), url("../fonts/roboto-v15-latin-700italic.woff2") format("woff2"), url("../fonts/roboto-v15-latin-700italic.woff") format("woff"), url("../fonts/roboto-v15-latin-700italic.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+/* Heading font ROBOTO SLAB - serif */
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto Slab Regular"), local("RobotoSlab-Regular"), url("../fonts/roboto-slab-v6-latin-regular.woff2") format("woff2"), url("../fonts/roboto-slab-v6-latin-regular.woff") format("woff"), url("../fonts/roboto-slab-v6-latin-regular.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Roboto Slab Bold"), local("RobotoSlab-Bold"), url("../fonts/roboto-slab-v6-latin-700.woff2") format("woff2"), url("../fonts/roboto-slab-v6-latin-700.woff") format("woff"), url("../fonts/roboto-slab-v6-latin-700.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+/* line 85, ../../../web-html/_assets/sass/page/_fonts.scss */
+.Site-headerContainer {
+  font-family: sans-serif;
+}
+/* line 87, ../../../web-html/_assets/sass/page/_fonts.scss */
+.Site-headerContainer h1 {
+  font-weight: normal;
+  font-variant: small-caps;
+}
+
+/* line 92, ../../../web-html/_assets/sass/page/_fonts.scss */
+.Site-contentContainer {
+  font-family: sans-serif;
+}
+/* line 94, ../../../web-html/_assets/sass/page/_fonts.scss */
+.Site-contentContainer h1, .Site-contentContainer h2, .Site-contentContainer h3, .Site-contentContainer h4, .Site-contentContainer h5, .Site-contentContainer h6 {
+  font-family: serif;
+  font-weight: bold;
+}
+
+/*
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace,monospace;
+}
+*/
+/* line 107, ../../../web-html/_assets/sass/page/_fonts.scss */
+.Site-footer {
+  font-family: "Lucida Console", Monaco, monospace,serif;
+}
+
+/* line 111, ../../../web-html/_assets/sass/page/_fonts.scss */
+.wf-loaded .Site-contentContainer {
+  font-family: "Roboto",sans-serif;
+}
+/* line 113, ../../../web-html/_assets/sass/page/_fonts.scss */
+.wf-loaded .Site-contentContainer h1, .wf-loaded .Site-contentContainer h2, .wf-loaded .Site-contentContainer h3, .wf-loaded .Site-contentContainer h4, .wf-loaded .Site-contentContainer h5, .wf-loaded .Site-contentContainer h6 {
+  font-family: "Roboto Slab",serif;
+  font-weight: bold;
+}
+
+/* line 118, ../../../web-html/_assets/sass/page/_fonts.scss */
+.wf-loaded .Site-headerContainer {
+  font-family: "Roboto",sans-serif;
+}
+
+/**
+ * typography.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* line 45, ../../../web-html/_assets/sass/page/_typography.scss */
+* {
+  margin: 0;
+}
+
+/* line 49, ../../../web-html/_assets/sass/page/_typography.scss */
+p, div, hr, pre {
+  margin-top: 1.5em;
+}
+
+/* line 52, ../../../web-html/_assets/sass/page/_typography.scss */
+*:first-child {
+  margin-top: 0;
+}
+
+/*
+    font-size: base-size*2.5 : 40px;
+    line-height: 48px/40px;
+
+    font-size: base-size*2 : 32px;
+    line-height: 48px/32px;
+
+
+
+*/
+/* line 69, ../../../web-html/_assets/sass/page/_typography.scss */
+h1, .h1 {
+  font-size: 2.5em;
+  line-height: 1.2;
+  margin-top: 0.6em;
+}
+
+/* line 73, ../../../web-html/_assets/sass/page/_typography.scss */
+h2, .h2 {
+  font-size: 2em;
+  line-height: 1.5;
+  margin-top: 0.75em;
+}
+
+/* line 77, ../../../web-html/_assets/sass/page/_typography.scss */
+h3, .h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-top: 1em;
+}
+
+/* line 81, ../../../web-html/_assets/sass/page/_typography.scss */
+h4, h5, h6, .h4, .h5, .h6 {
+  font-size: 1em;
+  line-height: 1.5;
+  margin-top: 1.5em;
+  text-transform: uppercase;
+}
+
+/*
+  codepen.io Embed Theme
+  Author: Justin Perry <http://github.com/ourmaninamsterdam>
+  Original theme - https://github.com/chriskempson/tomorrow-theme
+*/
+/* line 7, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0 0.5em;
+  background: #222;
+  color: #fff;
+  font-family: Menlo, Monaco, 'Andale Mono', 'Lucida Console', 'Courier New', monospace;
+  -webkit-text-size-adjust: none;
+}
+
+/* line 17, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.hljs-comment,
+.hljs-title {
+  color: #777;
+}
+
+/* line 22, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.hljs-name,
+.ruby .constant,
+.xml .tag .title,
+.xml .pi,
+.xml .doctype,
+.html .doctype {
+  color: #ab875d;
+}
+
+/* line 35, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.css .value {
+  color: #cd6a51;
+}
+
+/* line 39, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.css .value .function,
+.css .value .string {
+  color: #a67f59;
+}
+
+/* line 44, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.css .value .number {
+  color: #9b869c;
+}
+
+/* line 48, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.css .id,
+.css .class,
+.css-pseudo,
+.css .selector,
+.css .tag {
+  color: #dfc48c;
+}
+
+/* line 56, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: #ab875d;
+}
+
+/* line 65, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.ruby .class .title,
+.css .rules .attribute {
+  color: #9b869b;
+}
+
+/* line 70, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .symbol,
+.xml .cdata {
+  color: #8f9c6c;
+}
+
+/* line 79, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.css .hexcolor {
+  color: #cd6a51;
+}
+
+/* line 83, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.function,
+.python .decorator,
+.python .title,
+.ruby .function .title,
+.ruby .title .keyword,
+.perl .sub,
+.javascript .title,
+.coffeescript .title {
+  color: #fff;
+}
+
+/* line 94, ../../../web-html/_assets/sass/page/_code-codepen.scss */
+.hljs-keyword,
+.javascript .function {
+  color: #8f9c6c;
+}
+
+/* Page Components */
+/**
+ * header.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* BASE STYLE */
+/* line 22, ../../../web-html/_assets/sass/page/_header.scss */
+.Site-headerContainer {
+  background: #221144;
+  color: #c7c3d0;
+  box-shadow: 0 1px 0.5em black;
+  line-height: 1;
+}
+/* line 28, ../../../web-html/_assets/sass/page/_header.scss */
+.Site-headerContainer *, .Site-headerContainer * + * {
+  margin: 0;
+}
+
+/* line 32, ../../../web-html/_assets/sass/page/_header.scss */
+.Site-header {
+  position: relative;
+  padding: 0;
+}
+
+/* line 37, ../../../web-html/_assets/sass/page/_header.scss */
+.Header > * {
+  display: block;
+  padding: 0.25em;
+}
+/* line 41, ../../../web-html/_assets/sass/page/_header.scss */
+.Header a {
+  color: #c7c3d0;
+  padding: 0.25em;
+}
+/* line 43, ../../../web-html/_assets/sass/page/_header.scss */
+.Header a:visited {
+  color: #c7c3d0;
+}
+/* line 44, ../../../web-html/_assets/sass/page/_header.scss */
+.Header a:focus {
+  color: #FFEA00;
+}
+/* line 45, ../../../web-html/_assets/sass/page/_header.scss */
+.Header a:hover {
+  color: #FFEA00;
+}
+/* line 48, ../../../web-html/_assets/sass/page/_header.scss */
+.Header a.cur {
+  color: #FFF;
+}
+/* line 52, ../../../web-html/_assets/sass/page/_header.scss */
+.Header ul, .Header li, .Header a {
+  display: inline-block;
+  vertical-align: "middle";
+  *vertical-align: "center";
+  *zoom: 1;
+  *display: inline;
+}
+/* line 56, ../../../web-html/_assets/sass/page/_header.scss */
+.Header ul {
+  list-style: none;
+  padding: 0;
+}
+/* line 60, ../../../web-html/_assets/sass/page/_header.scss */
+.Header li {
+  padding: 0.25em;
+}
+
+/* LOGO */
+/* line 65, ../../../web-html/_assets/sass/page/_header.scss */
+.Logo {
+  color: #FFF;
+}
+/* line 67, ../../../web-html/_assets/sass/page/_header.scss */
+.Logo:focus > .Logo-title {
+  color: #FFEA00;
+}
+/* line 68, ../../../web-html/_assets/sass/page/_header.scss */
+.Logo:hover > .Logo-title {
+  color: #FFEA00;
+}
+/* line 69, ../../../web-html/_assets/sass/page/_header.scss */
+.Logo:visited > .Logo-tagline, .Logo:focus > .Logo-tagline, .Logo:hover > .Logo-tagline {
+  color: #9977dd;
+}
+
+/* line 75, ../../../web-html/_assets/sass/page/_header.scss */
+.Logo-title {
+  font-size: 2em;
+  line-height: 1;
+  font-weight: normal;
+  color: #FFF;
+}
+
+/* line 81, ../../../web-html/_assets/sass/page/_header.scss */
+.Logo-tagline {
+  font-size: .75em;
+  color: #9977dd;
+}
+
+/*SOCIAL NAV*/
+/* line 87, ../../../web-html/_assets/sass/page/_header.scss */
+.Header-social-tagline {
+  font-size: .75em;
+  color: #9991a8;
+}
+
+/* line 91, ../../../web-html/_assets/sass/page/_header.scss */
+.MainNav {
+  font-weight: bold;
+}
+
+/* line 95, ../../../web-html/_assets/sass/page/_header.scss */
+.SocialNav {
+  font-size: .75em;
+}
+
+/* Enhance with Flexbox */
+/* line 101, ../../../web-html/_assets/sass/page/_header.scss */
+.Header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/* line 105, ../../../web-html/_assets/sass/page/_header.scss */
+.Header > * {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+/* line 109, ../../../web-html/_assets/sass/page/_header.scss */
+.flex .Header {
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+/* line 111, ../../../web-html/_assets/sass/page/_header.scss */
+.flex .Header > * {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+
+/* Enhance with Table*/
+/* line 118, ../../../web-html/_assets/sass/page/_header.scss */
+.no-flex .Header {
+  display: table;
+  width: 100%;
+}
+/* line 121, ../../../web-html/_assets/sass/page/_header.scss */
+.no-flex .Header > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* line 128, ../../../web-html/_assets/sass/page/_header.scss */
+.svg .SocialNav {
+  font-size: 1em;
+}
+/* line 131, ../../../web-html/_assets/sass/page/_header.scss */
+.svg .Header-social-tagline {
+  display: none;
+}
+/* line 134, ../../../web-html/_assets/sass/page/_header.scss */
+.svg .SocialNav-icon {
+  padding: 0.25em;
+  border-radius: 0.25em;
+  display: block;
+  width: 2em;
+  height: 2em;
+  background-color: #c7c3d0;
+  fill: #221144;
+}
+/* line 140, ../../../web-html/_assets/sass/page/_header.scss */
+.svg .SocialNav-icon svg {
+  width: 100%;
+  height: 100%;
+}
+/* line 144, ../../../web-html/_assets/sass/page/_header.scss */
+.svg .SocialNav-icon em {
+  display: none;
+  text-indent: 100%;
+}
+/* line 153, ../../../web-html/_assets/sass/page/_header.scss */
+.svg .SocialNav-icon:hover {
+  background-color: #000;
+  fill: #fff;
+}
+/* line 161, ../../../web-html/_assets/sass/page/_header.scss */
+.svg .SocialNav-icon--github:hover {
+  background-color: #333;
+}
+/* line 164, ../../../web-html/_assets/sass/page/_header.scss */
+.svg .SocialNav-icon--codepen:hover {
+  background-color: #000;
+}
+/* line 167, ../../../web-html/_assets/sass/page/_header.scss */
+.svg .SocialNav-icon--googleplus:hover {
+  background-color: #dd4b39;
+}
+/* line 170, ../../../web-html/_assets/sass/page/_header.scss */
+.svg .SocialNav-icon--facebook:hover {
+  background-color: #3b5998;
+}
+
+/* large display */
+@media (min-width: 62em) {
+  /* line 177, ../../../web-html/_assets/sass/page/_header.scss */
+  .Site {
+    max-width: 100em;
+  }
+  /* line 179, ../../../web-html/_assets/sass/page/_header.scss */
+  .Site > * {
+    padding-left: 20em;
+  }
+
+  /*
+  .no-flex {
+    .Site {display:block;}
+    .Site > * {display:block;}
+  }
+  */
+  /* line 190, ../../../web-html/_assets/sass/page/_header.scss */
+  .Site-headerContainer {
+    position: fixed;
+    width: 20em;
+    top: 0;
+    height: 100%;
+    padding: 0;
+    box-shadow: 1px 0 0.5em black;
+  }
+  /* line 197, ../../../web-html/_assets/sass/page/_header.scss */
+  .Site-headerContainer:before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -9999px;
+    right: 0;
+    background: #221144;
+  }
+
+  /* line 209, ../../../web-html/_assets/sass/page/_header.scss */
+  .Site-header {
+    display: inline-block !important;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    overflow-x: hidden;
+  }
+  /* line 216, ../../../web-html/_assets/sass/page/_header.scss */
+  .Site-header:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 1px;
+    height: 100%;
+    margin-right: -1px;
+  }
+
+  /* line 226, ../../../web-html/_assets/sass/page/_header.scss */
+  .Header {
+    display: inline-block !important;
+    vertical-align: middle;
+  }
+  /* line 229, ../../../web-html/_assets/sass/page/_header.scss */
+  .Header > * {
+    display: block !important;
+  }
+  /* line 232, ../../../web-html/_assets/sass/page/_header.scss */
+  .Header > * + * {
+    margin-top: 0.5em;
+  }
+  /* line 236, ../../../web-html/_assets/sass/page/_header.scss */
+  .Header li {
+    display: block;
+  }
+
+  /* line 240, ../../../web-html/_assets/sass/page/_header.scss */
+  .no-flex .Header {
+    width: auto;
+  }
+
+  /* line 244, ../../../web-html/_assets/sass/page/_header.scss */
+  .svg .SocialNav {
+    margin: 0;
+  }
+  /* line 247, ../../../web-html/_assets/sass/page/_header.scss */
+  .svg .SocialNav li {
+    display: inline-block;
+  }
+  /* line 250, ../../../web-html/_assets/sass/page/_header.scss */
+  .svg .Header-social-tagline {
+    display: block;
+  }
+}
+/**
+ * footer.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* line 23, ../../../web-html/_assets/sass/page/_footer.scss */
+.Site-footer {
+  text-align: center;
+}
+
+/* line 26, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer:last-child {
+  padding-bottom: 0;
+}
+
+/* line 30, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer {
+  text-align: left;
+  background-color: #030207;
+  color: #c0bfc1;
+}
+/* line 34, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer a {
+  vertical-align: middle;
+}
+/* line 36, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer a:link, .Footer a:visited {
+  color: #FFF;
+  border-bottom: 1px solid transparent;
+}
+/* line 39, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer a:link svg, .Footer a:visited svg {
+  fill: #FFF;
+}
+/* line 42, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer a:hover, .Footer a:focus {
+  color: #c0bfc1;
+  border-color: #c0bfc1;
+}
+/* line 45, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer a:hover svg, .Footer a:focus svg {
+  fill: #c0bfc1;
+}
+/* line 47, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer a svg {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  width: 1em;
+  height: 1em;
+  fill: #c0bfc1;
+  margin-right: .5em;
+}
+
+/* line 57, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer-legende {
+  padding: 0 1.5em;
+  border-top: 1px solid #212024;
+  text-align: right;
+  color: #8b8a8c;
+}
+
+/* line 63, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer--nav {
+  padding-left: 0;
+  padding-right: 0;
+}
+/* line 66, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer--nav ul, .Footer--nav li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 71, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer--nav ul {
+  display: inline-block;
+  vertical-align: top;
+  *vertical-align: top;
+  *zoom: 1;
+  *display: inline;
+  padding: 0 1.5em 0 1.5em;
+}
+
+/**
+ * content.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* line 20, ../../../web-html/_assets/sass/page/_content.scss */
+p > code, li > code, dd > code, td > code {
+  background: none repeat scroll 0% 0% #AAA;
+  color: #000;
+  padding: 0 5px;
+  border-radius: 4px;
+  position: relative;
+  margin: 0 3px 0 1px;
+  font-size: 99%;
+  top: -1px;
+  line-height: 1;
+}
+
+/* line 32, ../../../web-html/_assets/sass/page/_content.scss */
+.content {
+  background-color: #eeeeee;
+  color: #3b3b3b;
+  background-image: -webkit-linear-gradient(bottom, #888888 1px, rgba(0, 0, 0, 0) 1px);
+  background-image: linear-gradient(to top, #888888 1px, rgba(0, 0, 0, 0) 1px);
+  background-size: 100% 1.5em;
+}
+/* line 35, ../../../web-html/_assets/sass/page/_content.scss */
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+  color: #000;
+}
+/* line 38, ../../../web-html/_assets/sass/page/_content.scss */
+.content a {
+  color: #2455c3;
+}
+/* line 41, ../../../web-html/_assets/sass/page/_content.scss */
+.content a:visited {
+  color: #2455c3;
+}
+/* line 45, ../../../web-html/_assets/sass/page/_content.scss */
+.content a:focus, .content a:hover {
+  color: #3b3b3b;
+  color: #2455c3;
+  text-decoration: underline;
+}
+/* line 53, ../../../web-html/_assets/sass/page/_content.scss */
+.content hr {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  height: 1.5em;
+  border: none;
+  border-bottom: 1px solid #d1d1d1;
+}
+/* line 62, ../../../web-html/_assets/sass/page/_content.scss */
+.content .hljs {
+  white-space: pre-wrap;
+  padding: 0.75em 0.5em;
+  border-radius: 4px;
+  font-family: monospace,monospace;
+}
+
+/* line 73, ../../../web-html/_assets/sass/page/_content.scss */
+.content-tagline, .content-description {
+  font-weight: bold;
+}
+
+/* line 76, ../../../web-html/_assets/sass/page/_content.scss */
+.content--header + * {
+  margin-top: 0;
+}
+
+@media (min-width: 62em) {
+  /* line 82, ../../../web-html/_assets/sass/page/_content.scss */
+  .content {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+  }
+}
+@media (min-width: 72em) {
+  /* line 90, ../../../web-html/_assets/sass/page/_content.scss */
+  .Site-content {
+    font-size: 20px;
+  }
+}
+/**
+ * Module: articlelist.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* line 11, ../../../web-html/_assets/sass/page/modules/_articlelist.scss */
+.articleList {
+  list-style: none;
+}
+/* line 13, ../../../web-html/_assets/sass/page/modules/_articlelist.scss */
+.articleList li {
+  margin: 0;
+}
+/* line 16, ../../../web-html/_assets/sass/page/modules/_articlelist.scss */
+.articleList li + li {
+  margin-top: 1.5em;
+}
+
+/* line 21, ../../../web-html/_assets/sass/page/modules/_articlelist.scss */
+.articleList-item .published {
+  display: block;
+  font-family: monospace,monospace;
+  font-size: 0.8em;
+  line-height: 1.875;
+  text-transform: uppercase;
+  color: #6d6d6d;
+}
+/* line 28, ../../../web-html/_assets/sass/page/modules/_articlelist.scss */
+.articleList-item .excerpt {
+  margin: 0 0 0 1em;
+}

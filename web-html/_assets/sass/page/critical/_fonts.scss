@@ -1,0 +1,26 @@
+/**
+* critical/_fonts.scss
+* This file is part of the Olli Lab Page
+* Copyright (c) 2014 Oliver Jean Eifler
+*
+* @version 0.0.1
+* @link http://lab.oliver-eifler.me/
+* @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+* @license http://www.opensource.org/licenses/mit-license.php MIT License
+**/
+//FALLBACK
+.Site-header {
+  font-family: sans-serif;
+}
+.Site-contentContainer {
+  font-family: sans-serif;
+  line-height:1.5;
+  h1,h2,h3,h4,h5,h6 {
+    font-family: serif;
+    font-weight:100;
+    font-variant: small-caps
+  }
+}
+.Site-footer {
+  font-family: "Lucida Console", Monaco, monospace;
+}

@@ -1,0 +1,10 @@
+<header class='Sheet-item content content--header'>
+<h1><%= @document.title %></h1>
+<p class='content-description'><%= @document.description %></p>
+</header>
+<section class='Sheet-item content'>
+<img src="/images/logo.gif" />
+</section>
+<section class='Sheet-item content content--article'>
+<%- @content %>
+</section>

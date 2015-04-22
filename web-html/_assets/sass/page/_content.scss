@@ -1,0 +1,94 @@
+/**
+ * content.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+$content-color:  #eeeeee !default;
+$colors: getColors($content-color);
+$content-link: #2455c3;//$accent-color;
+
+$content-gap: $base-hgap;
+
+.Site-contentContainer {
+}
+
+p > code, li > code, dd > code, td > code {
+    background: none repeat scroll 0% 0% #AAA;
+    color: contrast(#AAA);
+
+    padding: 0 5px;
+    border-radius: 4px;
+    position: relative;
+    margin: 0 3px 0 1px;
+    font-size: 99%;
+    top: -1px;
+    line-height:1;
+}
+.content {
+  background-color: base($colors);
+  color: text($colors);
+  h1,h2,h3,h4,h5,h6 {
+    color: hilight($colors);
+  }
+  a {
+    color:$content-link;
+    //border-bottom:1px solid transparent;
+    &:visited {
+    color:$content-link;
+    }
+
+    &:focus,&:hover {
+      color:text($colors);
+      color:$content-link;
+
+      //border-color: text($colors);
+      text-decoration: underline
+    }
+  }
+  hr {
+    display:block;
+     box-sizing: border-box;
+    width:100%;
+    margin:0 auto;
+    height:1.5em;
+    border:none;
+    border-bottom:1px solid divider($colors);
+  }
+  .hljs {
+    white-space:pre-wrap;
+    padding:px2em($base-line-height/2) .5em;
+    border-radius: 4px;
+    font-family: monospace,monospace;
+  }
+  //DEBUG
+  background-image:
+  linear-gradient(to top, #888 1px, transparent 1px);
+  background-size: 100% px2em($base-line-height);
+}
+.content-tagline,.content-description {
+    font-weight:bold;
+}
+.content--header + * {
+  margin-top:0;
+}
+
+
+@media (min-width: $bp-large){
+    .content {
+      margin-left: 0;
+      margin-right: 0;
+      max-width:none;
+    }
+
+}
+@media (min-width: $bp-wide){
+    .Site-content {
+     font-size:20px;
+    }
+}
+@import 'modules/articlelist';

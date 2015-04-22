@@ -1,0 +1,44 @@
+/**
+ * critical/layout.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+ /* from html5 shiv */
+article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section {display:block;border:1px solid #000;}
+mark{background:#FF0;color:#000} template{display:none}
+
+  *, *:before, *:after {  box-sizing: border-box;}
+ html,body {
+    margin:0;
+    padding:0;
+    border:0;
+    height:100%;
+  }
+  html {
+    font-size: 100%; //16pixel
+  }
+
+  body {
+    font-family: sans-serif;
+    font-size: px2em($base-font,16);
+    line-height: 1;
+    width:100%;
+    background:$body-color;
+    color:text-contrast($body-color);
+  }
+  a {
+    text-decoration:none;
+  }
+.Site {
+  max-width:px2em($page-width);
+  margin:0 auto;
+}
+.Site-header,.Site-contentContainer,.Site-content,.Site-footer {
+  @include inline-block(middle,center);
+  width:100%;
+}

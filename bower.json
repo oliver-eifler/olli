@@ -1,0 +1,36 @@
+{
+  "name": "ollis lab",
+  "version": "0.0.1",
+  "authors": [
+    "Oliver Jean Eifler <olli.eifler@gmail.com>"
+  ],
+  "description": "Ollis Homepage Template",
+  "license": "MIT",
+  "homepage": "www.oliver-eifler.info",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "html5shiv": "~3.7.2",
+    "webfontloader": "webfontloader#latest",
+    "velocity1.1.x": "velocity#1.1",
+    "velocity": "velocity#latest",
+    "normalize.css": "~3.0.2",
+    "jquery1.x": "jquery#1",
+    "jquery": "jquery#latest",
+    "fastclick": "~1.0.3",
+    "better-dom": "better-dom#latest",
+    "tweenjs": "*",
+    "mui": "~0.0.4",
+    "fontfaceobserver": "~1.4.2",
+    "loadcss": "~0.1.6"
+  },
+  "dependencies": {
+    "inuit-starter-kit": "~0.2.9"
+  }
+}

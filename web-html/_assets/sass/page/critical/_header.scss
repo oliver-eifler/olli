@@ -1,0 +1,80 @@
+/**
+ * critical/header.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+$header-width:  16em;
+
+$header-color:  #221144 !default;
+$header-text:   contrast($header-color) !default;
+$header-text1:   mix($header-text,$header-color,12) !default;
+$header-text2:   mix($header-text,$header-color,30) !default;
+$header-text3:   mix($header-text,$header-color,70) !default;
+$header-text4:   mix($header-text,$header-color,100) !default;
+
+
+
+$header-link:   $header-text3;
+$header-link-hover:         mui-color('yellow', 'A400') !default;
+$header-link-focus:         mui-color('yellow', 'A700') !default;
+$header-link-active:       mui-color('yellow', 'A100') !default;
+
+.Site-header {
+  background:$header-color;
+  color: $header-text;
+  padding: .5em;
+}
+.Header {
+  ul,li {
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  li {
+    @include inline-block(middle,center);
+    text-align:center;
+    padding:.125em 0;
+  }
+  li+li {
+  padding-left:.25em;
+  }
+  a {
+    color: $header-link;
+    padding: .25em;
+    &:visited {color: $header-link;}
+    &:focus {color: $header-link-focus;}
+    &:hover {color: $header-link-hover;}
+    &:active {color: $header-link-active;}
+  }
+  & > * {
+     text-align:center;
+  }
+
+}
+.Logo-title {
+  font-size:1.5em;
+  line-height:1.2;
+  margin: 0;
+  padding:0;
+  color: $header-text;
+}
+.Logo-tagline {
+  font-size:.75em;
+  margin: 0;
+  padding:0;
+  color: $header-text2;
+}
+.Header-social-tagline {
+  display:none;
+}
+/*Icons*/
+.SocialNav-icon {
+  font-size:.75em;
+  svg {display:none;}
+  em {font-style:normal;}
+}

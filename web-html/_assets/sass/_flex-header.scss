@@ -1,0 +1,262 @@
+/**
+ * header.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+
+$header-color:  #221144;//$primary-color !default;
+$header-text:   contrast($header-color) !default;
+$header-text1:   mix($header-text,$header-color,12) !default;
+$header-text2:   mix($header-text,$header-color,30) !default;
+$header-text3:   mix($header-text,$header-color,70) !default;
+$header-text4:   mix($header-text,$header-color,100) !default;
+
+
+
+$header-link:   $header-text3;
+$header-link-hover:         mui-color('yellow', 'A400') !default;
+$header-link-focus:         mui-color('yellow', 'A700') !default;
+$header-link-active:       mui-color('yellow', 'A100') !default;
+
+.Site-header {
+  background:$header-color;
+  color: $header-text;
+  padding: .5em;
+}
+.Header {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  ul,li {
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  li {
+    @include inline-block(middle,center);
+    text-align:center;
+    padding:.125em 0;
+  }
+  li+li {
+  padding-left:.25em;
+  }
+  a {
+    @include inline-block(middle,center);
+    color: $header-link;
+    padding: .25em;
+    border-radius:.25em;
+    &:visited {color: $header-link;}
+    &:focus {color: $header-link-focus;}
+    &:hover {color: $header-link-hover;}
+    &:active {color: $header-link-active;}
+  }
+
+}
+
+.Header-info {
+  display: block;
+  flex: 0 0 auto;
+  text-align:left;
+  }
+
+.Logo {
+  @include inline-block(middle,center);
+  text-align:center;
+
+  &:visited > .Logo-title {color: $header-text;}
+  &:focus  > .Logo-title {color: $header-link-focus;}
+  &:hover  > .Logo-title {color: $header-link-hover;}
+  &:active  > .Logo-title {color: $header-link-active;}
+  &:visited  > .Logo-tagline {color: $header-text2;}
+  &:focus  > .Logo-tagline {color: $header-text2;}
+  &:hover  > .Logo-tagline {color: $header-text2;}
+  &:active  > .Logo-tagline {color: $header-text2;}
+}
+.Logo-title {
+  font-size:1.5em;
+  line-height:1.2;
+  margin: 0;
+  padding:0;
+  transition: color .2s cubic-bezier(.4, 0, .2, 1);
+  color: $header-text;
+}
+.Logo-tagline {
+  font-size:.75em;
+  margin: 0;
+  padding:0;
+  color: $header-text2;
+}
+
+.Header-social{
+  display: block;
+  flex: 0 1 auto;
+  text-align:right;
+}
+.Header-nav {
+  display: block;
+  flex: 0 1 auto;
+  text-align:center;
+}
+.Header-social-tagline {
+  display:none;
+  font-size:.75em;
+  margin: 0;
+  padding:0;
+  color: $header-text2;
+}
+/*Icons*/
+
+.SocialNav-icon {
+  width:2em;
+  height:2em;
+  svg {
+    width:100%;
+    height:100%;
+  }
+  background-color: $header-link;
+  fill: $header-color;
+}
+.SocialNav-icon:hover {
+  background-color:#fff;
+}
+$github: #333;
+$codepen: #000;
+$googleplus: #dd4b39;
+$facebook: #3b5998;
+
+.SocialNav-icon--github:hover {
+  background-color:$github;
+  fill:contrast($github);
+}
+.SocialNav-icon--codepen:hover {
+  background-color:$codepen;
+  fill:contrast($codepen);
+}
+.SocialNav-icon--googleplus:hover {
+  background-color:$googleplus;
+  fill:contrast($googleplus);
+}
+.SocialNav-icon--facebook:hover {
+  background-color:$facebook;
+  fill:contrast($facebook);
+}
+
+
+.is-legacy {
+  .Header {
+    display:inline-block;
+    width:100%;
+    text-align: justify;
+    text-justify: distribute-all-lines;
+
+  }
+  .Header-info, .Header-social, .Header-nav {
+    @include inline-block(middle,center);
+    width:33%;
+  }
+}
+
+.is-legacy .SocialNav-icon {
+  font-size:.75em;
+  &:after {content: attr(title);}
+  svg {display:none;}
+  background:none;
+  &:hover {
+      color: $header-link-hover;
+      background:none;
+  }
+
+  width:auto;
+  height:auto;
+}
+.is-old {
+  .Header,.is-legacy .Header {
+    display:block;
+    & > * {
+      display:block;
+      width:100%;
+      text-align:center;
+    }
+  }
+  .Header-social {
+    display:none;
+  }
+}
+@media (max-width: px2em(400)) {
+    .Header,.is-legacy .Header {
+      display:block;
+      & > * {
+        display:block;
+        width:100%;
+        text-align:center;
+      }
+    }
+}
+
+@media (min-width: px2em(800)){
+  .Site {
+    padding-left:16em;
+  }
+  .Site-header {
+    width:16em;
+    position:fixed;
+    height:100%;
+    transform:translateX(-100%);
+    box-shadow: 1px 0 .5em rgba(black, 1);
+    &:before {
+      z-index:-1;
+      content: "";
+	  position: absolute;
+	  top: 0;
+	  bottom: 0;
+	  left: -9999px;
+	  right: 0;
+      background: $header-color;
+    }
+  }
+  .Header {
+    height:100%;
+    overflow-x: hidden;
+    flex-direction: column;
+    justify-content: center;
+    & > * {
+      flex: 0 0 auto;
+      text-align:center;
+    }
+    &>* + * {
+      padding-top:1em;
+    }
+
+  }
+
+
+  .MainNav li {display:block;padding:0;}
+  .Header-social-tagline {
+    display:block;
+  }
+
+  .is-legacy {
+    .Site-header {
+        display:block;
+        height:100%;
+    }
+
+    .Header {
+      text-align:center;
+      & > * {
+        display:block;
+        width:100%;
+        text-align:center;
+      }
+    }
+  .SocialNav li {display:block;padding:0;}
+  .Header-social-tagline {padding-bottom:.25em;}
+
+  }
+
+}

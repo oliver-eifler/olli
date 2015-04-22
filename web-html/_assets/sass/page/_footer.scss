@@ -1,0 +1,81 @@
+/**
+ * footer.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+$footer-color:  #888888 !default;
+$colors: getColors($footer-color);
+
+$footer-link: hilight($colors);
+
+
+$footer-hgap: $base-hgap;
+$footer-vgap: $base-vgap;
+
+.Site-footerContainer {
+}
+
+.Site-footer {
+    text-align:center;
+}
+.Footer:last-child {
+  padding-bottom:0;
+}
+
+.Footer {
+  text-align:left;
+  background-color:base($colors);
+  color:text($colors);
+  a {
+    vertical-align: middle;
+    &:link,&:visited {
+      color:$footer-link;
+      border-bottom:1px solid transparent;
+      svg {fill: $footer-link;}
+
+    }
+    &:hover,&:focus {
+      color:text($colors);
+      border-color: text($colors);
+      svg {fill: text($colors);}
+    }
+    svg {
+      @include inline-block;
+      width:1em;
+      height:1em;
+      fill: text($colors);
+      margin-right:.5em;
+    }
+
+  }
+}
+.Footer-legende {
+  padding: 0 px2em($footer-vgap);
+  border-top:1px solid divider($colors);
+  text-align:right;
+  color:info($colors);
+}
+.Footer--nav {
+  padding-left:0;
+  padding-right:0;
+  ul,li {
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  ul {
+    @include inline-block(top,top);
+    padding:0 px2em($footer-vgap) 0 px2em($footer-vgap);
+  }
+
+}
+
+
+
+
+

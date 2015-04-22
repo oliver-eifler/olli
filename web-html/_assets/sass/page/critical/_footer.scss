@@ -1,0 +1,56 @@
+/**
+ * critical/footer.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+$columns: 12 !default;
+$column-width: 4 !default;
+$gutter-width: 1 !default;
+ @function grid-span($cols, $total: $columns) {
+  @return ($column-width * $cols  + $gutter-width * ($cols  - 1)) /
+          ($column-width * $total + $gutter-width * ($total - 1)) * 100%;
+}
+$footer-color:  #AAA !default;
+$footer-text:        contrast($footer-color) !default;
+$footer-secondary:   mix($footer-text,$footer-color,87) !default;
+$footer-disabled:    mix($footer-text,$footer-color,56) !default;
+$footer-devider:     mix($footer-text,$footer-color,24) !default;
+$footer-ghost:       mix($footer-text,$footer-color,12) !default;
+
+$footer-fold-size: 2.5em;
+
+
+.Site-footer {
+  //background:$content-color;
+  margin-top:2em;
+}
+.Footer {
+  font-size:1em;
+  line-height:1.5;
+  padding: 2em 2em 0 2em;
+  background:$footer-color;
+  color:$footer-disabled;
+  border:1px solid mix($footer-color,$body-color,50%);
+  & > * {
+    margin:0;
+  }
+  & > * + *{
+    margin-top:1em;
+  }
+  a {
+    font-weight:bold;
+    &:link,&:visited {
+      color:$footer-text;
+    }
+  }
+
+}
+.Footer-desc {
+  text-align:right;
+  color:$footer-devider;
+}

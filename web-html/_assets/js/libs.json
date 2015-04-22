@@ -1,0 +1,11 @@
+{
+  "inline":[
+    "inline/html5shiv-inline.js",
+    "inline/loadCSS-inline.js"
+  ],
+  "init":[
+    "components/modernizr-custom.js",
+    "components/webfontloader.js",
+    "init.js"
+  ]
+}

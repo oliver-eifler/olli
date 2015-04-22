@@ -1,0 +1,24 @@
+/**
+ * styles.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+
+ /* Compass & mixin & config*/
+@import 'config';
+
+@import 'olli/normalize';
+/* Page Base Layout */
+@import 'page/layout';
+@import 'page/fonts';
+@import 'page/typography';
+@import 'page/code-codepen';
+/* Page Components */
+@import 'page/header';
+@import 'page/footer';
+@import 'page/content';

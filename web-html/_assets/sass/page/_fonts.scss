@@ -1,0 +1,120 @@
+/**
+* page/_fonts.scss
+* This file is part of the Olli Lab Page
+* Copyright (c) 2014 Oliver Jean Eifler
+*
+* @version 0.0.1
+* @link http://lab.oliver-eifler.me/
+* @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+* @license http://www.opensource.org/licenses/mit-license.php MIT License
+**/
+
+
+
+
+
+
+
+
+
+/* Text font ROBOTO SLAB - serif */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('../fonts/roboto-v15-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v15-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v15-latin-regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+/* roboto-italic - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Roboto Italic'), local('Roboto-Italic'),
+       url('../fonts/roboto-v15-latin-italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v15-latin-italic.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v15-latin-italic.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+       url('../fonts/roboto-v15-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v15-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v15-latin-700.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Roboto Bold Italic'), local('Roboto-BoldItalic'),
+       url('../fonts/roboto-v15-latin-700italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v15-latin-700italic.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v15-latin-700italic.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+
+/* Heading font ROBOTO SLAB - serif */
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'),
+       url('../fonts/roboto-slab-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-slab-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-slab-v6-latin-regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'),
+       url('../fonts/roboto-slab-v6-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-slab-v6-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-slab-v6-latin-700.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+
+
+
+//FALLBACK
+.Site-headerContainer {
+  font-family: sans-serif;
+  h1 {
+   font-weight:normal;
+   font-variant: small-caps
+  }
+}
+.Site-contentContainer {
+  font-family: sans-serif;
+  h1,h2,h3,h4,h5,h6 {
+    font-family: serif;
+    font-weight:bold;
+  }
+}
+/*
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace,monospace;
+}
+*/
+.Site-footer {
+  font-family: "Lucida Console", Monaco, monospace,serif;
+}
+
+.wf-loaded .Site-contentContainer {
+  font-family: "Roboto",sans-serif;
+  h1,h2,h3,h4,h5,h6 {
+    font-family: "Roboto Slab",serif;
+    font-weight:bold;
+  }
+}
+.wf-loaded .Site-headerContainer {
+  font-family: "Roboto",sans-serif;
+}

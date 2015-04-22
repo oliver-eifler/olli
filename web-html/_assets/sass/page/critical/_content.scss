@@ -1,0 +1,34 @@
+/**
+ * critical/content.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+$content-color:  #FFF !default;
+$content-text:   contrast($content-color) !default;
+$conent-text1:   mix($content-text,$content-color,12) !default;
+$content-text2:   mix($content-text,$content-color,30) !default;
+$content-text3:   mix($content-text,$content-color,70) !default;
+$content-text4:   mix($content-text,$content-color,100) !default;
+$content-fold-size: 2.5em;
+.Site-contentContainer {
+  line-height:1.5;
+}
+
+.Site-content {
+  background: darken($content-color,10%);
+  & > * {
+    margin:2em 2em;
+  }
+  & > * + * {
+    margin-top:0;
+  }
+}
+.content {
+  background: $content-color;
+  color: $content-text;
+}
