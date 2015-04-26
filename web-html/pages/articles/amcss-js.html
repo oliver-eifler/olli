@@ -1,11 +1,12 @@
 <header class='Sheet-item content content--header'>
-<h1>amcss.js</h1>
-<p class='content-description'>A javascript library for using attributes and their values rather than classes for styling HTML elements.</p>
+<h1 itemprop='headline'>amcss.js</h1>
+<meta itemprop='datePublished' content="2015-04-22T18:45:14+02:00"/>
+<p class='content-description' itemprop='description'>A javascript library for using attributes and their values rather than classes for styling HTML elements.</p>
 </header>
 <section class='Sheet-item content'>
-<img src="/images/logo.gif" />
+<img src="/images/logo.gif" itemprop ='image' />
 </section>
-<section class='Sheet-item content content--article'>
+<section class='Sheet-item content content--article' in itemprop='articleBody'>
 <p>Based on <strong>AMCSS</strong> Attribute Modules for CSS - Specification <a href="github.com/amcss/attribute-module-specification">github.com/amcss/attribute-module-specification</a>.</p><p><strong>Works on all browsers which supports attribute and ~= selectors</strong></p><hr><h2 id="installation">Installation</h2><p><code>&lt;script src=&quot;am.js&quot;&gt;&lt;/script&gt;</code></p><p>On older browsers which don&#39;t support Array.IsArray and Array.indexOf include es5-shim <a href="https://github.com/es-shims/es5-shim">github.com/es-shims/es5-shim</a> before am.js</p><h2 id="some-issues-">some Issues:</h2><ul><li>works only on browsers which supports attribute and ~= selectors (no IE6 and below)</li><li>module names are case sensitive on IE only.</li><li>value names are case sensitive everywhere.</li><li>strange results on ie7 if you use module-names with seperator as mentioned in <a href="github.com/amcss/attribute-module-specification">specification</a>. If you want to support IE7 dont use seperators in module-names (i.e. am-Button =&gt; amButton)</li></ul><hr><h1 id="api-">API:</h1><h2 id="-am-element-">$am(element)</h2><p><code>$am(element)</code> gives you a new chainable am instance (like jQuery) containing the element.</p><ul><li><code>element</code> is a single DOM element</li></ul><pre class="highlight"><code class="hljs javascript"><span class="hljs-keyword">var</span> testam=$am(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"test"</span>)); <span class="hljs-comment">//get a new am instance</span>
 testam.setModule(<span class="hljs-string">"am-Button"</span>); <span class="hljs-comment">//sets the module on #test</span>
 </code></pre><p><strong>Once you have a instance, you can call any of the $am methods on it.</strong></p><h3 id="-hasmodule-module-">.hasModule(module)</h3><p><code>.hasModule(module)</code> returns <code>true</code> if the element has the module or <code>false</code> if not.</p><ul><li><code>module</code> Modulename (string)</li></ul><pre class="highlight"><code class="hljs xml">    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"test"</span> <span class="hljs-attribute">am-Button</span>=<span class="hljs-value">"green"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>

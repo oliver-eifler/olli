@@ -1,32 +1,17 @@
 <?php
-header("Content-Type: text/html; charset=utf-8");
-require_once 'php/faker/autoload.php';
-$faker = Faker\Factory::create('olli');
-$faker->realTextInit('_assets/text/anhalter.txt');
   $cssupdate = filemtime("css/styles.css");
   $cssfile ="/css/styles_".$cssupdate.".css";
   $jsupdate = filemtime("js/init.js");
   $jsfile ="/js/init_".$jsupdate.".js";
   $svgupdate = filemtime("img/icons.svg");
   $svgfile ="/img/icons_".$svgupdate.".svg";
-  /*
-  $html.=     "<li><a ".(($clean_uri == "/")?"class='cur' ":"")."href='/' title='Home'>Home</a></li>";
-  $html.=     "<li><a ".(($clean_uri == "/articles")?"class='cur' ":"")."href='/articles' title='Articles'>Articles</a></li>";
-  $html.=     "<li><a ".(($clean_uri == "/about")?"class='cur' ":"")."href='/about' title='About'>About</a></li>";
-  $html.=     "<li><a ".(($clean_uri == "/contact")?"class='cur' ":"")."href='/contact' title='Contact'>Contact</a></li>";
-  */
+
     $page_links = array(
         array("title" => "Home"         ,"href" => "/"          ),
         array("title" => "Articles"     ,"href" => "/articles"  ),
         array("title" => "About"        ,"href" => "/about"     ),
         array("title" => "Contact"      ,"href" => "/contact"   )
     );
-/*
-  $html.=     "<li><a class='SocialNav-icon SocialNav-icon--github' href='#' title='Github'><svg><use xlink:href='#icon-github'></use></svg><em>Github</em></a></li>";
-  $html.=     "<li><a class='SocialNav-icon SocialNav-icon--codepen' href='#' title='Codepen'><svg><use xlink:href='#icon-codepen'></use></svg><em>Codepen</em></a></li>";
-  $html.=     "<li><a class='SocialNav-icon SocialNav-icon--googleplus' href='#' title='Google+'><svg><use xlink:href='#icon-googleplus'></use></svg><em>Google+</em></a></li>";
-  $html.=     "<li><a class='SocialNav-icon SocialNav-icon--facebook' href='#' title='Facebook'><svg><use xlink:href='#icon-facebook'></use></svg><em>Facebook</em></a></li>";
-*/
     $social_links = array(
         array("title" => "Github"      ,"href" => "#","icon"=>"github"),
         array("title" => "Codepen"     ,"href" => "#","icon"=>"codepen"  ),
@@ -34,23 +19,34 @@ $faker->realTextInit('_assets/text/anhalter.txt');
         array("title" => "Facebook"    ,"href" => "#","icon"=>"facebook"   )
     );
     $links=buildLinkList();
+    $links[] = array("type"=>"misc","ajax"=>true,"title" => "Impressum","content" => "Impressum","href" => "/impressum","class"=>"");
 
 
 
   $uri = $_SERVER['REQUEST_URI'];
   $uri = preg_replace('/\?.*/', '', $uri);
-  $clean_uri = preg_replace('/\..*/', '', $uri);
+  $clean_uri = strtolower(preg_replace('/\..*/', '', $uri));
+  if (empty($clean_uri) || $clean_uri == "/" || $clean_uri=="/index")
+        $clean_uri="/home";
+  //extract class
+  $class = explode("/",trim($clean_uri,"/"))[0];
+  //construct page ?
+  if (!file_exists("php/page/".$class.".php"))
+    $class="static";
+  $classname=ucwords($class)."Page";
+  require_once("php/page/".$class.".php");
+  $page = new $classname($clean_uri);
 
-  $file = $clean_uri;
-  if (empty($file) || $file == "/" || $file=="/index")
-        $file="/home";
-  if ($file=="" || !file_exists("pages".$file.".html"))
+  header("Content-Type: text/html; charset=utf-8");
+  header("X-UA-Compatible: IE=edge");
+
+  if ($page->getError())
   {
     header("HTTP/1.0 404 Not Found");
     error_page();
     exit();
   }
-header("X-UA-Compatible: IE=edge");
+
 echo HTML();
 exit();
 
@@ -139,9 +135,6 @@ function getLinkList($type="main")
 }
 function SiteHeader()
 {
-  global $uri;
-  global $clean_uri;
-
   $html = "";
   $html.="<div class='Site-header'>";
   $html.= "<header class='Header'>";
@@ -155,12 +148,6 @@ function SiteHeader()
 
   $html.= "<nav class='Header-nav'>";
   $html.=   "<ul class='MainNav'>";
-  /*
-  $html.=     "<li><a ".(($clean_uri == "/")?"class='cur' ":"")."href='/' title='Home'>Home</a></li>";
-  $html.=     "<li><a ".(($clean_uri == "/articles")?"class='cur' ":"")."href='/articles' title='Articles'>Articles</a></li>";
-  $html.=     "<li><a ".(($clean_uri == "/about")?"class='cur' ":"")."href='/about' title='About'>About</a></li>";
-  $html.=     "<li><a ".(($clean_uri == "/contact")?"class='cur' ":"")."href='/contact' title='Contact'>Contact</a></li>";
-  */
   $html.= getLinkList("main");
   $html.=   "</ul>";
   $html.= "</nav>";
@@ -168,12 +155,6 @@ function SiteHeader()
   $html.= "<nav class='Header-social'> ";
   $html.=   "<p class='Header-social-tagline'>Follow me on:</p>";
   $html.=   "<ul class='SocialNav'> ";
-  /*
-  $html.=     "<li><a class='SocialNav-icon SocialNav-icon--github' href='#' title='Github'><svg><use xlink:href='#icon-github'></use></svg><em>Github</em></a></li>";
-  $html.=     "<li><a class='SocialNav-icon SocialNav-icon--codepen' href='#' title='Codepen'><svg><use xlink:href='#icon-codepen'></use></svg><em>Codepen</em></a></li>";
-  $html.=     "<li><a class='SocialNav-icon SocialNav-icon--googleplus' href='#' title='Google+'><svg><use xlink:href='#icon-googleplus'></use></svg><em>Google+</em></a></li>";
-  $html.=     "<li><a class='SocialNav-icon SocialNav-icon--facebook' href='#' title='Facebook'><svg><use xlink:href='#icon-facebook'></use></svg><em>Facebook</em></a></li>";
-  */
   $html.= getLinkList("socialicon");
   $html.=   "</ul>";
   $html.= "</nav>";
@@ -213,7 +194,7 @@ function SiteInfo()
   $html.= getLinkList("socialtext");
   $html.=   "</ul>";
   $html.=   "<ul>";
-  $html.=     "<li><a href='/impressum' title='Impressum'>Impressum</a></li>";
+  $html.= getLinkList("misc");
   $html.=   "</ul>";
   $html.=   "</nav>";
   return $html;
@@ -235,55 +216,23 @@ function SiteFooter()
 
   return $html;
 }
-function linkTest()
-{
-    global $faker;
-    $text = $faker->realText(600,2);
-    $ar = explode(" ",$text);
-    for ($i=0;$i<10;$i++)
-    {
-        $idx = $faker->numberBetween(1,count($ar)-1);
-        $word = $ar[$idx];
-        $ar[$idx] = "<a href='#'>".$word."</a>";
-    }
-    return implode(" ",$ar);
-}
 function SiteContent($p=1)
 {
   global $uri;
   global $clean_uri;
-  $file = $clean_uri;
-  if (empty($file) || $file == "/" || $file=="/index")
-        $file="/home";
+  global $page;
 
   $html = "";
-  $html.="<article class='Sheet Site-content'>";
+  $html.="<article class='Sheet Site-content' itemscope itemtype='http://schema.org/BlogPosting'>";
   $html.=  "<aside class='Sheet-item'>";
   $html.=    "<h2>DEBUG</h2>";
   $html.=    "<ul>";
   $html.=      "<li>uri: ".$uri."</li>";
   $html.=      "<li>clean uri: ".$clean_uri."</li>";
-  $html.=      "<li>file: pages".$file.".html</li>";
+  $html.=      "<li>file: pages".$clean_uri.".html</li>";
   $html.=    "</ul>";
   $html.=  "</aside>";
-
-
-  if ($file!="" && file_exists("pages".$file.".html"))
-  {
-        $h= file_get_contents("pages".$file.".html");
-        //$h = str_replace(array("/images/"), '/pages/images/', $h);
-        $regex = "%/?images/(.*?)\.(jpe?g|png|gif|svg)%i";
-
-        $h = preg_replace_callback($regex,"mod_imagepath",$h);
-
-        $html.=$h;
-
-
-
-
-  }
-  else
-        $html.= contentdemo($clean_uri);
+  $html.=  $page->getHtml();
   $html.="</article>";
   return $html;
 }
@@ -305,33 +254,6 @@ function base62($num) {
   } while ($num);
   return $res;
 }
-function contentdemo($title)
-{
-  global $faker;
-  $p=1;
-  $html = "";
-  //$html.="<article class='Sheet Site-content'>";
-  $html.=  "<header class='Sheet-item content content--header'>";
-  $html.=    "<h1>".$title." - ".$faker->catchPhrase."</h1>";
-  $html.=    "<p class='content-description'>".$faker->realText(80,2)."</p>";
-  $html.=  "</header>";
-  $html.=  "<section class='Sheet-item content content--entry'>";
-  $html.=  "<p>".linkTest()."</p>";
-           for ($i=0;$i<$p;$i++)
-           {
-              if ($i!=0)
-               $html.= "<h2>".$faker->catchPhrase."</h2>";
-             for ($j=0;$j<$faker->numberBetween(1,5);$j++)
-               $html.= "<p>".$faker->realText($faker->numberBetween(200,1200),2)."</p>";
-           }
-  $html.=  "</section>";
-  $html.=  "<aside class='Sheet-item content content--aside'>";
-             $html.= "<h2>".$faker->catchPhrase."</h2>";
-             $html.= "<p>".$faker->realText($faker->numberBetween(200,1200),2)."</p>";
-  $html.=  "</aside>";
-  //$html.="</article>";
-  return $html;
-}
 function PreLoad()
 {
 global $cssfile;
@@ -349,7 +271,7 @@ global $svgfile;
   $html.=  "</script>";
 
   $html.=  "<noscript><link rel='stylesheet' href='".$cssfile."'></noscript>";
-  $html.=  "<link rel='stylesheet' href='".$cssfile."'>";
+  //$html.=  "<link rel='stylesheet' href='".$cssfile."'>";
 
   return $html;
 }
@@ -362,11 +284,17 @@ global $svgfile;
   $html = "";
   $html.=  "<script  type='text/javascript'>";
   $html.=    "var _cfg = {css:'".$cssfile."',svg:'".$svgfile."'};";
-  //$html.=    "loadCSS('".$cssfile."')";
+  $html.=    "loadCSS('".$cssfile."')";
   $html.=  "</script>";
   $html.=  "<script src='".$jsfile."' async></script>";
-  //Produce Error
-  $html.=  "<script src='js/error.js'></script>";
+  $arr = array(
+       "@context"       => "http://schema.org",
+       "@type"          => "WebSite",
+       "name"           => "Oliver 'Jean' Eifler",
+       "alternateName"  => "O.J.E. Blog",
+       "url"            => "http://".$_SERVER["SERVER_NAME"]
+       );
+  $html.="<script type='application/ld+json'>".json_encode($arr)."</script>";
   return $html;
 }
 

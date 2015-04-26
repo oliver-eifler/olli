@@ -20,6 +20,10 @@ $text4:   mix($text,$color,100);
 
 article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section {display:block;}
 mark{background:#FF0;color:#000} svg,template{display:none}
+img {
+  max-width:100%;
+}
+
 /*
 body {
   background: $color;
@@ -49,7 +53,6 @@ a {
 .Header * {
   margin:0;
 }
-
 .Site {
   padding:0 2em;
   max-width:px2em($page-width);

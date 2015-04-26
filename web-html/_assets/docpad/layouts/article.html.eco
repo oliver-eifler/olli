@@ -1,10 +1,11 @@
 <header class='Sheet-item content content--header'>
-<h1><%= @document.title %></h1>
-<p class='content-description'><%= @document.description %></p>
+<h1 itemprop='headline'><%= @document.title %></h1>
+<meta itemprop='datePublished' content="<%= @document.computerDate %>"/>
+<p class='content-description' itemprop='description'><%= @document.description %></p>
 </header>
 <section class='Sheet-item content'>
-<img src="/images/logo.gif" />
+<img src="/images/logo.gif" itemprop ='image' />
 </section>
-<section class='Sheet-item content content--article'>
+<section class='Sheet-item content content--article' in itemprop='articleBody'>
 <%- @content %>
 </section>
