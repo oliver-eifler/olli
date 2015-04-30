@@ -17,11 +17,14 @@ class StaticPage extends BasePage
         }
         $h= file_get_contents($file);
         $regex = "%/?images/(.*?)\.(jpe?g|png|gif|svg)%i";
-        $h = preg_replace_callback($regex,"mod_imagepath",$h);
+        $h = preg_replace_callback($regex,"self::mod_imagepath",$h);
+        /*Magic: Extract data*/
+        $regex = "%\[title\](.*?)\[\/title\]%i";
+        $h = preg_replace_callback($regex,"self::magic_title",$h);
         $this->html.=$h;
         return true;
     }
-    protected function mod_imagepath($matches)
+    private function mod_imagepath($matches)
     {
         $path = 'pages/images/'.$matches[1];
         $ext = '.'.$matches[2];
@@ -30,6 +33,10 @@ class StaticPage extends BasePage
             return "/img/baselope.png";
         return "/".$path."_".$update.$ext;
     }
-
+    private function magic_title($matches)
+    {
+        $this->title = $matches[1];
+        return "";
+    }
 }
 ?>

@@ -7,6 +7,7 @@ class BasePage
     protected $uri="";
     protected $error=false;
     protected $html  ="";
+    protected $title ="";
 
     function __construct($uri)
     {
@@ -24,5 +25,6 @@ class BasePage
     public function getError()  {return $this->error;}
     public function getUri()    {return $this->uri;}
     public function getHtml()   {return $this->html;}
+    public function getTitle()  {return $this->title;}
 }
 ?>

@@ -25,11 +25,11 @@
 
   $uri = $_SERVER['REQUEST_URI'];
   $uri = preg_replace('/\?.*/', '', $uri);
-  $clean_uri = strtolower(preg_replace('/\..*/', '', $uri));
+  $clean_uri = $org_uri = strtolower(preg_replace('/\..*/', '', $uri));
   if (empty($clean_uri) || $clean_uri == "/" || $clean_uri=="/index")
         $clean_uri="/home";
   //extract class
-  $class = explode("/",trim($clean_uri,"/"))[0];
+  $base_uri = $class = explode("/",trim($clean_uri,"/"))[0];
   //construct page ?
   if (!file_exists("php/page/".$class.".php"))
     $class="static";
@@ -46,6 +46,10 @@
     error_page();
     exit();
   }
+  //Build current URI
+  $cur_uri = str_replace("/home","",$clean_uri);
+  if (empty($cur_uri))
+    $cur_uri ="/";
 
 echo HTML();
 exit();
@@ -101,8 +105,8 @@ function buildLinkList()
 }
 function getLinkList($type="main")
 {
-    global $uri;
-    global $clean_uri;
+    global $base_uri;
+    global $cur_uri;
     global $links;
 
     $html = "";
@@ -116,7 +120,7 @@ function getLinkList($type="main")
         $content = $link["content"];
 
 
-        if ($clean_uri == $href)
+        if ($base_uri == strtolower($title) || $cur_uri == $href)
             $class[] = "cur";
 
         $tag = "<a href='".$href."' title='".$title."'";
@@ -132,6 +136,40 @@ function getLinkList($type="main")
         $html .= "<li>".$tag."</li>";
     }
     return $html;
+}
+function breadcrumbs($text = 'You are here: ', $sep = ' &raquo; ', $home = 'Home')
+{
+    global $cur_uri;
+    global $page;
+    //Use RDFa breadcrumb, can also be used for microformats etc.
+    $bc     =   '<div xmlns:v="http://rdf.data-vocabulary.org/#" id="crums" class="Breadcrumbs">'.$text;
+    //Get the website:
+    $site   =   (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
+    //Get all vars en skip the empty ones
+    $crumbs =   array_filter( explode("/",$cur_uri));//$_SERVER["REQUEST_URI"]) );
+    //Create the home breadcrumb
+    $bc    .=   '<span typeof="v:Breadcrumb"><a href="'.$site.'" rel="v:url" property="v:title">'.$home.'</a>'.$sep.'</span>';
+    //Count all not empty breadcrumbs
+    $nm     =   count($crumbs);
+    $i      =   1;
+    //Loop the crumbs
+    foreach($crumbs as $crumb)
+    {
+        //Make the link look nice
+        if ($i==$nm)
+            $link = $page->getTitle();
+        else
+            $link    =  ucfirst( str_replace( array(".php","-","_"), array(""," "," ") ,$crumb) );
+        //Loose the last seperator
+        $sep     =  $i==$nm?'':$sep;
+        //Add crumbs to the root
+        $site   .=  '/'.$crumb;
+       //Make the next crumb
+        $bc     .=  '<span typeof="v:Breadcrumb"><a href="'.$site.'" rel="v:url" property="v:title">'.$link.'</a>'.$sep.'</span>';
+    $i++;
+    }
+    $bc .=  '</div>';
+    return $bc;
 }
 function SiteHeader()
 {
@@ -165,27 +203,10 @@ function SiteHeader()
 function SiteInfo()
 {
   $html ="";
-  $html.=   "<aside class='Sheet-item Footer Footer--info'>";
-  $html.=     "<ul><li>HTTP_MOD_DEFLATE: ".$_SERVER['HTTP_MOD_DEFLATE']."</li>";
-  $html.=     "<li>HTTP_MOD_REWRITE: ".$_SERVER['HTTP_MOD_REWRITE']."</li>";
-  $html.=     "<li>REDIRECT_STATUS: ".(isset($_SERVER['REDIRECT_STATUS'])?$_SERVER['REDIRECT_STATUS']:"200")."</li>";
-
-  $uri = $_SERVER['REQUEST_URI'];
-  $i=0;
-  foreach($_GET as $k => $v)
-  {
-        if (!$i)
-            $uri.= " =>GET:";
-        $uri .= " ".$k."=".$v;
-        $i++;
-  }
-  $html.=     "<li>REQUEST URI: ".$uri."</li>";
-
-  $html.=     "</ul>";
-
-
-  $html.=   "</aside>";
   $html.=   "<p>Site links</p>";
+  $html.=   "<aside class='Sheet-item Footer Footer--crumbs'>";
+  $html.=   breadcrumbs();
+  $html.=   "</aside>";
   $html.=   "<nav class='Sheet-item Footer Footer--nav'>";
   $html.=   "<ul>";
   $html.= getLinkList("main");
@@ -220,18 +241,22 @@ function SiteContent($p=1)
 {
   global $uri;
   global $clean_uri;
+  global $cur_uri;
   global $page;
 
   $html = "";
   $html.="<article class='Sheet Site-content' itemscope itemtype='http://schema.org/BlogPosting'>";
+  /*
   $html.=  "<aside class='Sheet-item'>";
   $html.=    "<h2>DEBUG</h2>";
   $html.=    "<ul>";
   $html.=      "<li>uri: ".$uri."</li>";
   $html.=      "<li>clean uri: ".$clean_uri."</li>";
+  $html.=      "<li>current uri: ".$cur_uri."</li>";
   $html.=      "<li>file: pages".$clean_uri.".html</li>";
   $html.=    "</ul>";
   $html.=  "</aside>";
+  */
   $html.=  $page->getHtml();
   $html.="</article>";
   return $html;
@@ -271,7 +296,7 @@ global $svgfile;
   $html.=  "</script>";
 
   $html.=  "<noscript><link rel='stylesheet' href='".$cssfile."'></noscript>";
-  //$html.=  "<link rel='stylesheet' href='".$cssfile."'>";
+  $html.=  "<link rel='stylesheet' href='".$cssfile."'>";
 
   return $html;
 }
@@ -284,7 +309,7 @@ global $svgfile;
   $html = "";
   $html.=  "<script  type='text/javascript'>";
   $html.=    "var _cfg = {css:'".$cssfile."',svg:'".$svgfile."'};";
-  $html.=    "loadCSS('".$cssfile."')";
+  //$html.=    "loadCSS('".$cssfile."')";
   $html.=  "</script>";
   $html.=  "<script src='".$jsfile."' async></script>";
   $arr = array(
@@ -300,11 +325,15 @@ global $svgfile;
 
 function HTMLHeader()
 {
+  global $page;
+  $title = $page->getTitle();
+  $title .= (!empty($title)? " || ":"")."Oliver Jean Eifler";
+
   $html = "";
   $html.= "<head>";
   $html.=   "<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=yes'>";
   $html.=   "<meta name='format-detection' content='telephone=no'/>";
-  $html.=   "<title>Olli's Lab</title>";
+  $html.=   "<title>".$title."</title>";
   $html.=   PreLoad();
   $html.= "</head>";
   return $html;
@@ -324,7 +353,6 @@ function HTMLBody()
 
   $html.=     "<div class='Site-footerContainer'>";
   $html.=       "<div class='Sheet Site-footer'>";
-  $html.=         "<p>Some aditional Info</p>";
   $html.=         SiteInfo();
   $html.=         "<p>Now it's time for the real footer</p>";
   $html.=         SiteFooter();

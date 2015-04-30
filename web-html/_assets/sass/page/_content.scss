@@ -73,6 +73,15 @@ p > code, li > code, dd > code, td > code {
 .content-tagline,.content-description {
     font-weight:bold;
 }
+.content-published {
+    font-family: monospace,monospace;
+    @include typo($base-font-size*0.8,false);
+    margin-top:0;
+    padding-left: 1em;
+
+    color: info($colors);
+}
+
 .content--header + * {
   margin-top:0;
 }

@@ -1,6 +1,10 @@
+[title]<%= @document.title %>[/title]
 <header class='Sheet-item content content--header'>
 <h1 itemprop='headline'><%= @document.title %></h1>
-<meta itemprop='datePublished' content="<%= @document.computerDate %>"/>
+<p class='content-published'>
+Published <span itemprop='datePublished' content="<%= @document.computerDate %>"/><%= @document.humanDate %></span>
+by <a href="/about" rel="Author">Oliver Jean Eifler</a>
+</p>
 <p class='content-description' itemprop='description'><%= @document.description %></p>
 </header>
 <section class='Sheet-item content'>

@@ -5,12 +5,9 @@ class ContactPage extends BasePage
 {
     protected function init()
     {
-        $this->error = !$this->LoadPage($this->uri);
-    }
-    protected function LoadPage($uri)
-    {
+        $this->error = false;
         $this->html="<h1>Olli's Contact Page</h1>";
-        return true;
+        $this->title="Contact";
     }
 }
 ?>
