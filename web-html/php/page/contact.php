@@ -7,7 +7,7 @@ class ContactPage extends BasePage
     {
         $this->error = false;
         $this->html="<h1>Olli's Contact Page</h1>";
-        $this->title="Contact";
+        $this->data["title"]="Contact";
     }
 }
 ?>

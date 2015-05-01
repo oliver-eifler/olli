@@ -1,8 +1,8 @@
 ---
 isArticle: true
 title: "Load CSS Async"
-relativeBase: "xxx-bla"
 description: "A function for loading CSS asynchronously."
+tags: "javascript, function, css, asyncron"
 ---
 [c]2014 @scottjehl, Filament Group, Inc.
 Licensed MIT

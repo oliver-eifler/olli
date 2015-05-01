@@ -9,37 +9,13 @@
  * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  */
-class Registry implements ArrayAccess, Countable, IteratorAggregate
+class _registry implements ArrayAccess, Countable, IteratorAggregate
 {
    /**
     * @var object Instance of registry class
 	*/
-	protected static $instance = NULL;
     private $data = array();
 
-	/**
-	 * Get an instance of registry class
-	 *
-	 * @return object Instance of registry class
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === NULL)
-		{
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-	/**
-	 * Constructor - start session
-	 */
-	protected function __construct()
-	{
-	}
-	/**
-	 * Clone - prevent additional instances of the class
-	 */
-	private function __clone() {}
 	/**
 	 * Magic Method to set a registry variable
 	 *
@@ -86,7 +62,7 @@ class Registry implements ArrayAccess, Countable, IteratorAggregate
 	}
     public function debug()
     {
-        return "<p><h1>Registry</h1>".print_r($this->data,true)."</p>";
+        return "<p><b>".get_class($this)."</b><br>".print_r($this->data,true)."</p>";
 
     }
     //Array Access methods

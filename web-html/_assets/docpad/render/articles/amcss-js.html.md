@@ -1,6 +1,7 @@
 ---
 isArticle: true
 title: "amcss.js"
+tags: "javascript,library,attribute,module selector"
 description: "A javascript library for using attributes and their values rather than classes for styling HTML elements."
 ---
 Based on **AMCSS** Attribute Modules for CSS - Specification <a href="github.com/amcss/attribute-module-specification">github.com/amcss/attribute-module-specification</a>.

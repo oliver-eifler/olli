@@ -29,9 +29,13 @@ docpadConfig = {
                     enabled: true
     templateData:
         site:
-            title: "Olli's Blog"
+            title: ""
+            description: ""
+            tags: ""
             excerptLength: 300
-        getPreparedTitle: -> if @document.title then "#{@document.title} | #{@site.title}" else @site.title
+        getPreparedTitle: -> @document.title or @site.title
+        getPreparedDescription: -> @document.description or @site.description
+        getPreparedTags: -> @document.tags or @site.tags
         getExcerpt: (post) ->
             excerpt = ""
             if (post or @document).description then excerpt = (post or @document).description + " "

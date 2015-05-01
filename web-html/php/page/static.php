@@ -15,12 +15,17 @@ class StaticPage extends BasePage
             $this->html="<h2>".$file." not found</h2>";
             return false;
         }
+        $this->data['modified'] = filemtime($file);
         $h= file_get_contents($file);
+
         $regex = "%/?images/(.*?)\.(jpe?g|png|gif|svg)%i";
         $h = preg_replace_callback($regex,"self::mod_imagepath",$h);
         /*Magic: Extract data*/
-        $regex = "%\[title\](.*?)\[\/title\]%i";
-        $h = preg_replace_callback($regex,"self::magic_title",$h);
+        $regex = "%\[m\:(.*?)\](.*?)\[\/m\]%i";
+        $h = preg_replace_callback($regex,"self::magic_meta",$h);
+
+        //$this->html.="<p><h3>Data</h3>".print_r($this->data,true)."</p>";
+
         $this->html.=$h;
         return true;
     }
@@ -33,9 +38,9 @@ class StaticPage extends BasePage
             return "/img/baselope.png";
         return "/".$path."_".$update.$ext;
     }
-    private function magic_title($matches)
+    private function magic_meta($matches)
     {
-        $this->title = $matches[1];
+        $this->data[$matches[1]] = $matches[2];
         return "";
     }
 }

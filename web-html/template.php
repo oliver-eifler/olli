@@ -1,4 +1,7 @@
 <?php
+  require_once("php/config.php");
+  require_once("php/page.php");
+
   $cssupdate = filemtime("css/styles.css");
   $cssfile ="/css/styles_".$cssupdate.".css";
   $jsupdate = filemtime("js/init.js");
@@ -21,21 +24,8 @@
     $links=buildLinkList();
     $links[] = array("type"=>"misc","ajax"=>true,"title" => "Impressum","content" => "Impressum","href" => "/impressum","class"=>"");
 
+    $page = Page::getInstance();
 
-
-  $uri = $_SERVER['REQUEST_URI'];
-  $uri = preg_replace('/\?.*/', '', $uri);
-  $clean_uri = $org_uri = strtolower(preg_replace('/\..*/', '', $uri));
-  if (empty($clean_uri) || $clean_uri == "/" || $clean_uri=="/index")
-        $clean_uri="/home";
-  //extract class
-  $base_uri = $class = explode("/",trim($clean_uri,"/"))[0];
-  //construct page ?
-  if (!file_exists("php/page/".$class.".php"))
-    $class="static";
-  $classname=ucwords($class)."Page";
-  require_once("php/page/".$class.".php");
-  $page = new $classname($clean_uri);
 
   header("Content-Type: text/html; charset=utf-8");
   header("X-UA-Compatible: IE=edge");
@@ -46,10 +36,13 @@
     error_page();
     exit();
   }
-  //Build current URI
-  $cur_uri = str_replace("/home","",$clean_uri);
-  if (empty($cur_uri))
-    $cur_uri ="/";
+  $modified = max($page->getData('modified'),filemtime('template.php'));
+  $status = 200;
+  //if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) == $modified)
+  //  $status = 304;
+
+  header ("Last-Modified: ".gmdate("D, d M Y H:i:s", $modified )." GMT",true,$status);
+
 
 echo HTML();
 exit();
@@ -90,23 +83,27 @@ function buildLinkList()
     }
     foreach($social_links as $link)
     {
-        $entry = $default;
         $title = $link["title"];
         $icon = $link["icon"];
+        $href = $link["href"];
 
+        $entry = $default;
         $entry["type"] = "socialtext";
         $entry["ajax"] = "false";
         $entry["class"] = "";
         $entry["content"] = "<svg><use xlink:href='#icon-".$icon."'></use></svg>".$title;
         $entry["title"] = $title;
+        $entry["href"] = $href;
         $ret[] = $entry;
     }
     return $ret;
 }
 function getLinkList($type="main")
 {
-    global $base_uri;
-    global $cur_uri;
+    $page = Page::getInstance();
+    $base_uri = $page->getData("base_uri");
+    $cur_uri = $page->getData("cur_uri");
+
     global $links;
 
     $html = "";
@@ -139,8 +136,8 @@ function getLinkList($type="main")
 }
 function breadcrumbs($text = 'You are here: ', $sep = ' &raquo; ', $home = 'Home')
 {
-    global $cur_uri;
-    global $page;
+    $page = Page::getInstance();
+    $cur_uri = $page->getData("cur_uri");
     //Use RDFa breadcrumb, can also be used for microformats etc.
     $bc     =   '<div xmlns:v="http://rdf.data-vocabulary.org/#" id="crums" class="Breadcrumbs">'.$text;
     //Get the website:
@@ -157,7 +154,7 @@ function breadcrumbs($text = 'You are here: ', $sep = ' &raquo; ', $home = 'Home
     {
         //Make the link look nice
         if ($i==$nm)
-            $link = $page->getTitle();
+            $link = $page->getData("title");
         else
             $link    =  ucfirst( str_replace( array(".php","-","_"), array(""," "," ") ,$crumb) );
         //Loose the last seperator
@@ -239,45 +236,13 @@ function SiteFooter()
 }
 function SiteContent($p=1)
 {
-  global $uri;
-  global $clean_uri;
-  global $cur_uri;
-  global $page;
+  $page = Page::getInstance();
 
   $html = "";
   $html.="<article class='Sheet Site-content' itemscope itemtype='http://schema.org/BlogPosting'>";
-  /*
-  $html.=  "<aside class='Sheet-item'>";
-  $html.=    "<h2>DEBUG</h2>";
-  $html.=    "<ul>";
-  $html.=      "<li>uri: ".$uri."</li>";
-  $html.=      "<li>clean uri: ".$clean_uri."</li>";
-  $html.=      "<li>current uri: ".$cur_uri."</li>";
-  $html.=      "<li>file: pages".$clean_uri.".html</li>";
-  $html.=    "</ul>";
-  $html.=  "</aside>";
-  */
   $html.=  $page->getHtml();
   $html.="</article>";
   return $html;
-}
-function mod_imagepath($matches)
-{
-   $path = 'pages/images/'.$matches[1];
-   $ext = '.'.$matches[2];
-   $update = filemtime($path.$ext);
-   if ($update === FALSE)
-     return "/img/baselope.png";
-   return "/".$path."_".$update.$ext;
-}
-function base62($num) {
-  $index = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  $res = '';
-  do {
-    $res = $index[$num % 62] . $res;
-    $num = intval($num / 62);
-  } while ($num);
-  return $res;
 }
 function PreLoad()
 {
@@ -325,15 +290,31 @@ global $svgfile;
 
 function HTMLHeader()
 {
-  global $page;
-  $title = $page->getTitle();
+  $page = Page::getInstance();
+  /*
+  $title = $page->getData("title");
   $title .= (!empty($title)? " || ":"")."Oliver Jean Eifler";
+  $desc = (!empty($page->getData("desc"))?$page->getData("desc"):$title);
+  $keywords = explode(",","oliver jean,eifler,web,development,blog");
+  if (!empty($page->getData("tags")))
+    $keywords = array_merge(explode(",",$page->getData("tags")),$keywords);
+  foreach($keywords as $k => $v)
+    $keywords[$k] = strtolower(trim($v));
+  */
+  $title = $page->getPreparedTitle();
+  $desc = $page->getPreparedDescription();
+  $tags = $page->getPreparedTags();
+
 
   $html = "";
   $html.= "<head>";
   $html.=   "<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=yes'>";
   $html.=   "<meta name='format-detection' content='telephone=no'/>";
   $html.=   "<title>".$title."</title>";
+  $html.=   "<meta name=\"author\" content=\"Oliver Jean Eifler\" />";
+  $html.=   "<meta name=\"description\" content=\"".$desc."\" />";
+  $html.=   "<meta name=\"keywords\" content=\"".$tags."\" />";
+
   $html.=   PreLoad();
   $html.= "</head>";
   return $html;
