@@ -2,20 +2,21 @@
 /*
    Olli PHP Framework
 */
+require_once('php/class/registry.class.php');
 require_once("php/config.php");
-class BasePage
+
+class BasePage extends _registry
 {
-    protected $uri="";
     protected $error=false;
     protected $html  ="";
-    protected $data = array();
 
-    function __construct($uri)
+    function __construct(&$data)
     {
-        $this->uri = $uri;
         $this->error = false;
         $this->build = false;
-        $this->data['modified'] = time();
+        $this->modified = time();
+        foreach ($data as $k => $v)
+          $this->offsetSet($k,$v);
         $this->init();
     }
     //overwrite functions
@@ -25,43 +26,59 @@ class BasePage
 
     //public functions
     public function getError()  {return $this->error;}
-    public function getUri()    {return $this->uri;}
     public function getHtml()   {return $this->html;}
     public function getData($idx)
     {
-        return array_key_exists($idx,$this->data) ? $this->data[$idx] : null;
+        return $this->offsetGet($idx);
     }
     public function setData($idx,$value)
     {
-        $this->data[$idx]=$value;
+        $this->offsetSet($idx,$value);
     }
     public function getPreparedTitle()
     {
         $config = Config::getInstance();
-        $title = $this->getData("title");
+        $title = $this->title;
         $title .= (!empty($title)? " || ":"").$config->title;
         return $title;
     }
     public function getPreparedDescription()
     {
         $config = Config::getInstance();
-        $desc = (!empty($this->getData("desc"))?$this->getData("desc"):$config->desc);
+        $desc = (!empty($this->description)?$this->description:$config->desc);
         return $desc;
     }
     public function getPreparedTags()
     {
         return implode(", ",$this->getTagsArray());
     }
-    public function getTagsArray()
+    protected function getTagsArray()
     {
         $config = Config::getInstance();
         $tags = $config->tags;
-        if (!empty($this->getData("tags")))
-            $tags = array_merge(explode(",",$this->getData("tags")),$tags);
+        if (!empty($this->tags))
+            $tags = array_merge(explode(",",$this->tags),$tags);
         foreach($tags as $k => $v)
             $tags[$k] = strtolower(trim($v));
         return $tags;
     }
-
+    public function getModifiedTime()
+    {
+        $time = $this->mtime;
+        if (!empty($time))
+            return strtotime($time);
+        $time = $this->ctime;
+        if (!empty($time))
+            return strtotime($time);
+        return $this->modified;
+    }
+    public function debugData()
+    {
+        $html="<ul>";
+        foreach($this as $k => $v)
+            $html.="<li><b>".$k."</b>: ".htmlentities($v,ENT_QUOTES|ENT_HTML401)."</li>";
+        $html.="</ul>";
+        return $html;
+    }
 }
 ?>

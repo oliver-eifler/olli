@@ -8,7 +8,7 @@
  * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  **/
-  *, *:before, *:after {  box-sizing: border-box;}
+  *, *:before, *:after {  box-sizing: border-box;box-shadow:none;border:none}
  html,body {
     margin:0;
     padding:0;

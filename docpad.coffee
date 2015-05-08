@@ -36,6 +36,11 @@ docpadConfig = {
         getPreparedTitle: -> @document.title or @site.title
         getPreparedDescription: -> @document.description or @site.description
         getPreparedTags: -> @document.tags or @site.tags
+        getMetaData: ->
+            data = @document.meta or {}
+            data.ctime = @document.ctime
+            data.mtime = @document.mtime
+            JSON.stringify(data)
         getExcerpt: (post) ->
             excerpt = ""
             if (post or @document).description then excerpt = (post or @document).description + " "

@@ -46,7 +46,7 @@
   margin:0;
 }
 //top margin for block-level elements
-p,div,hr,pre {
+p,div,hr,pre,.p {
     margin-top:px2em($base-line-height);
   }
 *:first-child {
@@ -81,4 +81,21 @@ h3,.h3 {
 h4,h5,h6,.h4,.h5,.h6 {;
     @include typo($base-font-size);
     text-transform: uppercase
+}
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    @include typo($base-font-size,false);
+  }
+
+.text-center {
+  text-align:center;
+}
+.text-right {
+  text-align:right;
+}
+.text-left {
+  text-align:left;
 }

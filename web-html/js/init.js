@@ -1,1 +1,1146 @@
-!function(a,b,c){function d(a,b){return typeof a===b}function e(){var a,b,c,e,f,g,h;for(var i in s){if(a=[],b=s[i],b.name&&(a.push(b.name.toLowerCase()),b.options&&b.options.aliases&&b.options.aliases.length))for(c=0;c<b.options.aliases.length;c++)a.push(b.options.aliases[c].toLowerCase());for(e=d(b.fn,"function")?b.fn():b.fn,f=0;f<a.length;f++)g=a[f],h=g.split("."),1===h.length?u[h[0]]=e:(!u[h[0]]||u[h[0]]instanceof Boolean||(u[h[0]]=new Boolean(u[h[0]])),u[h[0]][h[1]]=e),w.push((e?"":"no-")+h.join("-"))}}function f(a){var b=x.className,c=u._config.classPrefix||"";if(u._config.enableJSClass){var d=new RegExp("(^|\\s)"+c+"no-js(\\s|$)");b=b.replace(d,"$1"+c+"js$2")}u._config.enableClasses&&(b+=" "+c+a.join(" "+c),x.className=b)}function g(a,b){if("object"==typeof a)for(var c in a)v(a,c)&&g(c,a[c]);else{a=a.toLowerCase();var d=a.split("."),e=u[d[0]];if(2==d.length&&(e=e[d[1]]),"undefined"!=typeof e)return u;b="function"==typeof b?b():b,1==d.length?u[d[0]]=b:(!u[d[0]]||u[d[0]]instanceof Boolean||(u[d[0]]=new Boolean(u[d[0]])),u[d[0]][d[1]]=b),f([(b&&0!=b?"":"no-")+d.join("-")]),u._trigger(a,b)}return u}function h(a,b){return function(){return a.apply(b,arguments)}}function i(){var a=b.body;return a||(a=C("body"),a.fake=!0),a}function j(a,b,c,d){var e,f,g,h,j="modernizr",k=C("div"),l=i();if(parseInt(c,10))for(;c--;)g=C("div"),g.id=d?d[c]:j+(c+1),k.appendChild(g);return e=["&#173;",'<style id="s',j,'">',a,"</style>"].join(""),k.id=j,(l.fake?l:k).innerHTML+=e,l.appendChild(k),l.fake&&(l.style.background="",l.style.overflow="hidden",h=x.style.overflow,x.style.overflow="hidden",x.appendChild(l)),f=b(k,a),l.fake?(l.parentNode.removeChild(l),x.style.overflow=h,x.offsetHeight):k.parentNode.removeChild(k),!!f}function k(a,b){return!!~(""+a).indexOf(b)}function l(a){return a.replace(/([A-Z])/g,function(a,b){return"-"+b.toLowerCase()}).replace(/^ms-/,"-ms-")}function m(b,d){var e=b.length;if("CSS"in a&&"supports"in a.CSS){for(;e--;)if(a.CSS.supports(l(b[e]),d))return!0;return!1}if("CSSSupportsRule"in a){for(var f=[];e--;)f.push("("+l(b[e])+":"+d+")");return f=f.join(" or "),j("@supports ("+f+") { #modernizr { position: absolute; } }",function(a){return"absolute"==getComputedStyle(a,null).position})}return c}function n(a){return a.replace(/([a-z])-([a-z])/g,function(a,b,c){return b+c.toUpperCase()}).replace(/^-/,"")}function o(a,b,e,f){function g(){i&&(delete G.style,delete G.modElem)}if(f=d(f,"undefined")?!1:f,!d(e,"undefined")){var h=m(a,e);if(!d(h,"undefined"))return h}var i,j,l,o,p;for(G.style||(i=!0,G.modElem=C("modernizr"),G.style=G.modElem.style),l=a.length,j=0;l>j;j++)if(o=a[j],p=G.style[o],k(o,"-")&&(o=n(o)),G.style[o]!==c){if(f||d(e,"undefined"))return g(),"pfx"==b?o:!0;try{G.style[o]=e}catch(q){}if(G.style[o]!=p)return g(),"pfx"==b?o:!0}return g(),!1}function p(a,b,c){var e;for(var f in a)if(a[f]in b)return c===!1?a[f]:(e=b[a[f]],d(e,"function")?h(e,c||b):e);return!1}function q(a,b,c,e,f){var g=a.charAt(0).toUpperCase()+a.slice(1),h=(a+" "+z.join(g+" ")+g).split(" ");return d(b,"string")||d(b,"undefined")?o(h,b,e,f):(h=(a+" "+B.join(g+" ")+g).split(" "),p(h,b,c))}function r(a,b,d){return q(a,c,c,b,d)}var s=[],t={_version:"3.0.0-alpha.3",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(a,b){var c=this;setTimeout(function(){b(c[a])},0)},addTest:function(a,b,c){s.push({name:a,fn:b,options:c})},addAsyncTest:function(a){s.push({name:null,fn:a})}},u=function(){};u.prototype=t,u=new u;var v,w=[];!function(){var a={}.hasOwnProperty;v=d(a,"undefined")||d(a.call,"undefined")?function(a,b){return b in a&&d(a.constructor.prototype[b],"undefined")}:function(b,c){return a.call(b,c)}}();var x=b.documentElement;t._l={},t.on=function(a,b){this._l[a]||(this._l[a]=[]),this._l[a].push(b),u.hasOwnProperty(a)&&setTimeout(function(){u._trigger(a,u[a])},0)},t._trigger=function(a,b){if(this._l[a]){var c=this._l[a];setTimeout(function(){var a,d;for(a=0;a<c.length;a++)(d=c[a])(b)},0),delete this._l[a]}},u._q.push(function(){t.addTest=g});var y="Moz O ms Webkit",z=t._config.usePrefixes?y.split(" "):[];t._cssomPrefixes=z;var A=function(b){var d,e=I.length,f=a.CSSRule;if("undefined"==typeof f)return c;if(!b)return!1;if(b=b.replace(/^@/,""),d=b.replace(/-/g,"_").toUpperCase()+"_RULE",d in f)return"@"+b;for(var g=0;e>g;g++){var h=I[g],i=h.toUpperCase()+"_"+d;if(i in f)return"@-"+h.toLowerCase()+"-"+b}return!1},B=t._config.usePrefixes?y.toLowerCase().split(" "):[];t._domPrefixes=B;var C=function(){return"function"!=typeof b.createElement?b.createElement(arguments[0]):b.createElement.apply(b,arguments)},D=function(a){function c(b,c){var e;return b?(c&&"string"!=typeof c||(c=C(c||"div")),b="on"+b,e=b in c,!e&&d&&(c.setAttribute||(c=C("div")),c.setAttribute(b,""),e="function"==typeof c[b],c[b]!==a&&(c[b]=a),c.removeAttribute(b)),e):!1}var d=!("onblur"in b.documentElement);return c}(),E=(t.hasEvent=D,function(){var b=a.matchMedia||a.msMatchMedia;return b?function(a){var c=b(a);return c&&c.matches||!1}:function(b){var c=!1;return j("@media "+b+" { #modernizr { position: absolute; } }",function(b){c="absolute"==(a.getComputedStyle?a.getComputedStyle(b,null):b.currentStyle).position}),c}}()),F=(t.mq=E,{elem:C("modernizr")});u._q.push(function(){delete F.elem});var G={style:F.elem.style};u._q.unshift(function(){delete G.style}),t.testAllProps=q;var H=t.prefixed=function(a,b,c){return 0===a.indexOf("@")?A(a):(-1!=a.indexOf("-")&&(a=n(a)),b?q(a,b,c):q(a,"pfx"))},I=t._config.usePrefixes?" -webkit- -moz- -o- -ms- ".split(" "):[];t._prefixes=I;t.prefixedCSS=function(a){var b=H(a);return b&&l(b)};t.testAllProps=r;var J=(t.testProp=function(a,b,d){return o([a],c,b,d)},t.testStyles=j);u.addTest("flexbox",r("flexBasis","1px",!0)),u.addTest("flexboxlegacy",r("boxDirection","reverse",!0)),u.addTest("flexboxtweener",r("flexAlign","end",!0)),u.addTest("flexwrap",r("flexWrap","wrap",!0)),J('#modernizr{font:0/0 a}#modernizr:after{content:":)";visibility:hidden;font:7px/1 a}',function(a){u.addTest("generatedcontent",a.offsetHeight>=7)}),u.addTest("inlinesvg",function(){var a=C("div");return a.innerHTML="<svg/>","http://www.w3.org/2000/svg"==(a.firstChild&&a.firstChild.namespaceURI)}),e(),delete t.addTest,delete t.addAsyncTest;for(var K=0;K<u._q.length;K++)u._q[K]();a.Modernizr=u}(window,document),function(a,b){function c(a){return a.call.apply(a.bind,arguments)}function d(a,b){if(!a)throw Error();if(2<arguments.length){var c=Array.prototype.slice.call(arguments,2);return function(){var d=Array.prototype.slice.call(arguments);return Array.prototype.unshift.apply(d,c),a.apply(b,d)}}return function(){return a.apply(b,arguments)}}function e(){return e=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?c:d,e.apply(null,arguments)}function f(a,b){this.K=a,this.w=b||a,this.G=this.w.document}function g(a,c,d){a=a.G.getElementsByTagName(c)[0],a||(a=b.documentElement),a&&a.lastChild&&a.insertBefore(d,a.lastChild)}function h(a,b){function c(){a.G.body?b():setTimeout(c,0)}c()}function i(a,b,c){b=b||[],c=c||[];for(var d=a.className.split(/\s+/),e=0;e<b.length;e+=1){for(var f=!1,g=0;g<d.length;g+=1)if(b[e]===d[g]){f=!0;break}f||d.push(b[e])}for(b=[],e=0;e<d.length;e+=1){for(f=!1,g=0;g<c.length;g+=1)if(d[e]===c[g]){f=!0;break}f||b.push(d[e])}a.className=b.join(" ").replace(/\s+/g," ").replace(/^\s+|\s+$/,"")}function j(a,b){for(var c=a.className.split(/\s+/),d=0,e=c.length;e>d;d++)if(c[d]==b)return!0;return!1}function k(a){if("string"==typeof a.na)return a.na;var b=a.w.location.protocol;return"about:"==b&&(b=a.K.location.protocol),"https:"==b?"https:":"http:"}function l(a,b){var c=a.createElement("link",{rel:"stylesheet",href:b,media:"all"}),d=!1;c.onload=function(){d||(d=!0)},c.onerror=function(){d||(d=!0)},g(a,"head",c)}function m(b,c,d,e){var f=b.G.getElementsByTagName("head")[0];if(f){var g=b.createElement("script",{src:c}),h=!1;return g.onload=g.onreadystatechange=function(){h||this.readyState&&"loaded"!=this.readyState&&"complete"!=this.readyState||(h=!0,d&&d(null),g.onload=g.onreadystatechange=null,"HEAD"==g.parentNode.tagName&&f.removeChild(g))},f.appendChild(g),a.setTimeout(function(){h||(h=!0,d&&d(Error("Script load timeout")))},e||5e3),g}return null}function n(a,b){this.Y=a,this.ga=b}function o(a,b,c,d){this.c=null!=a?a:null,this.g=null!=b?b:null,this.D=null!=c?c:null,this.e=null!=d?d:null}function p(a){a=Z.exec(a);var b=null,c=null,d=null,e=null;return a&&(null!==a[1]&&a[1]&&(b=parseInt(a[1],10)),null!==a[2]&&a[2]&&(c=parseInt(a[2],10)),null!==a[3]&&a[3]&&(d=parseInt(a[3],10)),null!==a[4]&&a[4]&&(e=/^[0-9]+$/.test(a[4])?parseInt(a[4],10):a[4])),new o(b,c,d,e)}function q(a,b,c,d,e,f,g,h){this.N=a,this.m=h}function r(a){this.a=a}function s(a){var b=v(a.a,/(iPod|iPad|iPhone|Android|Windows Phone|BB\d{2}|BlackBerry)/,1);return""!=b?(/BB\d{2}/.test(b)&&(b="BlackBerry"),b):(a=v(a.a,/(Linux|Mac_PowerPC|Macintosh|Windows|CrOS|PlayStation|CrKey)/,1),""!=a?("Mac_PowerPC"==a?a="Macintosh":"PlayStation"==a&&(a="Linux"),a):"Unknown")}function t(a){var b=v(a.a,/(OS X|Windows NT|Android) ([^;)]+)/,2);if(b||(b=v(a.a,/Windows Phone( OS)? ([^;)]+)/,2))||(b=v(a.a,/(iPhone )?OS ([\d_]+)/,2)))return b;if(b=v(a.a,/(?:Linux|CrOS|CrKey) ([^;)]+)/,1))for(var b=b.split(/\s/),c=0;c<b.length;c+=1)if(/^[\d\._]+$/.test(b[c]))return b[c];return(a=v(a.a,/(BB\d{2}|BlackBerry).*?Version\/([^\s]*)/,2))?a:"Unknown"}function u(a){var b=s(a),c=p(t(a)),d=p(v(a.a,/AppleWeb(?:K|k)it\/([\d\.\+]+)/,1)),e="Unknown",f=new o,f="Unknown",g=!1;return/OPR\/[\d.]+/.test(a.a)?e="Opera":-1!=a.a.indexOf("Chrome")||-1!=a.a.indexOf("CrMo")||-1!=a.a.indexOf("CriOS")?e="Chrome":/Silk\/\d/.test(a.a)?e="Silk":"BlackBerry"==b||"Android"==b?e="BuiltinBrowser":-1!=a.a.indexOf("PhantomJS")?e="PhantomJS":-1!=a.a.indexOf("Safari")?e="Safari":-1!=a.a.indexOf("AdobeAIR")?e="AdobeAIR":-1!=a.a.indexOf("PlayStation")&&(e="BuiltinBrowser"),"BuiltinBrowser"==e?f="Unknown":"Silk"==e?f=v(a.a,/Silk\/([\d\._]+)/,1):"Chrome"==e?f=v(a.a,/(Chrome|CrMo|CriOS)\/([\d\.]+)/,2):-1!=a.a.indexOf("Version/")?f=v(a.a,/Version\/([\d\.\w]+)/,1):"AdobeAIR"==e?f=v(a.a,/AdobeAIR\/([\d\.]+)/,1):"Opera"==e?f=v(a.a,/OPR\/([\d.]+)/,1):"PhantomJS"==e&&(f=v(a.a,/PhantomJS\/([\d.]+)/,1)),f=p(f),g="AdobeAIR"==e?2<f.c||2==f.c&&5<=f.g:"BlackBerry"==b?10<=c.c:"Android"==b?2<c.c||2==c.c&&1<c.g:526<=d.c||525<=d.c&&13<=d.g,new q(e,0,0,0,0,0,0,new n(g,536>d.c||536==d.c&&11>d.g))}function v(a,b,c){return(a=a.match(b))&&a[c]?a[c]:""}function w(a){this.ma=a||"-"}function x(a,b){this.N=a,this.Z=4,this.O="n";var c=(b||"n4").match(/^([nio])([1-9])$/i);c&&(this.O=c[1],this.Z=parseInt(c[2],10))}function y(a){return a.O+a.Z}function z(a){var b=4,c="n",d=null;return a&&((d=a.match(/(normal|oblique|italic)/i))&&d[1]&&(c=d[1].substr(0,1).toLowerCase()),(d=a.match(/([1-9]00|normal|bold)/i))&&d[1]&&(/bold/i.test(d[1])?b=7:/[1-9]00/.test(d[1])&&(b=parseInt(d[1].substr(0,1),10)))),c+b}function A(a,b){this.d=a,this.q=a.w.document.documentElement,this.Q=b,this.j="wf",this.h=new w("-"),this.ha=!1!==b.events,this.F=!1!==b.classes}function B(a){if(a.F){var b=j(a.q,a.h.e(a.j,"active")),c=[],d=[a.h.e(a.j,"loading")];b||c.push(a.h.e(a.j,"inactive")),i(a.q,c,d)}C(a,"inactive")}function C(a,b,c){a.ha&&a.Q[b]&&(c?a.Q[b](c.getName(),y(c)):a.Q[b]())}function D(){this.C={}}function E(a,b){this.d=a,this.I=b,this.k=this.d.createElement("span",{"aria-hidden":"true"},this.I)}function F(a){g(a.d,"body",a.k)}function G(a){var b;b=[];for(var c=a.N.split(/,\s*/),d=0;d<c.length;d++){var e=c[d].replace(/['"]/g,"");b.push(-1==e.indexOf(" ")?e:"'"+e+"'")}return b=b.join(","),c="normal","o"===a.O?c="oblique":"i"===a.O&&(c="italic"),"display:block;position:absolute;top:-9999px;left:-9999px;font-size:300px;width:auto;height:auto;line-height:normal;margin:0;padding:0;font-variant:normal;white-space:nowrap;font-family:"+b+";"+("font-style:"+c+";font-weight:"+(a.Z+"00")+";")}function H(a,b,c,d,e,f,g,h){this.$=a,this.ka=b,this.d=c,this.o=d,this.m=e,this.I=h||"BESbswy",this.v={},this.X=f||3e3,this.ca=g||null,this.H=this.u=this.t=null,this.t=new E(this.d,this.I),this.u=new E(this.d,this.I),this.H=new E(this.d,this.I),a=new x("serif",y(this.o)),a=G(a),this.t.k.style.cssText=a,a=new x("sans-serif",y(this.o)),a=G(a),this.u.k.style.cssText=a,a=new x("monospace",y(this.o)),a=G(a),this.H.k.style.cssText=a,F(this.t),F(this.u),F(this.H),this.v.serif=this.t.k.offsetWidth,this.v["sans-serif"]=this.u.k.offsetWidth,this.v.monospace=this.H.k.offsetWidth}function I(a,b,c){for(var d in _)if(_.hasOwnProperty(d)&&b===a.v[_[d]]&&c===a.v[_[d]])return!0;return!1}function J(a){var b=a.t.k.offsetWidth,c=a.u.k.offsetWidth;b===a.v.serif&&c===a.v["sans-serif"]||a.m.ga&&I(a,b,c)?Y()-a.oa>=a.X?a.m.ga&&I(a,b,c)&&(null===a.ca||a.ca.hasOwnProperty(a.o.getName()))?L(a,a.$):L(a,a.ka):K(a):L(a,a.$)}function K(a){setTimeout(e(function(){J(this)},a),50)}function L(a,b){a.t.remove(),a.u.remove(),a.H.remove(),b(a.o)}function M(a,b,c,d){this.d=b,this.A=c,this.S=0,this.ea=this.ba=!1,this.X=d,this.m=a.m}function N(a,b,c,d,f){if(c=c||{},0===b.length&&f)B(a.A);else for(a.S+=b.length,f&&(a.ba=f),f=0;f<b.length;f++){var g=b[f],h=c[g.getName()],j=a.A,k=g;j.F&&i(j.q,[j.h.e(j.j,k.getName(),y(k).toString(),"loading")]),C(j,"fontloading",k),j=null,j=new H(e(a.ia,a),e(a.ja,a),a.d,g,a.m,a.X,d,h),j.start()}}function O(a){0==--a.S&&a.ba&&(a.ea?(a=a.A,a.F&&i(a.q,[a.h.e(a.j,"active")],[a.h.e(a.j,"loading"),a.h.e(a.j,"inactive")]),C(a,"active")):B(a.A))}function P(a){this.K=a,this.B=new D,this.pa=new r(a.navigator.userAgent),this.a=this.pa.parse(),this.U=this.V=0,this.R=this.T=!0}function Q(a,b,c,d,e){var f=0==--a.V;(a.R||a.T)&&setTimeout(function(){N(b,c,d||null,e||null,f)},0)}function R(a,b,c){this.P=a?a:b+ab,this.s=[],this.W=[],this.fa=c||""}function S(a){this.s=a,this.da=[],this.M={}}function T(a,b){this.a=new r(navigator.userAgent).parse(),this.d=a,this.f=b}function U(a,b){this.d=a,this.f=b,this.p=[]}function V(a,b){this.d=a,this.f=b,this.p=[]}function W(a,b){this.d=a,this.f=b,this.p=[]}function X(a,b){this.d=a,this.f=b}var Y=Date.now||function(){return+new Date};f.prototype.createElement=function(a,b,c){if(a=this.G.createElement(a),b)for(var d in b)b.hasOwnProperty(d)&&("style"==d?a.style.cssText=b[d]:a.setAttribute(d,b[d]));return c&&a.appendChild(this.G.createTextNode(c)),a};var Z=/^([0-9]+)(?:[\._-]([0-9]+))?(?:[\._-]([0-9]+))?(?:[\._+-]?(.*))?$/;o.prototype.compare=function(a){return this.c>a.c||this.c===a.c&&this.g>a.g||this.c===a.c&&this.g===a.g&&this.D>a.D?1:this.c<a.c||this.c===a.c&&this.g<a.g||this.c===a.c&&this.g===a.g&&this.D<a.D?-1:0},o.prototype.toString=function(){return[this.c,this.g||"",this.D||"",this.e||""].join("")},q.prototype.getName=function(){return this.N};var $=new q("Unknown",0,0,0,0,0,0,new n(!1,!1));r.prototype.parse=function(){var a;if(-1!=this.a.indexOf("MSIE")||-1!=this.a.indexOf("Trident/")){a=s(this);var b=p(t(this)),c=null,d=v(this.a,/Trident\/([\d\w\.]+)/,1),c=p(-1!=this.a.indexOf("MSIE")?v(this.a,/MSIE ([\d\w\.]+)/,1):v(this.a,/rv:([\d\w\.]+)/,1));""!=d&&p(d),a=new q("MSIE",0,0,0,0,0,0,new n("Windows"==a&&6<=c.c||"Windows Phone"==a&&8<=b.c,!1))}else if(-1!=this.a.indexOf("Opera"))a:if(a=p(v(this.a,/Presto\/([\d\w\.]+)/,1)),p(t(this)),null!==a.c||p(v(this.a,/rv:([^\)]+)/,1)),-1!=this.a.indexOf("Opera Mini/"))a=p(v(this.a,/Opera Mini\/([\d\.]+)/,1)),a=new q("OperaMini",0,0,0,s(this),0,0,new n(!1,!1));else{if(-1!=this.a.indexOf("Version/")&&(a=p(v(this.a,/Version\/([\d\.]+)/,1)),null!==a.c)){a=new q("Opera",0,0,0,s(this),0,0,new n(10<=a.c,!1));break a}a=p(v(this.a,/Opera[\/ ]([\d\.]+)/,1)),a=null!==a.c?new q("Opera",0,0,0,s(this),0,0,new n(10<=a.c,!1)):new q("Opera",0,0,0,s(this),0,0,new n(!1,!1))}else/OPR\/[\d.]+/.test(this.a)?a=u(this):/AppleWeb(K|k)it/.test(this.a)?a=u(this):-1!=this.a.indexOf("Gecko")?(a="Unknown",b=new o,p(t(this)),b=!1,-1!=this.a.indexOf("Firefox")?(a="Firefox",b=p(v(this.a,/Firefox\/([\d\w\.]+)/,1)),b=3<=b.c&&5<=b.g):-1!=this.a.indexOf("Mozilla")&&(a="Mozilla"),c=p(v(this.a,/rv:([^\)]+)/,1)),b||(b=1<c.c||1==c.c&&9<c.g||1==c.c&&9==c.g&&2<=c.D),a=new q(a,0,0,0,s(this),0,0,new n(b,!1))):a=$;return a},w.prototype.e=function(){for(var a=[],b=0;b<arguments.length;b++)a.push(arguments[b].replace(/[\W_]+/g,"").toLowerCase());return a.join(this.ma)},x.prototype.getName=function(){return this.N},E.prototype.remove=function(){var a=this.k;a.parentNode&&a.parentNode.removeChild(a)};var _={sa:"serif",ra:"sans-serif",qa:"monospace"};H.prototype.start=function(){this.oa=Y();var a=new x(this.o.getName()+",serif",y(this.o)),a=G(a);this.t.k.style.cssText=a,a=new x(this.o.getName()+",sans-serif",y(this.o)),a=G(a),this.u.k.style.cssText=a,J(this)},M.prototype.ia=function(a){var b=this.A;b.F&&i(b.q,[b.h.e(b.j,a.getName(),y(a).toString(),"active")],[b.h.e(b.j,a.getName(),y(a).toString(),"loading"),b.h.e(b.j,a.getName(),y(a).toString(),"inactive")]),C(b,"fontactive",a),this.ea=!0,O(this)},M.prototype.ja=function(a){var b=this.A;if(b.F){var c=j(b.q,b.h.e(b.j,a.getName(),y(a).toString(),"active")),d=[],e=[b.h.e(b.j,a.getName(),y(a).toString(),"loading")];c||d.push(b.h.e(b.j,a.getName(),y(a).toString(),"inactive")),i(b.q,d,e)}C(b,"fontinactive",a),O(this)},P.prototype.load=function(a){this.d=new f(this.K,a.context||this.K),this.T=!1!==a.events,this.R=!1!==a.classes;var b=new A(this.d,a),c=[],d=a.timeout;b.F&&i(b.q,[b.h.e(b.j,"loading")]),C(b,"loading");var g,c=this.B,h=this.d,j=[];for(g in a)if(a.hasOwnProperty(g)){var k=c.C[g];k&&j.push(k(a[g],h))}for(c=j,this.U=this.V=c.length,a=new M(this.a,this.d,b,d),d=0,g=c.length;g>d;d++)h=c[d],h.L(this.a,e(this.la,this,h,b,a))},P.prototype.la=function(a,b,c,d){var e=this;d?a.load(function(a,b,d){Q(e,c,a,b,d)}):(a=0==--this.V,this.U--,a&&0==this.U?B(b):(this.R||this.T)&&N(c,[],{},null,a))};var ab="//fonts.googleapis.com/css";R.prototype.e=function(){if(0==this.s.length)throw Error("No fonts to load!");if(-1!=this.P.indexOf("kit="))return this.P;for(var a=this.s.length,b=[],c=0;a>c;c++)b.push(this.s[c].replace(/ /g,"+"));return a=this.P+"?family="+b.join("%7C"),0<this.W.length&&(a+="&subset="+this.W.join(",")),0<this.fa.length&&(a+="&text="+encodeURIComponent(this.fa)),a};var bb={latin:"BESbswy",cyrillic:"&#1081;&#1103;&#1046;",greek:"&#945;&#946;&#931;",khmer:"&#x1780;&#x1781;&#x1782;",Hanuman:"&#x1780;&#x1781;&#x1782;"},cb={thin:"1",extralight:"2","extra-light":"2",ultralight:"2","ultra-light":"2",light:"3",regular:"4",book:"4",medium:"5","semi-bold":"6",semibold:"6","demi-bold":"6",demibold:"6",bold:"7","extra-bold":"8",extrabold:"8","ultra-bold":"8",ultrabold:"8",black:"9",heavy:"9",l:"3",r:"4",b:"7"},db={i:"i",italic:"i",n:"n",normal:"n"},eb=/^(thin|(?:(?:extra|ultra)-?)?light|regular|book|medium|(?:(?:semi|demi|extra|ultra)-?)?bold|black|heavy|l|r|b|[1-9]00)?(n|i|normal|italic)?$/;S.prototype.parse=function(){for(var a=this.s.length,b=0;a>b;b++){var c=this.s[b].split(":"),d=c[0].replace(/\+/g," "),e=["n4"];if(2<=c.length){var f,g=c[1];if(f=[],g)for(var g=g.split(","),h=g.length,i=0;h>i;i++){var j;if(j=g[i],j.match(/^[\w-]+$/)){j=eb.exec(j.toLowerCase());var k=void 0;if(null==j)k="";else{if(k=void 0,k=j[1],null==k||""==k)k="4";else var l=cb[k],k=l?l:isNaN(k)?"4":k.substr(0,1);j=j[2],k=[null==j||""==j?"n":db[j],k].join("")}j=k}else j="";j&&f.push(j)}0<f.length&&(e=f),3==c.length&&(c=c[2],f=[],c=c?c.split(","):f,0<c.length&&(c=bb[c[0]])&&(this.M[d]=c))}for(this.M[d]||(c=bb[d])&&(this.M[d]=c),c=0;c<e.length;c+=1)this.da.push(new x(d,e[c]))}};var fb={Arimo:!0,Cousine:!0,Tinos:!0};T.prototype.L=function(a,b){b(a.m.Y)},T.prototype.load=function(a){var b=this.d;"MSIE"==this.a.getName()&&1!=this.f.blocking?h(b,e(this.aa,this,a)):this.aa(a)},T.prototype.aa=function(a){for(var b=this.d,c=new R(this.f.api,k(b),this.f.text),d=this.f.families,e=d.length,f=0;e>f;f++){var g=d[f].split(":");3==g.length&&c.W.push(g.pop());var h="";2==g.length&&""!=g[1]&&(h=":"),c.s.push(g.join(h))}d=new S(d),d.parse(),l(b,c.e()),a(d.da,d.M,fb)},U.prototype.J=function(a){var b=this.d;return k(this.d)+(this.f.api||"//f.fontdeck.com/s/css/js/")+(b.w.location.hostname||b.K.location.hostname)+"/"+a+".js"},U.prototype.L=function(a,b){var c=this.f.id,d=this.d.w,e=this;c?(d.__webfontfontdeckmodule__||(d.__webfontfontdeckmodule__={}),d.__webfontfontdeckmodule__[c]=function(a,c){for(var d=0,f=c.fonts.length;f>d;++d){var g=c.fonts[d];e.p.push(new x(g.name,z("font-weight:"+g.weight+";font-style:"+g.style)))}b(a)},m(this.d,this.J(c),function(a){a&&b(!1)})):b(!1)},U.prototype.load=function(a){a(this.p)},V.prototype.J=function(a){var b=k(this.d);return(this.f.api||b+"//use.typekit.net")+"/"+a+".js"},V.prototype.L=function(a,b){var c=this.f.id,d=this.d.w,e=this;c?m(this.d,this.J(c),function(a){if(a)b(!1);else{if(d.Typekit&&d.Typekit.config&&d.Typekit.config.fn){a=d.Typekit.config.fn;for(var c=0;c<a.length;c+=2)for(var f=a[c],g=a[c+1],h=0;h<g.length;h++)e.p.push(new x(f,g[h]));try{d.Typekit.load({events:!1,classes:!1})}catch(i){}}b(!0)}},2e3):b(!1)},V.prototype.load=function(a){a(this.p)},W.prototype.L=function(a,b){var c=this,d=c.f.projectId,e=c.f.version;if(d){var f=c.d.w;m(this.d,c.J(d,e),function(e){if(e)b(!1);else{if(f["__mti_fntLst"+d]&&(e=f["__mti_fntLst"+d]()))for(var g=0;g<e.length;g++)c.p.push(new x(e[g].fontfamily));b(a.m.Y)}}).id="__MonotypeAPIScript__"+d}else b(!1)},W.prototype.J=function(a,b){var c=k(this.d),d=(this.f.api||"fast.fonts.net/jsapi").replace(/^.*http(s?):(\/\/)?/,"");return c+"//"+d+"/"+a+".js"+(b?"?v="+b:"")},W.prototype.load=function(a){a(this.p)},X.prototype.load=function(a){var b,c,d=this.f.urls||[],e=this.f.families||[],f=this.f.testStrings||{};for(b=0,c=d.length;c>b;b++)l(this.d,d[b]);for(d=[],b=0,c=e.length;c>b;b++){var g=e[b].split(":");if(g[1])for(var h=g[1].split(","),i=0;i<h.length;i+=1)d.push(new x(g[0],h[i]));else d.push(new x(g[0]))}a(d,f)},X.prototype.L=function(a,b){return b(a.m.Y)};var gb=new P(this);gb.B.C.custom=function(a,b){return new X(b,a)},gb.B.C.fontdeck=function(a,b){return new U(b,a)},gb.B.C.monotype=function(a,b){return new W(b,a)},gb.B.C.typekit=function(a,b){return new V(b,a)},gb.B.C.google=function(a,b){return new T(b,a)},this.WebFont||(this.WebFont={},this.WebFont.load=e(gb.load,gb),this.WebFontConfig&&gb.load(this.WebFontConfig))}(this,document),function(a,b){var c=Modernizr,d=["js"];if(d.push("number"==typeof b.documentMode?"ie ie-"+b.documentMode:"no-ie"),!c.generatedcontent&&d.push("no-pseudo"),d.push(((c.flexbox||c.flexboxlegacy||c.flexboxtweener)&&c.flexwrap?"":"no-")+"flex"),b.documentElement.className=d.join(" "),WebFont.load({classes:!1,custom:{families:["Roboto:n4","Roboto Slab:n4"]},active:function(){b.documentElement.className+=" wf-loaded"},fontactive:function(a,b){}}),c.inlinesvg&&"XMLHttpRequest"in a){var e=new XMLHttpRequest;e.open("GET",_cfg.svg,!0),e.send(),e.onreadystatechange=function(){if(4===e.readyState&&(e.status>=200&&e.status<300||304===e.status)){var a=b.createElement("div");a.style.display="none",a.innerHTML=e.responseText,b.body.insertBefore(a,b.body.childNodes[0]),b.documentElement.className+=" svg"}}}}(this,this.document);
+/*Lib builder - init.js: (components/modernizr-custom.js,components/webfontloader.js,init.js)*/
+/* web-html/_assets/js/components/modernizr-custom.js */
+/*!
+ * modernizr v3.0.0-alpha.3
+ * Build http://modernizr.com/download/#-flexbox-flexboxlegacy-flexboxtweener-flexwrap-generatedcontent-inlinesvg-addtest-atrule-domprefixes-fnbind-hasevent-mq-prefixed-prefixedcss-prefixes-testallprops-testprop-teststyles-dontmin
+ *
+ * Copyright (c)
+ *  Faruk Ates
+ *  Paul Irish
+ *  Alex Sexton
+ *  Ryan Seddon
+ *  Alexander Farkas
+ *  Patrick Kettner
+ *  Stu Cox
+ *  Richard Herrera
+
+ * MIT License
+ */
+
+/*
+ * Modernizr tests which native CSS3 and HTML5 features are available in the
+ * current UA and makes the results available to you in two ways: as properties on
+ * a global `Modernizr` object, and as classes on the `<html>` element. This
+ * information allows you to progressively enhance your pages with a granular level
+ * of control over the experience.
+*/
+
+;(function(window, document, undefined){
+  var tests = [];
+  
+
+  var ModernizrProto = {
+    // The current version, dummy
+    _version: '3.0.0-alpha.3',
+
+    // Any settings that don't work as separate modules
+    // can go in here as configuration.
+    _config: {
+      'classPrefix' : '',
+      'enableClasses' : true,
+      'enableJSClass' : true,
+      'usePrefixes' : true
+    },
+
+    // Queue of tests
+    _q: [],
+
+    // Stub these for people who are listening
+    on: function( test, cb ) {
+      // I don't really think people should do this, but we can
+      // safe guard it a bit.
+      // -- NOTE:: this gets WAY overridden in src/addTest for
+      // actual async tests. This is in case people listen to
+      // synchronous tests. I would leave it out, but the code
+      // to *disallow* sync tests in the real version of this
+      // function is actually larger than this.
+      var self = this;
+      setTimeout(function() {
+        cb(self[test]);
+      }, 0);
+    },
+
+    addTest: function( name, fn, options ) {
+      tests.push({name : name, fn : fn, options : options });
+    },
+
+    addAsyncTest: function (fn) {
+      tests.push({name : null, fn : fn});
+    }
+  };
+
+  
+
+  // Fake some of Object.create
+  // so we can force non test results
+  // to be non "own" properties.
+  var Modernizr = function(){};
+  Modernizr.prototype = ModernizrProto;
+
+  // Leak modernizr globally when you `require` it
+  // rather than force it here.
+  // Overwrite name so constructor name is nicer :D
+  Modernizr = new Modernizr();
+
+  
+
+  var classes = [];
+  
+
+  /**
+   * is returns a boolean for if typeof obj is exactly type.
+   */
+  function is( obj, type ) {
+    return typeof obj === type;
+  }
+  ;
+
+  // Run through all tests and detect their support in the current UA.
+  function testRunner() {
+    var featureNames;
+    var feature;
+    var aliasIdx;
+    var result;
+    var nameIdx;
+    var featureName;
+    var featureNameSplit;
+
+    for ( var featureIdx in tests ) {
+      featureNames = [];
+      feature = tests[featureIdx];
+      // run the test, throw the return value into the Modernizr,
+      //   then based on that boolean, define an appropriate className
+      //   and push it into an array of classes we'll join later.
+      //
+      //   If there is no name, it's an 'async' test that is run,
+      //   but not directly added to the object. That should
+      //   be done with a post-run addTest call.
+      if ( feature.name ) {
+        featureNames.push(feature.name.toLowerCase());
+
+        if (feature.options && feature.options.aliases && feature.options.aliases.length) {
+          // Add all the aliases into the names list
+          for (aliasIdx = 0; aliasIdx < feature.options.aliases.length; aliasIdx++) {
+            featureNames.push(feature.options.aliases[aliasIdx].toLowerCase());
+          }
+        }
+      }
+
+      // Run the test, or use the raw value if it's not a function
+      result = is(feature.fn, 'function') ? feature.fn() : feature.fn;
+
+
+      // Set each of the names on the Modernizr object
+      for (nameIdx = 0; nameIdx < featureNames.length; nameIdx++) {
+        featureName = featureNames[nameIdx];
+        // Support dot properties as sub tests. We don't do checking to make sure
+        // that the implied parent tests have been added. You must call them in
+        // order (either in the test, or make the parent test a dependency).
+        //
+        // Cap it to TWO to make the logic simple and because who needs that kind of subtesting
+        // hashtag famous last words
+        featureNameSplit = featureName.split('.');
+
+        if (featureNameSplit.length === 1) {
+          Modernizr[featureNameSplit[0]] = result;
+        } else {
+          // cast to a Boolean, if not one already
+          /* jshint -W053 */
+          if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+            Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
+          }
+
+          Modernizr[featureNameSplit[0]][featureNameSplit[1]] = result;
+        }
+
+        classes.push((result ? '' : 'no-') + featureNameSplit.join('-'));
+      }
+    }
+  }
+
+  ;
+
+  // hasOwnProperty shim by kangax needed for Safari 2.0 support
+  var hasOwnProp;
+
+  (function() {
+    var _hasOwnProperty = ({}).hasOwnProperty;
+    /* istanbul ignore else */
+    /* we have no way of testing IE 5.5 or safari 2,
+     * so just assume the else gets hit */
+    if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
+      hasOwnProp = function (object, property) {
+        return _hasOwnProperty.call(object, property);
+      };
+    }
+    else {
+      hasOwnProp = function (object, property) { /* yes, this can give false positives/negatives, but most of the time we don't care about those */
+        return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
+      };
+    }
+  })();
+
+  
+
+  var docElement = document.documentElement;
+  
+
+  // Pass in an and array of class names, e.g.:
+  //  ['no-webp', 'borderradius', ...]
+  function setClasses( classes ) {
+    var className = docElement.className;
+    var classPrefix = Modernizr._config.classPrefix || '';
+
+    // Change `no-js` to `js` (we do this independently of the `enableClasses`
+    // option)
+    // Handle classPrefix on this too
+    if(Modernizr._config.enableJSClass) {
+      var reJS = new RegExp('(^|\\s)'+classPrefix+'no-js(\\s|$)');
+      className = className.replace(reJS, '$1'+classPrefix+'js$2');
+    }
+
+    if(Modernizr._config.enableClasses) {
+      // Add the new classes
+      className += ' ' + classPrefix + classes.join(' ' + classPrefix);
+      docElement.className = className;
+    }
+
+  }
+
+  ;
+
+  // As far as I can think of, we shouldn't need or
+  // allow 'on' for non-async tests, and you can't do
+  // async tests without this 'addTest' module.
+
+  // Listeners for async or post-run tests
+  ModernizrProto._l = {};
+
+  // 'addTest' implies a test after the core runloop,
+  // So we'll add in the events
+  ModernizrProto.on = function( test, cb ) {
+    // Create the list of listeners if it doesn't exist
+    if (!this._l[test]) {
+      this._l[test] = [];
+    }
+
+    // Push this test on to the listener list
+    this._l[test].push(cb);
+
+    // If it's already been resolved, trigger it on next tick
+    if (Modernizr.hasOwnProperty(test)) {
+      // Next Tick
+      setTimeout(function() {
+        Modernizr._trigger(test, Modernizr[test]);
+      }, 0);
+    }
+  };
+
+  ModernizrProto._trigger = function( test, res ) {
+    if (!this._l[test]) {
+      return;
+    }
+
+    var cbs = this._l[test];
+
+    // Force async
+    setTimeout(function() {
+      var i, cb;
+      for (i = 0; i < cbs.length; i++) {
+        cb = cbs[i];
+        cb(res);
+      }
+    },0);
+
+    // Don't trigger these again
+    delete this._l[test];
+  };
+
+  /**
+   * addTest allows the user to define their own feature tests
+   * the result will be added onto the Modernizr object,
+   * as well as an appropriate className set on the html element
+   *
+   * @param feature - String naming the feature
+   * @param test - Function returning true if feature is supported, false if not
+   */
+  function addTest( feature, test ) {
+    if ( typeof feature == 'object' ) {
+      for ( var key in feature ) {
+        if ( hasOwnProp( feature, key ) ) {
+          addTest( key, feature[ key ] );
+        }
+      }
+    } else {
+
+      feature = feature.toLowerCase();
+      var featureNameSplit = feature.split('.');
+      var last = Modernizr[featureNameSplit[0]];
+
+      // Again, we don't check for parent test existence. Get that right, though.
+      if (featureNameSplit.length == 2) {
+        last = last[featureNameSplit[1]];
+      }
+
+      if ( typeof last != 'undefined' ) {
+        // we're going to quit if you're trying to overwrite an existing test
+        // if we were to allow it, we'd do this:
+        //   var re = new RegExp("\\b(no-)?" + feature + "\\b");
+        //   docElement.className = docElement.className.replace( re, '' );
+        // but, no rly, stuff 'em.
+        return Modernizr;
+      }
+
+      test = typeof test == 'function' ? test() : test;
+
+      // Set the value (this is the magic, right here).
+      if (featureNameSplit.length == 1) {
+        Modernizr[featureNameSplit[0]] = test;
+      } else {
+        // cast to a Boolean, if not one already
+        /* jshint -W053 */
+        if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+          Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
+        }
+
+        Modernizr[featureNameSplit[0]][featureNameSplit[1]] = test;
+      }
+
+      // Set a single class (either `feature` or `no-feature`)
+      /* jshint -W041 */
+      setClasses([(!!test && test != false ? '' : 'no-') + featureNameSplit.join('-')]);
+      /* jshint +W041 */
+
+      // Trigger the event
+      Modernizr._trigger(feature, test);
+    }
+
+    return Modernizr; // allow chaining.
+  }
+
+  // After all the tests are run, add self
+  // to the Modernizr prototype
+  Modernizr._q.push(function() {
+    ModernizrProto.addTest = addTest;
+  });
+
+  
+
+  // Following spec is to expose vendor-specific style properties as:
+  //   elem.style.WebkitBorderRadius
+  // and the following would be incorrect:
+  //   elem.style.webkitBorderRadius
+
+  // Webkit ghosts their properties in lowercase but Opera & Moz do not.
+  // Microsoft uses a lowercase `ms` instead of the correct `Ms` in IE8+
+  //   erik.eae.net/archives/2008/03/10/21.48.10/
+
+  // More here: github.com/Modernizr/Modernizr/issues/issue/21
+  var omPrefixes = 'Moz O ms Webkit';
+  
+
+  var cssomPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.split(' ') : []);
+  ModernizrProto._cssomPrefixes = cssomPrefixes;
+  
+
+  /**
+   * atRule returns a given CSS property at-rule (eg @keyframes), possibly in
+   * some prefixed form, or false, in the case of an unsupported rule
+   *
+   * @param prop - String naming the property to test
+   */
+
+  var atRule = function(prop) {
+    var length = prefixes.length;
+    var cssrule = window.CSSRule;
+    var rule;
+
+    if (typeof cssrule === 'undefined') {
+      return undefined;
+    }
+
+    if (!prop) {
+      return false;
+    }
+
+    // remove literal @ from beginning of provided property
+    prop = prop.replace(/^@/,'');
+
+    // CSSRules use underscores instead of dashes
+    rule = prop.replace(/-/g,'_').toUpperCase() + '_RULE';
+
+    if (rule in cssrule) {
+      return '@' + prop;
+    }
+
+    for ( var i = 0; i < length; i++ ) {
+      // prefixes gives us something like -o-, and we want O_
+      var prefix = prefixes[i];
+      var thisRule = prefix.toUpperCase() + '_' + rule;
+
+      if (thisRule in cssrule) {
+        return '@-' + prefix.toLowerCase() + '-' + prop;
+      }
+    }
+
+    return false;
+  };
+
+  
+
+  var domPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.toLowerCase().split(' ') : []);
+  ModernizrProto._domPrefixes = domPrefixes;
+  
+
+  // Change the function's scope.
+  function fnBind(fn, that) {
+    return function() {
+      return fn.apply(that, arguments);
+    };
+  }
+
+  ;
+
+  var createElement = function() {
+    if (typeof document.createElement !== 'function') {
+      // This is the case in IE7, where the type of createElement is "object".
+      // For this reason, we cannot call apply() as Object is not a Function.
+      return document.createElement(arguments[0]);
+    } else {
+      return document.createElement.apply(document, arguments);
+    }
+  };
+  
+
+  // isEventSupported determines if the given element supports the given event
+  // kangax.github.com/iseventsupported/
+  // github.com/Modernizr/Modernizr/pull/636
+  //
+  // Known incorrects:
+  //   Modernizr.hasEvent("webkitTransitionEnd", elem) // false negative
+  //   Modernizr.hasEvent("textInput") // in Webkit. github.com/Modernizr/Modernizr/issues/333
+  var isEventSupported = (function (undefined) {
+
+    // Detect whether event support can be detected via `in`. Test on a DOM element
+    // using the "blur" event b/c it should always exist. bit.ly/event-detection
+    var needsFallback = !('onblur' in document.documentElement);
+
+    /**
+     * @param  {string|*}           eventName  is the name of an event to test for (e.g. "resize")
+     * @param  {(Object|string|*)=} element    is the element|document|window|tagName to test on
+     * @return {boolean}
+     */
+    function isEventSupportedInner( eventName, element ) {
+
+      var isSupported;
+      if ( !eventName ) { return false; }
+      if ( !element || typeof element === 'string' ) {
+        element = createElement(element || 'div');
+      }
+
+      // Testing via the `in` operator is sufficient for modern browsers and IE.
+      // When using `setAttribute`, IE skips "unload", WebKit skips "unload" and
+      // "resize", whereas `in` "catches" those.
+      eventName = 'on' + eventName;
+      isSupported = eventName in element;
+
+      // Fallback technique for old Firefox - bit.ly/event-detection
+      if ( !isSupported && needsFallback ) {
+        if ( !element.setAttribute ) {
+          // Switch to generic element if it lacks `setAttribute`.
+          // It could be the `document`, `window`, or something else.
+          element = createElement('div');
+        }
+
+        element.setAttribute(eventName, '');
+        isSupported = typeof element[eventName] === 'function';
+
+        if ( element[eventName] !== undefined ) {
+          // If property was created, "remove it" by setting value to `undefined`.
+          element[eventName] = undefined;
+        }
+        element.removeAttribute(eventName);
+      }
+
+      return isSupported;
+    }
+    return isEventSupportedInner;
+  })();
+
+  
+
+  // Modernizr.hasEvent() detects support for a given event, with an optional element to test on
+  // Modernizr.hasEvent('gesturestart', elem)
+  var hasEvent = ModernizrProto.hasEvent = isEventSupported;
+  
+
+  function getBody() {
+    // After page load injecting a fake body doesn't work so check if body exists
+    var body = document.body;
+
+    if(!body) {
+      // Can't use the real body create a fake one.
+      body = createElement('body');
+      body.fake = true;
+    }
+
+    return body;
+  }
+
+  ;
+
+  // Inject element with style element and some CSS rules
+  function injectElementWithStyles( rule, callback, nodes, testnames ) {
+    var mod = 'modernizr';
+    var style;
+    var ret;
+    var node;
+    var docOverflow;
+    var div = createElement('div');
+    var body = getBody();
+
+    if ( parseInt(nodes, 10) ) {
+      // In order not to give false positives we create a node for each test
+      // This also allows the method to scale for unspecified uses
+      while ( nodes-- ) {
+        node = createElement('div');
+        node.id = testnames ? testnames[nodes] : mod + (nodes + 1);
+        div.appendChild(node);
+      }
+    }
+
+    // <style> elements in IE6-9 are considered 'NoScope' elements and therefore will be removed
+    // when injected with innerHTML. To get around this you need to prepend the 'NoScope' element
+    // with a 'scoped' element, in our case the soft-hyphen entity as it won't mess with our measurements.
+    // msdn.microsoft.com/en-us/library/ms533897%28VS.85%29.aspx
+    // Documents served as xml will throw if using &shy; so use xml friendly encoded version. See issue #277
+    style = ['&#173;','<style id="s', mod, '">', rule, '</style>'].join('');
+    div.id = mod;
+    // IE6 will false positive on some tests due to the style element inside the test div somehow interfering offsetHeight, so insert it into body or fakebody.
+    // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
+    (!body.fake ? div : body).innerHTML += style;
+    body.appendChild(div);
+    if ( body.fake ) {
+      //avoid crashing IE8, if background image is used
+      body.style.background = '';
+      //Safari 5.13/5.1.4 OSX stops loading if ::-webkit-scrollbar is used and scrollbars are visible
+      body.style.overflow = 'hidden';
+      docOverflow = docElement.style.overflow;
+      docElement.style.overflow = 'hidden';
+      docElement.appendChild(body);
+    }
+
+    ret = callback(div, rule);
+    // If this is done after page load we don't want to remove the body so check if body exists
+    if ( body.fake ) {
+      body.parentNode.removeChild(body);
+      docElement.style.overflow = docOverflow;
+      // Trigger layout so kinetic scrolling isn't disabled in iOS6+
+      docElement.offsetHeight;
+    } else {
+      div.parentNode.removeChild(div);
+    }
+
+    return !!ret;
+
+  }
+
+  ;
+
+  // adapted from matchMedia polyfill
+  // by Scott Jehl and Paul Irish
+  // gist.github.com/786768
+  var testMediaQuery = (function () {
+    var matchMedia = window.matchMedia || window.msMatchMedia;
+    if ( matchMedia ) {
+      return function ( mq ) {
+        var mql = matchMedia(mq);
+        return mql && mql.matches || false;
+      };
+    }
+
+    return function ( mq ) {
+      var bool = false;
+
+      injectElementWithStyles('@media ' + mq + ' { #modernizr { position: absolute; } }', function( node ) {
+        bool = (window.getComputedStyle ?
+                window.getComputedStyle(node, null) :
+                node.currentStyle)['position'] == 'absolute';
+      });
+
+      return bool;
+    };
+  })();
+
+  
+
+  /** Modernizr.mq tests a given media query, live against the current state of the window
+   * A few important notes:
+        * If a browser does not support media queries at all (eg. oldIE) the mq() will always return false
+        * A max-width or orientation query will be evaluated against the current state, which may change later.
+        * You must specify values. Eg. If you are testing support for the min-width media query use:
+              Modernizr.mq('(min-width:0)')
+   * usage:
+   * Modernizr.mq('only screen and (max-width:768)')
+   */
+  var mq = ModernizrProto.mq = testMediaQuery;
+  
+
+  /**
+   * contains returns a boolean for if substr is found within str.
+   */
+  function contains( str, substr ) {
+    return !!~('' + str).indexOf(substr);
+  }
+
+  ;
+
+  /**
+   * Create our "modernizr" element that we do most feature tests on.
+   */
+  var modElem = {
+    elem : createElement('modernizr')
+  };
+
+  // Clean up this element
+  Modernizr._q.push(function() {
+    delete modElem.elem;
+  });
+
+  
+
+  var mStyle = {
+    style : modElem.elem.style
+  };
+
+  // kill ref for gc, must happen before
+  // mod.elem is removed, so we unshift on to
+  // the front of the queue.
+  Modernizr._q.unshift(function() {
+    delete mStyle.style;
+  });
+
+  
+
+  // Helper function for converting camelCase to kebab-case,
+  // e.g. boxSizing -> box-sizing
+  function domToCSS( name ) {
+    return name.replace(/([A-Z])/g, function(str, m1) {
+      return '-' + m1.toLowerCase();
+    }).replace(/^ms-/, '-ms-');
+  }
+  ;
+
+  // Function to allow us to use native feature detection functionality if available.
+  // Accepts a list of property names and a single value
+  // Returns `undefined` if native detection not available
+  function nativeTestProps ( props, value ) {
+    var i = props.length;
+    // Start with the JS API: http://www.w3.org/TR/css3-conditional/#the-css-interface
+    if ('CSS' in window && 'supports' in window.CSS) {
+      // Try every prefixed variant of the property
+      while (i--) {
+        if (window.CSS.supports(domToCSS(props[i]), value)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    // Otherwise fall back to at-rule (for Opera 12.x)
+    else if ('CSSSupportsRule' in window) {
+      // Build a condition string for every prefixed variant
+      var conditionText = [];
+      while (i--) {
+        conditionText.push('(' + domToCSS(props[i]) + ':' + value + ')');
+      }
+      conditionText = conditionText.join(' or ');
+      return injectElementWithStyles('@supports (' + conditionText + ') { #modernizr { position: absolute; } }', function( node ) {
+        return getComputedStyle(node, null).position == 'absolute';
+      });
+    }
+    return undefined;
+  }
+  ;
+
+  // Helper function for converting kebab-case to camelCase,
+  // e.g. box-sizing -> boxSizing
+  function cssToDOM( name ) {
+    return name.replace(/([a-z])-([a-z])/g, function(str, m1, m2) {
+      return m1 + m2.toUpperCase();
+    }).replace(/^-/, '');
+  }
+  ;
+
+  // testProps is a generic CSS / DOM property test.
+
+  // In testing support for a given CSS property, it's legit to test:
+  //    `elem.style[styleName] !== undefined`
+  // If the property is supported it will return an empty string,
+  // if unsupported it will return undefined.
+
+  // We'll take advantage of this quick test and skip setting a style
+  // on our modernizr element, but instead just testing undefined vs
+  // empty string.
+
+  // Property names can be provided in either camelCase or kebab-case.
+
+  function testProps( props, prefixed, value, skipValueTest ) {
+    skipValueTest = is(skipValueTest, 'undefined') ? false : skipValueTest;
+
+    // Try native detect first
+    if (!is(value, 'undefined')) {
+      var result = nativeTestProps(props, value);
+      if(!is(result, 'undefined')) {
+        return result;
+      }
+    }
+
+    // Otherwise do it properly
+    var afterInit, i, propsLength, prop, before;
+
+    // If we don't have a style element, that means
+    // we're running async or after the core tests,
+    // so we'll need to create our own elements to use
+    if ( !mStyle.style ) {
+      afterInit = true;
+      mStyle.modElem = createElement('modernizr');
+      mStyle.style = mStyle.modElem.style;
+    }
+
+    // Delete the objects if we
+    // we created them.
+    function cleanElems() {
+      if (afterInit) {
+        delete mStyle.style;
+        delete mStyle.modElem;
+      }
+    }
+
+    propsLength = props.length;
+    for ( i = 0; i < propsLength; i++ ) {
+      prop = props[i];
+      before = mStyle.style[prop];
+
+      if (contains(prop, '-')) {
+        prop = cssToDOM(prop);
+      }
+
+      if ( mStyle.style[prop] !== undefined ) {
+
+        // If value to test has been passed in, do a set-and-check test.
+        // 0 (integer) is a valid property value, so check that `value` isn't
+        // undefined, rather than just checking it's truthy.
+        if (!skipValueTest && !is(value, 'undefined')) {
+
+          // Needs a try catch block because of old IE. This is slow, but will
+          // be avoided in most cases because `skipValueTest` will be used.
+          try {
+            mStyle.style[prop] = value;
+          } catch (e) {}
+
+          // If the property value has changed, we assume the value used is
+          // supported. If `value` is empty string, it'll fail here (because
+          // it hasn't changed), which matches how browsers have implemented
+          // CSS.supports()
+          if (mStyle.style[prop] != before) {
+            cleanElems();
+            return prefixed == 'pfx' ? prop : true;
+          }
+        }
+        // Otherwise just return true, or the property name if this is a
+        // `prefixed()` call
+        else {
+          cleanElems();
+          return prefixed == 'pfx' ? prop : true;
+        }
+      }
+    }
+    cleanElems();
+    return false;
+  }
+
+  ;
+
+  /**
+   * testDOMProps is a generic DOM property test; if a browser supports
+   *   a certain property, it won't return undefined for it.
+   */
+  function testDOMProps( props, obj, elem ) {
+    var item;
+
+    for ( var i in props ) {
+      if ( props[i] in obj ) {
+
+        // return the property name as a string
+        if (elem === false) return props[i];
+
+        item = obj[props[i]];
+
+        // let's bind a function
+        if (is(item, 'function')) {
+          // bind to obj unless overriden
+          return fnBind(item, elem || obj);
+        }
+
+        // return the unbound function or obj or value
+        return item;
+      }
+    }
+    return false;
+  }
+
+  ;
+
+  /**
+   * testPropsAll tests a list of DOM properties we want to check against.
+   *     We specify literally ALL possible (known and/or likely) properties on
+   *     the element including the non-vendor prefixed one, for forward-
+   *     compatibility.
+   */
+  function testPropsAll( prop, prefixed, elem, value, skipValueTest ) {
+
+    var ucProp = prop.charAt(0).toUpperCase() + prop.slice(1),
+    props = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
+
+    // did they call .prefixed('boxSizing') or are we just testing a prop?
+    if(is(prefixed, 'string') || is(prefixed, 'undefined')) {
+      return testProps(props, prefixed, value, skipValueTest);
+
+      // otherwise, they called .prefixed('requestAnimationFrame', window[, elem])
+    } else {
+      props = (prop + ' ' + (domPrefixes).join(ucProp + ' ') + ucProp).split(' ');
+      return testDOMProps(props, prefixed, elem);
+    }
+  }
+
+  // Modernizr.testAllProps() investigates whether a given style property,
+  //     or any of its vendor-prefixed variants, is recognized
+  // Note that the property names must be provided in the camelCase variant.
+  // Modernizr.testAllProps('boxSizing')
+  ModernizrProto.testAllProps = testPropsAll;
+
+  
+
+  // Modernizr.prefixed() returns the prefixed or nonprefixed property name variant of your input
+  // Modernizr.prefixed('boxSizing') // 'MozBoxSizing'
+
+  // Properties can be passed as DOM-style camelCase or CSS-style kebab-case.
+  // Return values will always be in camelCase; if you want kebab-case, use Modernizr.prefixedCSS().
+
+  // If you're trying to ascertain which transition end event to bind to, you might do something like...
+  //
+  //     var transEndEventNames = {
+  //         'WebkitTransition' : 'webkitTransitionEnd',// Saf 6, Android Browser
+  //         'MozTransition'    : 'transitionend',      // only for FF < 15
+  //         'transition'       : 'transitionend'       // IE10, Opera, Chrome, FF 15+, Saf 7+
+  //     },
+  //     transEndEventName = transEndEventNames[ Modernizr.prefixed('transition') ];
+
+  var prefixed = ModernizrProto.prefixed = function( prop, obj, elem ) {
+    if (prop.indexOf('@') === 0) {
+      return atRule(prop);
+    }
+
+    if (prop.indexOf('-') != -1) {
+      // Convert kebab-case to camelCase
+      prop = cssToDOM(prop);
+    }
+    if (!obj) {
+      return testPropsAll(prop, 'pfx');
+    } else {
+      // Testing DOM property e.g. Modernizr.prefixed('requestAnimationFrame', window) // 'mozRequestAnimationFrame'
+      return testPropsAll(prop, obj, elem);
+    }
+  };
+
+  
+
+  // List of property values to set for css tests. See ticket #21
+  var prefixes = (ModernizrProto._config.usePrefixes ? ' -webkit- -moz- -o- -ms- '.split(' ') : []);
+
+  // expose these for the plugin API. Look in the source for how to join() them against your input
+  ModernizrProto._prefixes = prefixes;
+
+  
+
+  // Modernizr.prefixedCSS() is like Modernizr.prefixed(), but returns the result in
+  // hyphenated form, e.g.:
+  // Modernizr.prefixedCSS('transition') // '-moz-transition'
+
+  // It’s only suitable for style properties.
+
+  // Properties can be passed as DOM-style camelCase or CSS-style kebab-case.
+  // Return values will always be the hyphenated variant, or `false` if not supported
+  var prefixedCSS = ModernizrProto.prefixedCSS = function(prop) {
+    var prefixedProp = prefixed(prop);
+    return prefixedProp && domToCSS(prefixedProp);
+  };
+  
+
+  /**
+   * testAllProps determines whether a given CSS property, in some prefixed
+   * form, is supported by the browser. It can optionally be given a value; in
+   * which case testAllProps will only return true if the browser supports that
+   * value for the named property; this latter case will use native detection
+   * (via window.CSS.supports) if available. A boolean can be passed as a 3rd
+   * parameter to skip the value check when native detection isn't available,
+   * to improve performance when simply testing for support of a property.
+   *
+   * @param prop - String naming the property to test (either camelCase or
+   *               kebab-case)
+   * @param value - [optional] String of the value to test
+   * @param skipValueTest - [optional] Whether to skip testing that the value
+   *                        is supported when using non-native detection
+   *                        (default: false)
+   */
+  function testAllProps (prop, value, skipValueTest) {
+    return testPropsAll(prop, undefined, undefined, value, skipValueTest);
+  }
+  ModernizrProto.testAllProps = testAllProps;
+  
+
+  // Modernizr.testProp() investigates whether a given style property is recognized
+  // Property names can be provided in either camelCase or kebab-case.
+  // Modernizr.testProp('pointerEvents')
+  // Also accepts optional 2nd arg, of a value to use for native feature detection, e.g.:
+  // Modernizr.testProp('pointerEvents', 'none')
+  var testProp = ModernizrProto.testProp = function( prop, value, useValue ) {
+    return testProps([prop], undefined, value, useValue);
+  };
+  
+
+  var testStyles = ModernizrProto.testStyles = injectElementWithStyles;
+  
+/*!
+{
+  "name": "Flexbox",
+  "property": "flexbox",
+  "caniuse": "flexbox",
+  "tags": ["css"],
+  "notes": [{
+    "name": "The _new_ flexbox",
+    "href": "http://dev.w3.org/csswg/css3-flexbox"
+  }],
+  "warnings": [
+    "A `true` result for this detect does not imply that the `flex-wrap` property is supported; see the `flexwrap` detect."
+  ]
+}
+!*/
+/* DOC
+Detects support for the Flexible Box Layout model, a.k.a. Flexbox, which allows easy manipulation of layout order and sizing within a container.
+*/
+
+  Modernizr.addTest('flexbox', testAllProps('flexBasis', '1px', true));
+
+/*!
+{
+  "name": "Flexbox (legacy)",
+  "property": "flexboxlegacy",
+  "tags": ["css"],
+  "polyfills": ["flexie"],
+  "notes": [{
+    "name": "The _old_ flexbox",
+    "href": "http://www.w3.org/TR/2009/WD-css3-flexbox-20090723/"
+  }]
+}
+!*/
+
+  Modernizr.addTest('flexboxlegacy', testAllProps('boxDirection', 'reverse', true));
+
+/*!
+{
+  "name": "Flexbox (tweener)",
+  "property": "flexboxtweener",
+  "tags": ["css"],
+  "polyfills": ["flexie"],
+  "notes": [{
+    "name": "The _inbetween_ flexbox",
+    "href": "http://www.w3.org/TR/2011/WD-css3-flexbox-20111129/"
+  }],
+  "warnings": ["This represents an old syntax, not the latest standard syntax."]
+}
+!*/
+
+  Modernizr.addTest('flexboxtweener', testAllProps('flexAlign', 'end', true));
+
+/*!
+{
+  "name": "Flex Line Wrapping",
+  "property": "flexwrap",
+  "tags": ["css", "flexbox"],
+  "notes": [{
+    "name": "W3C Flexible Box Layout spec",
+    "href": "http://dev.w3.org/csswg/css3-flexbox"
+  }],
+  "warnings": [
+    "Does not imply a modern implementation – see documentation."
+  ]
+}
+!*/
+/* DOC
+Detects support for the `flex-wrap` CSS property, part of Flexbox, which isn’t present in all Flexbox implementations (notably Firefox).
+
+This featured in both the 'tweener' syntax (implemented by IE10) and the 'modern' syntax (implemented by others). This detect will return `true` for either of these implementations, as long as the `flex-wrap` property is supported. So to ensure the modern syntax is supported, use together with `Modernizr.flexbox`:
+
+```javascript
+if (Modernizr.flexbox && Modernizr.flexwrap) {
+  // Modern Flexbox with `flex-wrap` supported
+}
+else {
+  // Either old Flexbox syntax, or `flex-wrap` not supported
+}
+```
+*/
+
+  Modernizr.addTest('flexwrap', testAllProps('flexWrap', 'wrap', true));
+
+/*!
+{
+  "name": "CSS Generated Content",
+  "property": "generatedcontent",
+  "tags": ["css"],
+  "warnings": ["Android won't return correct height for anything below 7px #738"],
+  "notes": [{
+    "name": "W3C CSS Selectors Level 3 spec",
+    "href": "http://www.w3.org/TR/css3-selectors/#gen-content"
+  },{
+    "name": "MDN article on :before",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/::before"
+  },{
+    "name": "MDN article on :after",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/::before"
+  }]
+}
+!*/
+
+  testStyles('#modernizr{font:0/0 a}#modernizr:after{content:":)";visibility:hidden;font:7px/1 a}', function( node ) {
+    Modernizr.addTest('generatedcontent', node.offsetHeight >= 7);
+  });
+
+/*!
+{
+  "name": "Inline SVG",
+  "property": "inlinesvg",
+  "caniuse": "svg-html5",
+  "tags": ["svg"],
+  "notes": [{
+    "name": "Test page",
+    "href": "http://paulirish.com/demo/inline-svg"
+  }],
+  "polyfills": ["inline-svg-polyfill"]
+}
+!*/
+/* DOC
+Detects support for inline SVG in HTML (not within XHTML).
+*/
+
+  Modernizr.addTest('inlinesvg', function() {
+    var div = createElement('div');
+    div.innerHTML = '<svg/>';
+    return (div.firstChild && div.firstChild.namespaceURI) == 'http://www.w3.org/2000/svg';
+  });
+
+
+  // Run each test
+  testRunner();
+
+  delete ModernizrProto.addTest;
+  delete ModernizrProto.addAsyncTest;
+
+  // Run the things that are supposed to run after the tests
+  for (var i = 0; i < Modernizr._q.length; i++) {
+    Modernizr._q[i]();
+  }
+
+  // Leak Modernizr namespace
+  window.Modernizr = Modernizr;
+
+
+;
+
+})(window, document);
+
+
+/* web-html/_assets/js/components/webfontloader.js */
+/* Web Font Loader v1.5.18 - (c) Adobe Systems, Google. License: Apache 2.0 */
+;(function(window,document,undefined){function aa(a,b,c){return a.call.apply(a.bind,arguments)}function ba(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}}function k(a,b,c){k=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?aa:ba;return k.apply(null,arguments)}var n=Date.now||function(){return+new Date};function q(a,b){this.K=a;this.w=b||a;this.G=this.w.document}q.prototype.createElement=function(a,b,c){a=this.G.createElement(a);if(b)for(var d in b)b.hasOwnProperty(d)&&("style"==d?a.style.cssText=b[d]:a.setAttribute(d,b[d]));c&&a.appendChild(this.G.createTextNode(c));return a};function r(a,b,c){a=a.G.getElementsByTagName(b)[0];a||(a=document.documentElement);a&&a.lastChild&&a.insertBefore(c,a.lastChild)}function ca(a,b){function c(){a.G.body?b():setTimeout(c,0)}c()}
+function s(a,b,c){b=b||[];c=c||[];for(var d=a.className.split(/\s+/),e=0;e<b.length;e+=1){for(var f=!1,g=0;g<d.length;g+=1)if(b[e]===d[g]){f=!0;break}f||d.push(b[e])}b=[];for(e=0;e<d.length;e+=1){f=!1;for(g=0;g<c.length;g+=1)if(d[e]===c[g]){f=!0;break}f||b.push(d[e])}a.className=b.join(" ").replace(/\s+/g," ").replace(/^\s+|\s+$/,"")}function t(a,b){for(var c=a.className.split(/\s+/),d=0,e=c.length;d<e;d++)if(c[d]==b)return!0;return!1}
+function u(a){if("string"===typeof a.na)return a.na;var b=a.w.location.protocol;"about:"==b&&(b=a.K.location.protocol);return"https:"==b?"https:":"http:"}function v(a,b){var c=a.createElement("link",{rel:"stylesheet",href:b,media:"all"}),d=!1;c.onload=function(){d||(d=!0)};c.onerror=function(){d||(d=!0)};r(a,"head",c)}
+function w(a,b,c,d){var e=a.G.getElementsByTagName("head")[0];if(e){var f=a.createElement("script",{src:b}),g=!1;f.onload=f.onreadystatechange=function(){g||this.readyState&&"loaded"!=this.readyState&&"complete"!=this.readyState||(g=!0,c&&c(null),f.onload=f.onreadystatechange=null,"HEAD"==f.parentNode.tagName&&e.removeChild(f))};e.appendChild(f);window.setTimeout(function(){g||(g=!0,c&&c(Error("Script load timeout")))},d||5E3);return f}return null};function x(a,b){this.Y=a;this.ga=b};function y(a,b,c,d){this.c=null!=a?a:null;this.g=null!=b?b:null;this.D=null!=c?c:null;this.e=null!=d?d:null}var da=/^([0-9]+)(?:[\._-]([0-9]+))?(?:[\._-]([0-9]+))?(?:[\._+-]?(.*))?$/;y.prototype.compare=function(a){return this.c>a.c||this.c===a.c&&this.g>a.g||this.c===a.c&&this.g===a.g&&this.D>a.D?1:this.c<a.c||this.c===a.c&&this.g<a.g||this.c===a.c&&this.g===a.g&&this.D<a.D?-1:0};y.prototype.toString=function(){return[this.c,this.g||"",this.D||"",this.e||""].join("")};
+function z(a){a=da.exec(a);var b=null,c=null,d=null,e=null;a&&(null!==a[1]&&a[1]&&(b=parseInt(a[1],10)),null!==a[2]&&a[2]&&(c=parseInt(a[2],10)),null!==a[3]&&a[3]&&(d=parseInt(a[3],10)),null!==a[4]&&a[4]&&(e=/^[0-9]+$/.test(a[4])?parseInt(a[4],10):a[4]));return new y(b,c,d,e)};function A(a,b,c,d,e,f,g,h){this.N=a;this.m=h}A.prototype.getName=function(){return this.N};function B(a){this.a=a}var ea=new A("Unknown",0,0,0,0,0,0,new x(!1,!1));
+B.prototype.parse=function(){var a;if(-1!=this.a.indexOf("MSIE")||-1!=this.a.indexOf("Trident/")){a=C(this);var b=z(D(this)),c=null,d=E(this.a,/Trident\/([\d\w\.]+)/,1),c=-1!=this.a.indexOf("MSIE")?z(E(this.a,/MSIE ([\d\w\.]+)/,1)):z(E(this.a,/rv:([\d\w\.]+)/,1));""!=d&&z(d);a=new A("MSIE",0,0,0,0,0,0,new x("Windows"==a&&6<=c.c||"Windows Phone"==a&&8<=b.c,!1))}else if(-1!=this.a.indexOf("Opera"))a:if(a=z(E(this.a,/Presto\/([\d\w\.]+)/,1)),z(D(this)),null!==a.c||z(E(this.a,/rv:([^\)]+)/,1)),-1!=this.a.indexOf("Opera Mini/"))a=
+z(E(this.a,/Opera Mini\/([\d\.]+)/,1)),a=new A("OperaMini",0,0,0,C(this),0,0,new x(!1,!1));else{if(-1!=this.a.indexOf("Version/")&&(a=z(E(this.a,/Version\/([\d\.]+)/,1)),null!==a.c)){a=new A("Opera",0,0,0,C(this),0,0,new x(10<=a.c,!1));break a}a=z(E(this.a,/Opera[\/ ]([\d\.]+)/,1));a=null!==a.c?new A("Opera",0,0,0,C(this),0,0,new x(10<=a.c,!1)):new A("Opera",0,0,0,C(this),0,0,new x(!1,!1))}else/OPR\/[\d.]+/.test(this.a)?a=F(this):/AppleWeb(K|k)it/.test(this.a)?a=F(this):-1!=this.a.indexOf("Gecko")?
+(a="Unknown",b=new y,z(D(this)),b=!1,-1!=this.a.indexOf("Firefox")?(a="Firefox",b=z(E(this.a,/Firefox\/([\d\w\.]+)/,1)),b=3<=b.c&&5<=b.g):-1!=this.a.indexOf("Mozilla")&&(a="Mozilla"),c=z(E(this.a,/rv:([^\)]+)/,1)),b||(b=1<c.c||1==c.c&&9<c.g||1==c.c&&9==c.g&&2<=c.D),a=new A(a,0,0,0,C(this),0,0,new x(b,!1))):a=ea;return a};
+function C(a){var b=E(a.a,/(iPod|iPad|iPhone|Android|Windows Phone|BB\d{2}|BlackBerry)/,1);if(""!=b)return/BB\d{2}/.test(b)&&(b="BlackBerry"),b;a=E(a.a,/(Linux|Mac_PowerPC|Macintosh|Windows|CrOS|PlayStation|CrKey)/,1);return""!=a?("Mac_PowerPC"==a?a="Macintosh":"PlayStation"==a&&(a="Linux"),a):"Unknown"}
+function D(a){var b=E(a.a,/(OS X|Windows NT|Android) ([^;)]+)/,2);if(b||(b=E(a.a,/Windows Phone( OS)? ([^;)]+)/,2))||(b=E(a.a,/(iPhone )?OS ([\d_]+)/,2)))return b;if(b=E(a.a,/(?:Linux|CrOS|CrKey) ([^;)]+)/,1))for(var b=b.split(/\s/),c=0;c<b.length;c+=1)if(/^[\d\._]+$/.test(b[c]))return b[c];return(a=E(a.a,/(BB\d{2}|BlackBerry).*?Version\/([^\s]*)/,2))?a:"Unknown"}
+function F(a){var b=C(a),c=z(D(a)),d=z(E(a.a,/AppleWeb(?:K|k)it\/([\d\.\+]+)/,1)),e="Unknown",f=new y,f="Unknown",g=!1;/OPR\/[\d.]+/.test(a.a)?e="Opera":-1!=a.a.indexOf("Chrome")||-1!=a.a.indexOf("CrMo")||-1!=a.a.indexOf("CriOS")?e="Chrome":/Silk\/\d/.test(a.a)?e="Silk":"BlackBerry"==b||"Android"==b?e="BuiltinBrowser":-1!=a.a.indexOf("PhantomJS")?e="PhantomJS":-1!=a.a.indexOf("Safari")?e="Safari":-1!=a.a.indexOf("AdobeAIR")?e="AdobeAIR":-1!=a.a.indexOf("PlayStation")&&(e="BuiltinBrowser");"BuiltinBrowser"==
+e?f="Unknown":"Silk"==e?f=E(a.a,/Silk\/([\d\._]+)/,1):"Chrome"==e?f=E(a.a,/(Chrome|CrMo|CriOS)\/([\d\.]+)/,2):-1!=a.a.indexOf("Version/")?f=E(a.a,/Version\/([\d\.\w]+)/,1):"AdobeAIR"==e?f=E(a.a,/AdobeAIR\/([\d\.]+)/,1):"Opera"==e?f=E(a.a,/OPR\/([\d.]+)/,1):"PhantomJS"==e&&(f=E(a.a,/PhantomJS\/([\d.]+)/,1));f=z(f);g="AdobeAIR"==e?2<f.c||2==f.c&&5<=f.g:"BlackBerry"==b?10<=c.c:"Android"==b?2<c.c||2==c.c&&1<c.g:526<=d.c||525<=d.c&&13<=d.g;return new A(e,0,0,0,0,0,0,new x(g,536>d.c||536==d.c&&11>d.g))}
+function E(a,b,c){return(a=a.match(b))&&a[c]?a[c]:""};function G(a){this.ma=a||"-"}G.prototype.e=function(a){for(var b=[],c=0;c<arguments.length;c++)b.push(arguments[c].replace(/[\W_]+/g,"").toLowerCase());return b.join(this.ma)};function H(a,b){this.N=a;this.Z=4;this.O="n";var c=(b||"n4").match(/^([nio])([1-9])$/i);c&&(this.O=c[1],this.Z=parseInt(c[2],10))}H.prototype.getName=function(){return this.N};function I(a){return a.O+a.Z}function ga(a){var b=4,c="n",d=null;a&&((d=a.match(/(normal|oblique|italic)/i))&&d[1]&&(c=d[1].substr(0,1).toLowerCase()),(d=a.match(/([1-9]00|normal|bold)/i))&&d[1]&&(/bold/i.test(d[1])?b=7:/[1-9]00/.test(d[1])&&(b=parseInt(d[1].substr(0,1),10))));return c+b};function ha(a,b){this.d=a;this.q=a.w.document.documentElement;this.Q=b;this.j="wf";this.h=new G("-");this.ha=!1!==b.events;this.F=!1!==b.classes}function J(a){if(a.F){var b=t(a.q,a.h.e(a.j,"active")),c=[],d=[a.h.e(a.j,"loading")];b||c.push(a.h.e(a.j,"inactive"));s(a.q,c,d)}K(a,"inactive")}function K(a,b,c){if(a.ha&&a.Q[b])if(c)a.Q[b](c.getName(),I(c));else a.Q[b]()};function ia(){this.C={}};function L(a,b){this.d=a;this.I=b;this.k=this.d.createElement("span",{"aria-hidden":"true"},this.I)}function M(a){r(a.d,"body",a.k)}
+function N(a){var b;b=[];for(var c=a.N.split(/,\s*/),d=0;d<c.length;d++){var e=c[d].replace(/['"]/g,"");-1==e.indexOf(" ")?b.push(e):b.push("'"+e+"'")}b=b.join(",");c="normal";"o"===a.O?c="oblique":"i"===a.O&&(c="italic");return"display:block;position:absolute;top:-9999px;left:-9999px;font-size:300px;width:auto;height:auto;line-height:normal;margin:0;padding:0;font-variant:normal;white-space:nowrap;font-family:"+b+";"+("font-style:"+c+";font-weight:"+(a.Z+"00")+";")}
+L.prototype.remove=function(){var a=this.k;a.parentNode&&a.parentNode.removeChild(a)};function O(a,b,c,d,e,f,g,h){this.$=a;this.ka=b;this.d=c;this.o=d;this.m=e;this.I=h||"BESbswy";this.v={};this.X=f||3E3;this.ca=g||null;this.H=this.u=this.t=null;this.t=new L(this.d,this.I);this.u=new L(this.d,this.I);this.H=new L(this.d,this.I);a=new H("serif",I(this.o));a=N(a);this.t.k.style.cssText=a;a=new H("sans-serif",I(this.o));a=N(a);this.u.k.style.cssText=a;a=new H("monospace",I(this.o));a=N(a);this.H.k.style.cssText=a;M(this.t);M(this.u);M(this.H);this.v.serif=this.t.k.offsetWidth;this.v["sans-serif"]=
+this.u.k.offsetWidth;this.v.monospace=this.H.k.offsetWidth}var P={sa:"serif",ra:"sans-serif",qa:"monospace"};O.prototype.start=function(){this.oa=n();var a=new H(this.o.getName()+",serif",I(this.o)),a=N(a);this.t.k.style.cssText=a;a=new H(this.o.getName()+",sans-serif",I(this.o));a=N(a);this.u.k.style.cssText=a;Q(this)};function R(a,b,c){for(var d in P)if(P.hasOwnProperty(d)&&b===a.v[P[d]]&&c===a.v[P[d]])return!0;return!1}
+function Q(a){var b=a.t.k.offsetWidth,c=a.u.k.offsetWidth;b===a.v.serif&&c===a.v["sans-serif"]||a.m.ga&&R(a,b,c)?n()-a.oa>=a.X?a.m.ga&&R(a,b,c)&&(null===a.ca||a.ca.hasOwnProperty(a.o.getName()))?S(a,a.$):S(a,a.ka):ja(a):S(a,a.$)}function ja(a){setTimeout(k(function(){Q(this)},a),50)}function S(a,b){a.t.remove();a.u.remove();a.H.remove();b(a.o)};function T(a,b,c,d){this.d=b;this.A=c;this.S=0;this.ea=this.ba=!1;this.X=d;this.m=a.m}function ka(a,b,c,d,e){c=c||{};if(0===b.length&&e)J(a.A);else for(a.S+=b.length,e&&(a.ba=e),e=0;e<b.length;e++){var f=b[e],g=c[f.getName()],h=a.A,m=f;h.F&&s(h.q,[h.h.e(h.j,m.getName(),I(m).toString(),"loading")]);K(h,"fontloading",m);h=null;h=new O(k(a.ia,a),k(a.ja,a),a.d,f,a.m,a.X,d,g);h.start()}}
+T.prototype.ia=function(a){var b=this.A;b.F&&s(b.q,[b.h.e(b.j,a.getName(),I(a).toString(),"active")],[b.h.e(b.j,a.getName(),I(a).toString(),"loading"),b.h.e(b.j,a.getName(),I(a).toString(),"inactive")]);K(b,"fontactive",a);this.ea=!0;la(this)};
+T.prototype.ja=function(a){var b=this.A;if(b.F){var c=t(b.q,b.h.e(b.j,a.getName(),I(a).toString(),"active")),d=[],e=[b.h.e(b.j,a.getName(),I(a).toString(),"loading")];c||d.push(b.h.e(b.j,a.getName(),I(a).toString(),"inactive"));s(b.q,d,e)}K(b,"fontinactive",a);la(this)};function la(a){0==--a.S&&a.ba&&(a.ea?(a=a.A,a.F&&s(a.q,[a.h.e(a.j,"active")],[a.h.e(a.j,"loading"),a.h.e(a.j,"inactive")]),K(a,"active")):J(a.A))};function U(a){this.K=a;this.B=new ia;this.pa=new B(a.navigator.userAgent);this.a=this.pa.parse();this.U=this.V=0;this.R=this.T=!0}
+U.prototype.load=function(a){this.d=new q(this.K,a.context||this.K);this.T=!1!==a.events;this.R=!1!==a.classes;var b=new ha(this.d,a),c=[],d=a.timeout;b.F&&s(b.q,[b.h.e(b.j,"loading")]);K(b,"loading");var c=this.B,e=this.d,f=[],g;for(g in a)if(a.hasOwnProperty(g)){var h=c.C[g];h&&f.push(h(a[g],e))}c=f;this.U=this.V=c.length;a=new T(this.a,this.d,b,d);d=0;for(g=c.length;d<g;d++)e=c[d],e.L(this.a,k(this.la,this,e,b,a))};
+U.prototype.la=function(a,b,c,d){var e=this;d?a.load(function(a,b,d){ma(e,c,a,b,d)}):(a=0==--this.V,this.U--,a&&0==this.U?J(b):(this.R||this.T)&&ka(c,[],{},null,a))};function ma(a,b,c,d,e){var f=0==--a.V;(a.R||a.T)&&setTimeout(function(){ka(b,c,d||null,e||null,f)},0)};function na(a,b,c){this.P=a?a:b+oa;this.s=[];this.W=[];this.fa=c||""}var oa="//fonts.googleapis.com/css";na.prototype.e=function(){if(0==this.s.length)throw Error("No fonts to load!");if(-1!=this.P.indexOf("kit="))return this.P;for(var a=this.s.length,b=[],c=0;c<a;c++)b.push(this.s[c].replace(/ /g,"+"));a=this.P+"?family="+b.join("%7C");0<this.W.length&&(a+="&subset="+this.W.join(","));0<this.fa.length&&(a+="&text="+encodeURIComponent(this.fa));return a};function pa(a){this.s=a;this.da=[];this.M={}}
+var qa={latin:"BESbswy",cyrillic:"&#1081;&#1103;&#1046;",greek:"&#945;&#946;&#931;",khmer:"&#x1780;&#x1781;&#x1782;",Hanuman:"&#x1780;&#x1781;&#x1782;"},ra={thin:"1",extralight:"2","extra-light":"2",ultralight:"2","ultra-light":"2",light:"3",regular:"4",book:"4",medium:"5","semi-bold":"6",semibold:"6","demi-bold":"6",demibold:"6",bold:"7","extra-bold":"8",extrabold:"8","ultra-bold":"8",ultrabold:"8",black:"9",heavy:"9",l:"3",r:"4",b:"7"},sa={i:"i",italic:"i",n:"n",normal:"n"},ta=/^(thin|(?:(?:extra|ultra)-?)?light|regular|book|medium|(?:(?:semi|demi|extra|ultra)-?)?bold|black|heavy|l|r|b|[1-9]00)?(n|i|normal|italic)?$/;
+pa.prototype.parse=function(){for(var a=this.s.length,b=0;b<a;b++){var c=this.s[b].split(":"),d=c[0].replace(/\+/g," "),e=["n4"];if(2<=c.length){var f;var g=c[1];f=[];if(g)for(var g=g.split(","),h=g.length,m=0;m<h;m++){var l;l=g[m];if(l.match(/^[\w-]+$/)){l=ta.exec(l.toLowerCase());var p=void 0;if(null==l)p="";else{p=void 0;p=l[1];if(null==p||""==p)p="4";else var fa=ra[p],p=fa?fa:isNaN(p)?"4":p.substr(0,1);l=l[2];p=[null==l||""==l?"n":sa[l],p].join("")}l=p}else l="";l&&f.push(l)}0<f.length&&(e=f);
+3==c.length&&(c=c[2],f=[],c=c?c.split(","):f,0<c.length&&(c=qa[c[0]])&&(this.M[d]=c))}this.M[d]||(c=qa[d])&&(this.M[d]=c);for(c=0;c<e.length;c+=1)this.da.push(new H(d,e[c]))}};function V(a,b){this.a=(new B(navigator.userAgent)).parse();this.d=a;this.f=b}var ua={Arimo:!0,Cousine:!0,Tinos:!0};V.prototype.L=function(a,b){b(a.m.Y)};V.prototype.load=function(a){var b=this.d;"MSIE"==this.a.getName()&&1!=this.f.blocking?ca(b,k(this.aa,this,a)):this.aa(a)};
+V.prototype.aa=function(a){for(var b=this.d,c=new na(this.f.api,u(b),this.f.text),d=this.f.families,e=d.length,f=0;f<e;f++){var g=d[f].split(":");3==g.length&&c.W.push(g.pop());var h="";2==g.length&&""!=g[1]&&(h=":");c.s.push(g.join(h))}d=new pa(d);d.parse();v(b,c.e());a(d.da,d.M,ua)};function W(a,b){this.d=a;this.f=b;this.p=[]}W.prototype.J=function(a){var b=this.d;return u(this.d)+(this.f.api||"//f.fontdeck.com/s/css/js/")+(b.w.location.hostname||b.K.location.hostname)+"/"+a+".js"};
+W.prototype.L=function(a,b){var c=this.f.id,d=this.d.w,e=this;c?(d.__webfontfontdeckmodule__||(d.__webfontfontdeckmodule__={}),d.__webfontfontdeckmodule__[c]=function(a,c){for(var d=0,m=c.fonts.length;d<m;++d){var l=c.fonts[d];e.p.push(new H(l.name,ga("font-weight:"+l.weight+";font-style:"+l.style)))}b(a)},w(this.d,this.J(c),function(a){a&&b(!1)})):b(!1)};W.prototype.load=function(a){a(this.p)};function X(a,b){this.d=a;this.f=b;this.p=[]}X.prototype.J=function(a){var b=u(this.d);return(this.f.api||b+"//use.typekit.net")+"/"+a+".js"};X.prototype.L=function(a,b){var c=this.f.id,d=this.d.w,e=this;c?w(this.d,this.J(c),function(a){if(a)b(!1);else{if(d.Typekit&&d.Typekit.config&&d.Typekit.config.fn){a=d.Typekit.config.fn;for(var c=0;c<a.length;c+=2)for(var h=a[c],m=a[c+1],l=0;l<m.length;l++)e.p.push(new H(h,m[l]));try{d.Typekit.load({events:!1,classes:!1})}catch(p){}}b(!0)}},2E3):b(!1)};
+X.prototype.load=function(a){a(this.p)};function Y(a,b){this.d=a;this.f=b;this.p=[]}Y.prototype.L=function(a,b){var c=this,d=c.f.projectId,e=c.f.version;if(d){var f=c.d.w;w(this.d,c.J(d,e),function(e){if(e)b(!1);else{if(f["__mti_fntLst"+d]&&(e=f["__mti_fntLst"+d]()))for(var h=0;h<e.length;h++)c.p.push(new H(e[h].fontfamily));b(a.m.Y)}}).id="__MonotypeAPIScript__"+d}else b(!1)};Y.prototype.J=function(a,b){var c=u(this.d),d=(this.f.api||"fast.fonts.net/jsapi").replace(/^.*http(s?):(\/\/)?/,"");return c+"//"+d+"/"+a+".js"+(b?"?v="+b:"")};
+Y.prototype.load=function(a){a(this.p)};function Z(a,b){this.d=a;this.f=b}Z.prototype.load=function(a){var b,c,d=this.f.urls||[],e=this.f.families||[],f=this.f.testStrings||{};b=0;for(c=d.length;b<c;b++)v(this.d,d[b]);d=[];b=0;for(c=e.length;b<c;b++){var g=e[b].split(":");if(g[1])for(var h=g[1].split(","),m=0;m<h.length;m+=1)d.push(new H(g[0],h[m]));else d.push(new H(g[0]))}a(d,f)};Z.prototype.L=function(a,b){return b(a.m.Y)};var $=new U(this);$.B.C.custom=function(a,b){return new Z(b,a)};$.B.C.fontdeck=function(a,b){return new W(b,a)};$.B.C.monotype=function(a,b){return new Y(b,a)};$.B.C.typekit=function(a,b){return new X(b,a)};$.B.C.google=function(a,b){return new V(b,a)};this.WebFont||(this.WebFont={},this.WebFont.load=k($.load,$),this.WebFontConfig&&$.load(this.WebFontConfig));})(this,document);
+
+
+
+
+/* web-html/_assets/js/init.js */
+/* Init.js
+init page async
+#include components/modernizr-custom.js;
+#include components/webfontloaderr.js;
+*/
+(function(w, d) {
+
+  var m=Modernizr,c=['js'];
+  //its ie
+  if (typeof d.documentMode === "number")
+    c.push("ie ie-"+d.documentMode);
+  else
+    c.push("no-ie");
+
+  (!m.generatedcontent) && c.push("no-pseudo");
+  //(!m.inlinesvg) && c.push("no-svg");
+  c.push((((m.flexbox || m.flexboxlegacy ||m.flexboxtweener) && m.flexwrap)?"":"no-")+"flex");
+  d.documentElement.className =  c.join(" ");
+
+  WebFont.load({
+    classes: false,
+    custom: {
+      families: ['Roboto:n4','Roboto Slab:n4']
+    },
+    active: function() {d.documentElement.className+=" wf-loaded";},
+    fontactive: function(familyName, fvd) {console.log("font: "+familyName+":"+fvd+" loaded..");}
+  });
+  if (m.inlinesvg && 'XMLHttpRequest' in w)
+  {
+    var ajax = new XMLHttpRequest();
+    ajax.open("GET", _cfg.svg, true);
+    ajax.send();
+    ajax.onreadystatechange = function(e) {
+    console.log("ajax-status: "+ajax.readyState+":"+ajax.status);
+      if (ajax.readyState === 4 && (ajax.status >= 200 && ajax.status < 300 || ajax.status === 304))
+      {
+        var div = d.createElement("div");
+        div.style.display='none';
+        div.innerHTML = ajax.responseText;
+        d.body.insertBefore(div, d.body.childNodes[0]);
+        d.documentElement.className+=" svg";
+      }
+    }
+  }
+
+})(this,this.document);
+
+

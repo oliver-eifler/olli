@@ -46,6 +46,15 @@
 
 echo HTML();
 exit();
+function get_request_url()
+{
+    return get_request_scheme() . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+}
+
+function get_request_scheme()
+{
+    return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+}
 
 /*Ü*/
 function buildLinkList()
@@ -101,9 +110,6 @@ function buildLinkList()
 function getLinkList($type="main")
 {
     $page = Page::getInstance();
-    $base_uri = $page->getData("base_uri");
-    $cur_uri = $page->getData("cur_uri");
-
     global $links;
 
     $html = "";
@@ -117,7 +123,7 @@ function getLinkList($type="main")
         $content = $link["content"];
 
 
-        if ($base_uri == strtolower($title) || $cur_uri == $href)
+        if ($href == $page->uri || $href == $page->uri_cmd)
             $class[] = "cur";
 
         $tag = "<a href='".$href."' title='".$title."'";
@@ -129,7 +135,6 @@ function getLinkList($type="main")
         $tag.= $content;
         $tag.="</a>";
 
-
         $html .= "<li>".$tag."</li>";
     }
     return $html;
@@ -137,15 +142,15 @@ function getLinkList($type="main")
 function breadcrumbs($text = 'You are here: ', $sep = ' &raquo; ', $home = 'Home')
 {
     $page = Page::getInstance();
-    $cur_uri = $page->getData("cur_uri");
+    $cur_uri = $page->uri;
     //Use RDFa breadcrumb, can also be used for microformats etc.
     $bc     =   '<div xmlns:v="http://rdf.data-vocabulary.org/#" id="crums" class="Breadcrumbs">'.$text;
     //Get the website:
-    $site   =   (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
+    $site   =   get_request_scheme() . '://' . $_SERVER['HTTP_HOST'];
     //Get all vars en skip the empty ones
     $crumbs =   array_filter( explode("/",$cur_uri));//$_SERVER["REQUEST_URI"]) );
     //Create the home breadcrumb
-    $bc    .=   '<span typeof="v:Breadcrumb"><a href="'.$site.'" rel="v:url" property="v:title">'.$home.'</a>'.$sep.'</span>';
+    $bc    .=   '<span typeof="v:Breadcrumb"><a href="'.$site.'" rel="v:url" property="v:title">'.$home.'</a></span>';
     //Count all not empty breadcrumbs
     $nm     =   count($crumbs);
     $i      =   1;
@@ -154,15 +159,15 @@ function breadcrumbs($text = 'You are here: ', $sep = ' &raquo; ', $home = 'Home
     {
         //Make the link look nice
         if ($i==$nm)
-            $link = $page->getData("title");
+            $link = $page->title;
         else
             $link    =  ucfirst( str_replace( array(".php","-","_"), array(""," "," ") ,$crumb) );
         //Loose the last seperator
-        $sep     =  $i==$nm?'':$sep;
+        //$sep     =  $i==$nm?'':$sep;
         //Add crumbs to the root
         $site   .=  '/'.$crumb;
        //Make the next crumb
-        $bc     .=  '<span typeof="v:Breadcrumb"><a href="'.$site.'" rel="v:url" property="v:title">'.$link.'</a>'.$sep.'</span>';
+        $bc     .=  $sep.'<span typeof="v:Breadcrumb"><a href="'.$site.'" rel="v:url" property="v:title">'.$link.'</a></span>';
     $i++;
     }
     $bc .=  '</div>';
@@ -201,10 +206,9 @@ function SiteInfo()
 {
   $html ="";
   $html.=   "<p>Site links</p>";
-  $html.=   "<aside class='Sheet-item Footer Footer--crumbs'>";
-  $html.=   breadcrumbs();
-  $html.=   "</aside>";
   $html.=   "<nav class='Sheet-item Footer Footer--nav'>";
+  $html.=   breadcrumbs();
+  $html.=   "<div class='ident'>";
   $html.=   "<ul>";
   $html.= getLinkList("main");
   $html.=   "</ul>";
@@ -214,6 +218,7 @@ function SiteInfo()
   $html.=   "<ul>";
   $html.= getLinkList("misc");
   $html.=   "</ul>";
+  $html.=   "</div>";
   $html.=   "</nav>";
   return $html;
 }
@@ -234,12 +239,12 @@ function SiteFooter()
 
   return $html;
 }
-function SiteContent($p=1)
+function SiteContent()
 {
   $page = Page::getInstance();
 
-  $html = "";
-  $html.="<article class='Sheet Site-content' itemscope itemtype='http://schema.org/BlogPosting'>";
+  $html = "";//$page->debugData();
+  $html.="<article class='Sheet Site-content'".($page->getData("isArticle")?" itemscope itemtype='http://schema.org/BlogPosting'":"").">";
   $html.=  $page->getHtml();
   $html.="</article>";
   return $html;
@@ -291,23 +296,17 @@ global $svgfile;
 function HTMLHeader()
 {
   $page = Page::getInstance();
-  /*
-  $title = $page->getData("title");
-  $title .= (!empty($title)? " || ":"")."Oliver Jean Eifler";
-  $desc = (!empty($page->getData("desc"))?$page->getData("desc"):$title);
-  $keywords = explode(",","oliver jean,eifler,web,development,blog");
-  if (!empty($page->getData("tags")))
-    $keywords = array_merge(explode(",",$page->getData("tags")),$keywords);
-  foreach($keywords as $k => $v)
-    $keywords[$k] = strtolower(trim($v));
-  */
-  $title = $page->getPreparedTitle();
-  $desc = $page->getPreparedDescription();
-  $tags = $page->getPreparedTags();
+  $title = htmlentities($page->getPreparedTitle(),ENT_QUOTES|ENT_HTML401);
+  $desc = htmlentities($page->getPreparedDescription(),ENT_QUOTES|ENT_HTML401);
+  $tags = htmlentities($page->getPreparedTags(),ENT_QUOTES|ENT_HTML401);
 
 
   $html = "";
   $html.= "<head>";
+  if ($page->noindex)
+    $html.= "<meta name='robots' content='noindex'>";
+  if ($_SERVER["REQUEST_URI"] != $page->uri)
+    $html="<link rel='canonical' href='".$page->uri."' />";
   $html.=   "<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=yes'>";
   $html.=   "<meta name='format-detection' content='telephone=no'/>";
   $html.=   "<title>".$title."</title>";

@@ -502,6 +502,8 @@ th {
 /* line 11, ../../../web-html/_assets/sass/page/_layout.scss */
 *, *:before, *:after {
   box-sizing: border-box;
+  box-shadow: none;
+  border: none;
 }
 
 /* line 12, ../../../web-html/_assets/sass/page/_layout.scss */
@@ -704,6 +706,15 @@ a {
   font-weight: bold;
 }
 
+/* line 99, ../../../web-html/_assets/sass/page/_fonts.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif;
+}
+
 /*
 code,
 kbd,
@@ -712,22 +723,30 @@ samp {
   font-family: monospace,monospace;
 }
 */
-/* line 107, ../../../web-html/_assets/sass/page/_fonts.scss */
+/* line 114, ../../../web-html/_assets/sass/page/_fonts.scss */
 .Site-footer {
   font-family: "Lucida Console", Monaco, monospace,serif;
 }
 
-/* line 111, ../../../web-html/_assets/sass/page/_fonts.scss */
+/* line 118, ../../../web-html/_assets/sass/page/_fonts.scss */
 .wf-loaded .Site-contentContainer {
   font-family: "Roboto",sans-serif;
 }
-/* line 113, ../../../web-html/_assets/sass/page/_fonts.scss */
+/* line 120, ../../../web-html/_assets/sass/page/_fonts.scss */
 .wf-loaded .Site-contentContainer h1, .wf-loaded .Site-contentContainer h2, .wf-loaded .Site-contentContainer h3, .wf-loaded .Site-contentContainer h4, .wf-loaded .Site-contentContainer h5, .wf-loaded .Site-contentContainer h6 {
   font-family: "Roboto Slab",serif;
   font-weight: bold;
 }
+/* line 124, ../../../web-html/_assets/sass/page/_fonts.scss */
+.wf-loaded .Site-contentContainer button,
+.wf-loaded .Site-contentContainer input,
+.wf-loaded .Site-contentContainer optgroup,
+.wf-loaded .Site-contentContainer select,
+.wf-loaded .Site-contentContainer textarea {
+  font-family: "Roboto",sans-serif;
+}
 
-/* line 118, ../../../web-html/_assets/sass/page/_fonts.scss */
+/* line 132, ../../../web-html/_assets/sass/page/_fonts.scss */
 .wf-loaded .Site-headerContainer {
   font-family: "Roboto",sans-serif;
 }
@@ -748,7 +767,7 @@ samp {
 }
 
 /* line 49, ../../../web-html/_assets/sass/page/_typography.scss */
-p, div, hr, pre {
+p, div, hr, pre, .p {
   margin-top: 1.5em;
 }
 
@@ -794,6 +813,31 @@ h4, h5, h6, .h4, .h5, .h6 {
   line-height: 1.5;
   margin-top: 1.5em;
   text-transform: uppercase;
+}
+
+/* line 85, ../../../web-html/_assets/sass/page/_typography.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* line 93, ../../../web-html/_assets/sass/page/_typography.scss */
+.text-center {
+  text-align: center;
+}
+
+/* line 96, ../../../web-html/_assets/sass/page/_typography.scss */
+.text-right {
+  text-align: right;
+}
+
+/* line 99, ../../../web-html/_assets/sass/page/_typography.scss */
+.text-left {
+  text-align: left;
 }
 
 /*
@@ -1288,24 +1332,13 @@ h4, h5, h6, .h4, .h5, .h6 {
   color: #8b8a8c;
 }
 
-/* line 64, ../../../web-html/_assets/sass/page/_footer.scss */
-.Footer--crumbs {
-  padding-bottom: 0;
-}
-
-/* line 67, ../../../web-html/_assets/sass/page/_footer.scss */
-.Footer--nav {
-  margin-top: 0;
-  padding-left: 0;
-  padding-right: 0;
-}
-/* line 71, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 65, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer--nav ul, .Footer--nav li {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-/* line 76, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 70, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer--nav ul {
   display: inline-block;
   vertical-align: top;
@@ -1313,6 +1346,11 @@ h4, h5, h6, .h4, .h5, .h6 {
   *zoom: 1;
   *display: inline;
   padding: 0 1.5em 0 1.5em;
+}
+/* line 74, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer--nav .ident {
+  margin-left: -1.5em;
+  margin-right: -1.5em;
 }
 
 /**
@@ -1340,8 +1378,8 @@ p > code, li > code, dd > code, td > code {
 
 /* line 32, ../../../web-html/_assets/sass/page/_content.scss */
 .content {
-  background-color: #eeeeee;
-  color: #3b3b3b;
+  background-color: #fafaff;
+  color: #3e3e3f;
   background-image: -webkit-linear-gradient(bottom, #888888 1px, rgba(0, 0, 0, 0) 1px);
   background-image: linear-gradient(to top, #888888 1px, rgba(0, 0, 0, 0) 1px);
   background-size: 100% 1.5em;
@@ -1360,7 +1398,7 @@ p > code, li > code, dd > code, td > code {
 }
 /* line 45, ../../../web-html/_assets/sass/page/_content.scss */
 .content a:focus, .content a:hover {
-  color: #3b3b3b;
+  color: #3e3e3f;
   color: #2455c3;
   text-decoration: underline;
 }
@@ -1372,7 +1410,7 @@ p > code, li > code, dd > code, td > code {
   margin: 0 auto;
   height: 1.5em;
   border: none;
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid #dcdce0;
 }
 /* line 62, ../../../web-html/_assets/sass/page/_content.scss */
 .content .hljs {
@@ -1394,7 +1432,7 @@ p > code, li > code, dd > code, td > code {
   line-height: 1.875;
   margin-top: 0;
   padding-left: 1em;
-  color: #6d6d6d;
+  color: #727275;
 }
 
 /* line 85, ../../../web-html/_assets/sass/page/_content.scss */
@@ -1446,9 +1484,98 @@ p > code, li > code, dd > code, td > code {
   font-size: 0.8em;
   line-height: 1.875;
   text-transform: uppercase;
-  color: #6d6d6d;
+  color: #727275;
 }
 /* line 28, ../../../web-html/_assets/sass/page/modules/_articlelist.scss */
 .articleList-item .excerpt {
   margin: 0 0 0 1em;
+}
+
+/**
+ * forms.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* line 18, ../../../web-html/_assets/sass/page/_forms.scss */
+.form-group {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 0 0.5em;
+  min-height: 3em;
+  border: none;
+  background: #fafaff;
+}
+/* line 31, ../../../web-html/_assets/sass/page/_forms.scss */
+.form-group > label {
+  color: #727275;
+  -webkit-transition: .3s linear;
+          transition: .3s linear;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0.66667em;
+  z-index: 1;
+  width: 100%;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  padding-left: 0;
+}
+/* line 47, ../../../web-html/_assets/sass/page/_forms.scss */
+.form-group > .form-control:focus + label, .form-group > .form-control:invalid:focus + label, .form-group > .form-control:valid + label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0.66667em;
+  z-index: 1;
+  width: 100%;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  padding-left: 0;
+}
+
+/* line 64, ../../../web-html/_assets/sass/page/_forms.scss */
+.form-control {
+  display: block;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  background: none;
+  padding: 1.05em 4px 0 4px;
+  border-bottom: 1px solid #dcdce0;
+  margin-bottom: -1px;
+  color: #3e3e3f;
+  -webkit-transition: .3s linear;
+          transition: .3s linear;
+}
+
+/* line 76, ../../../web-html/_assets/sass/page/_forms.scss */
+textarea.form-control {
+  padding-top: 0;
+  margin-top: 1.05em;
+}
+
+/* line 81, ../../../web-html/_assets/sass/page/_forms.scss */
+.form-control:focus {
+  border-bottom: 1px solid #2455c3;
+  margin-bottom: -1px;
+}
+/* line 84, ../../../web-html/_assets/sass/page/_forms.scss */
+.form-control:focus + label {
+  color: #2455c3;
+}
+
+/* line 89, ../../../web-html/_assets/sass/page/_forms.scss */
+.form-control:invalid + label {
+  font-size: 1em;
+  top: 1.05em;
+  left: 0.5em;
+  padding-left: 4px;
 }

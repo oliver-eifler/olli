@@ -1,6 +1,4 @@
-[m:title]<%= @getPreparedTitle() %>[/m]
-[m:desc]<%= @getPreparedDescription() %>[/m]
-[m:tags]<%= @getPreparedTags() %>[/m]
+<script type="json"><%- @getMetaData() %></script>
 <header class='Sheet-item content content--header'>
 <h1 itemprop='headline'><%= @document.title %></h1>
 <p class='content-published'>

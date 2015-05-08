@@ -5,27 +5,24 @@ class StaticPage extends BasePage
 {
     protected function init()
     {
-        $this->error = !$this->LoadPage($this->uri);
+        $this->error = !$this->LoadPage($this->path);
     }
-    protected function LoadPage($uri)
+    protected function LoadPage($path)
     {
-        $file = "pages".$uri.".html";
-        if ($uri=="" || !file_exists($file))
+        $file = "pages".$path.".html";
+        if ($path=="" || !file_exists($file))
         {
-            $this->html="<h2>".$file." not found</h2>";
+            $this->html="<h2>".$path." not found</h2>";
             return false;
         }
-        $this->data['modified'] = filemtime($file);
+        $this->modified = filemtime($file);
         $h= file_get_contents($file);
 
         $regex = "%/?images/(.*?)\.(jpe?g|png|gif|svg)%i";
         $h = preg_replace_callback($regex,"self::mod_imagepath",$h);
         /*Magic: Extract data*/
-        $regex = "%\[m\:(.*?)\](.*?)\[\/m\]%i";
+        $regex = '%<script.*type=("|\')json("|\').*>(.*)</.*script>%i';
         $h = preg_replace_callback($regex,"self::magic_meta",$h);
-
-        //$this->html.="<p><h3>Data</h3>".print_r($this->data,true)."</p>";
-
         $this->html.=$h;
         return true;
     }
@@ -40,7 +37,9 @@ class StaticPage extends BasePage
     }
     private function magic_meta($matches)
     {
-        $this->data[$matches[1]] = $matches[2];
+        $meta = json_decode($matches[3]);
+        foreach ($meta as $k => $v)
+          $this->offsetSet($k,$v);
         return "";
     }
 }

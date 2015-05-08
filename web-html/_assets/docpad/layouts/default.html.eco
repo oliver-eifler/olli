@@ -1,5 +1,3 @@
-[m:title]<%= @getPreparedTitle() %>[/m]
-[m:desc]<%= @getPreparedDescription() %>[/m]
-[m:tags]<%= @getPreparedTags() %>[/m]
+<script type="json"><%- @getMetaData() %></script>
 <img src="/images/logo.gif" />
 <%- @content %>
