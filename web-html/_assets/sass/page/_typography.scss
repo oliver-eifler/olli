@@ -46,7 +46,7 @@
   margin:0;
 }
 //top margin for block-level elements
-p,div,hr,pre,.p {
+p,div,hr,pre,form,fieldset,.p, {
     margin-top:px2em($base-line-height);
   }
 *:first-child {

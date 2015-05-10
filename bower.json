@@ -31,6 +31,7 @@
     "loadcss": "~0.1.6"
   },
   "dependencies": {
-    "inuit-starter-kit": "~0.2.9"
+    "inuit-starter-kit": "~0.2.9",
+    "susy": "~2.2.3"
   }
 }

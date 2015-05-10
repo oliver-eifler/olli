@@ -28,20 +28,22 @@ class ContactPage extends BasePage
     protected function Form()
     {
         $html = "";
-        $html.="<form class='form'>";
-        $html.="<fieldset class='form-group'>";
-        $html.="<input class='form-control' type='text' id='name' required>";
-        $html.="<label for='name'>your name</label>";
+        $html.="<form class='form' action='#'>";
+        $html.="<div class='form-row'>";
+        $html.=  "<div class='form-group form-group--name'>";
+        $html.=    "<input class='form-control' type='text' id='name' required>";
+        $html.=    "<label for='name'>your name</label>";
+        $html.=  "</div>";
+        $html.=  "<div class='form-group form-group--email'>";
+        $html.=    "<input class='form-control' type='email' id='email' required>";
+        $html.=    "<label for='email'>your eMail</label>";
+        $html.=  "</div>";
+        $html.="</div>";
+        $html.="<fieldset class='form-group form-group--message'>";
+        $html.=  "<textarea class='form-control' name='message' id='message' cols='20' rows='5' required></textarea>";
+        $html.=  "<label for='message'>your message</label>";
         $html.="</fieldset>";
-        $html.="<fieldset class='form-group'>";
-        $html.="<input class='form-control' type='text' id='email' required>";
-        $html.="<label for='email'>your eMail</label>";
-        $html.="</fieldset>";
-        $html.=  "<p class='text-center'>I’ll really try to get back to everyone, but sometimes it’s hard and I can’t guarantee anything.</p>";
-        $html.="<fieldset class='form-group'>";
-        $html.="<textarea class='form-control' name='message' id='message' cols='20' rows='5' required></textarea>";
-        $html.="<label for='message'>your message</label>";
-        $html.="</fieldset>";
+        $html.="<input class='btn btn-submit' type='submit' value='Submit' /><small>or press <strong>enter</strong></small>";
         $html.="</form>";
 
         return $html;

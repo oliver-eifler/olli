@@ -83,6 +83,7 @@ p > code, li > code, dd > code, td > code {
 }
 
 .content--header + * {
+  padding-top:0;
   margin-top:0;
 }
 
