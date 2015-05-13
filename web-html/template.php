@@ -2,6 +2,8 @@
   require_once("php/config.php");
   require_once("php/page.php");
 
+
+
   $cssupdate = filemtime("css/styles.css");
   $cssfile ="/css/styles_".$cssupdate.".css";
   $jsupdate = filemtime("js/init.js");
@@ -32,7 +34,7 @@
 
   if ($page->getError())
   {
-    header("HTTP/1.0 404 Not Found");
+    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
     error_page();
     exit();
   }
@@ -42,7 +44,6 @@
   //  $status = 304;
 
   header ("Last-Modified: ".gmdate("D, d M Y H:i:s", $modified )." GMT",true,$status);
-
 
 echo HTML();
 exit();
@@ -242,9 +243,13 @@ function SiteFooter()
 function SiteContent()
 {
   $page = Page::getInstance();
+  $class = array("Sheet","Site-content");
+  if (!empty($page->cmd))
+    $class[] = "Site-".$page->cmd;
 
   $html = "";//$page->debugData();
-  $html.="<article class='Sheet Site-content'".($page->getData("isArticle")?" itemscope itemtype='http://schema.org/BlogPosting'":"").">";
+  $html.="<article class='".implode(" ",$class)."'".($page->getData("isArticle")?" itemscope itemtype='http://schema.org/BlogPosting'":"").">";
+  //$html.=  $page->debugData();
   $html.=  $page->getHtml();
   $html.="</article>";
   return $html;
@@ -368,6 +373,7 @@ function error_page()
   $html.=  "</style>";
   $html.= "</head>";
   $html.= "<body>";
+  $html.=  "<img src='img/yawn.png' alt=''>";
   $html.=  "<h1>Page Not Found</h1>";
   $html.=  "<p>Sorry, but the page you were trying to view does not exist.</p>";
   $html.=  "<p>&nbsp;</p>";

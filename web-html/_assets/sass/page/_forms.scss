@@ -13,7 +13,8 @@ $form-color:  $content-color;
 $form-width:  $content-width;
 
 $colors: getColors($form-color);
-$active-color: #2455c3;//$accent-color;
+$active-color: $primary-color;
+
 $label-font-size:$base-font-size*.75;
 $label-height: $base-line-height;//$label-font-size*1.4;
 .form {
@@ -25,6 +26,9 @@ $label-height: $base-line-height;//$label-font-size*1.4;
   background: base($colors);
   border-radius: px2em($base-hgap/4);
   @include card(1);
+}
+.form-buttons {
+  padding: 0 px2em($base-hgap/2);
 }
 
 .form-group {

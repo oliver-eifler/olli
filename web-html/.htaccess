@@ -80,6 +80,7 @@ RewriteBase /
 #
 RewriteRule ^error\.php$ - [QSA,L]
 RewriteRule ^template\.php$ - [QSA,L]
+RewriteRule ^offline\.php$ - [QSA,L]
 RewriteRule ^php/(.*).php$ / [L,R=404]
 #
 RewriteCond %{REQUEST_FILENAME} !-f

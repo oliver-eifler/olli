@@ -41,8 +41,8 @@ $header-gap: 4;
   a {
     color: $header-link;
     &:visited {color: $header-link;}
-    &:focus {color: $header-link-focus;}
-    &:hover {color: $header-link-hover;}
+    &:focus {color: $header-link-focus;text-decoration:none;}
+    &:hover {color: $header-link-hover;text-decoration:none;}
     padding:px2em($header-gap);
   }
   a.cur {

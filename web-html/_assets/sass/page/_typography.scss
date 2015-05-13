@@ -49,7 +49,7 @@
 p,div,hr,pre,form,fieldset,.p, {
     margin-top:px2em($base-line-height);
   }
-*:first-child {
+*:first-child,.no-gap {
   margin-top:0;
 }
 

@@ -1,5 +1,5 @@
 /**
- * Module: articlelist.scss
+ * Module: articles.scss
  * This file is part of the Olli Web Page
  * Copyright (c) 2015 Oliver Jean Eifler
  *
@@ -8,6 +8,9 @@
  * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  **/
+$content-color:  #fafaff !default;
+$colors: getColors($content-color);
+
 .articleList {
   list-style:none;
   li {

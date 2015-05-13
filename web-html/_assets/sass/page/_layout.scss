@@ -70,7 +70,7 @@
   .Site-headerContainer {display:table-caption;}
 }
 */
-
+/*
 .Sheet {
  // font-size:px2em($base-font);
  // line-height:$base-line-height;
@@ -79,6 +79,16 @@
   & > *+* {
     margin-top: px2em($base-vgap);
   }
+}
+.Sheet-item {
+  padding: px2em($base-vgap);
+}
+*/
+.Sheet {
+ // font-size:px2em($base-font);
+ // line-height:$base-line-height;
+  margin:0 auto;
+  padding:0 px2em($base-hgap);
 }
 .Sheet-item {
   padding: px2em($base-vgap);

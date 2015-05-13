@@ -15,13 +15,11 @@ class ContactPage extends BasePage
     {
         $html = "";
         $html.="<header class='Sheet-item content content--header text-center'>";
-        $html.=  "<h1 itemprop='headline'>".$this->title."</h1>";
+        $html.=  "<h1>".$this->title."</h1>";
         $html.=  "<p class='content-description'>".$this->description."</p>";
         $html.="</header>";
         $html.="<section class='Sheet-item content'>";
-        $html.=  "<p class='text-center'>I’ll really try to get back to everyone, but sometimes it’s hard and I can’t guarantee anything.</p>";
         $html.= $this->Form();
-        $html.=  "<p class='text-center'>I’ll really try to get back to everyone, but sometimes it’s hard and I can’t guarantee anything.</p>";
         $html.="</section>";
         return $html;
     }
@@ -43,7 +41,10 @@ class ContactPage extends BasePage
         $html.=  "<textarea class='form-control' name='message' id='message' cols='20' rows='5' required></textarea>";
         $html.=  "<label for='message'>your message</label>";
         $html.="</fieldset>";
-        $html.="<input class='btn btn-submit' type='submit' value='Submit' /><small>or press <strong>enter</strong></small>";
+        $html.="<div class='form-buttons text-right'>";
+        $html.="<button class='btn btn-raised btn-primary' type='submit'>Submit</button>";
+        $html.="<p class='no-gap text-center'><small><em>I’ll really try to get back to everyone, but sometimes it’s hard and I can’t guarantee anything.</em></small></p>";
+        $html.="</div>";
         $html.="</form>";
 
         return $html;

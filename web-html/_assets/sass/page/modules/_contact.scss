@@ -1,0 +1,32 @@
+/**
+ * Module: contact.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+$colors: getColors($brand);
+
+.Site-contact {
+    .content--header {
+      color: extra($colors);
+      background: base($colors);
+      background-image:
+        linear-gradient(
+          rgba(base($colors), 0.5),
+          rgba(base($colors), 0.5)
+        ),
+        url(/img/baselope.png);
+      background-size:contain;
+      background-repeat:no-repeat;
+      background-position:center;
+
+      h1 {
+        color: hilight($colors)
+      }
+
+    }
+}

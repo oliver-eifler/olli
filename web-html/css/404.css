@@ -1,1 +1,85 @@
-*{line-height:1.5;margin:0}html{color:#888;display:table;font-family:sans-serif;height:100%;text-align:center;width:100%}body{display:table-cell;vertical-align:middle;margin:2em auto}h1{color:#500;font-size:2em;font-weight:400}p,ul{margin:0 auto;width:280px}ul,li{list-style:none;padding:0}li{display:inline-block;margin:0 .5em}a{text-decoration:none;color:#2455c3}a:visited{color:#2455c3}a:focus,a:hover{color:#2455c3;text-decoration:underline}@media only screen and (max-width: 280px){body,p,ul{width:95%}h1{font-size:1.5em;margin:0 0 0.3em}}
+/**
+ * 404.scss - inline-css for error page
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* line 13, ../../../web-html/_assets/sass/404.scss */
+* {
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* line 18, ../../../web-html/_assets/sass/404.scss */
+html {
+  color: #888;
+  display: table;
+  font-family: sans-serif;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+/* line 27, ../../../web-html/_assets/sass/404.scss */
+body {
+  display: table-cell;
+  vertical-align: middle;
+  margin: 2em auto;
+}
+
+/* line 33, ../../../web-html/_assets/sass/404.scss */
+h1 {
+  color: #500;
+  font-size: 2em;
+  font-weight: 400;
+}
+
+/* line 39, ../../../web-html/_assets/sass/404.scss */
+p, ul {
+  margin: 0 auto;
+  width: 280px;
+}
+
+/* line 43, ../../../web-html/_assets/sass/404.scss */
+ul, li {
+  list-style: none;
+  padding: 0;
+}
+
+/* line 47, ../../../web-html/_assets/sass/404.scss */
+li {
+  display: inline-block;
+  margin: 0 .5em;
+}
+
+/* line 52, ../../../web-html/_assets/sass/404.scss */
+a {
+  text-decoration: none;
+  color: #2455c3;
+}
+/* line 55, ../../../web-html/_assets/sass/404.scss */
+a:visited {
+  color: #2455c3;
+}
+/* line 58, ../../../web-html/_assets/sass/404.scss */
+a:focus, a:hover {
+  color: #2455c3;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 280px) {
+  /* line 66, ../../../web-html/_assets/sass/404.scss */
+  body, p, ul {
+    width: 95%;
+  }
+
+  /* line 70, ../../../web-html/_assets/sass/404.scss */
+  h1 {
+    font-size: 1.5em;
+    margin: 0 0 0.3em;
+  }
+}

@@ -22,16 +22,6 @@ $browser-minimum-versions: (
 @import 'olli/colors';
 @import 'olli/theme';
 
-$primary-color:            mui-color('indigo', '500') !default;
-$primary-color-dark:       mui-color('indigo', '700') !default;
-$primary-color-light:      mui-color('indigo', '100') !default;
-
-$accent-color:             mui-color('indigo', 'A400') !default;
-$accent-color-dark:        mui-color('indigo', 'A700') !default;
-$accent-color-light:       mui-color('indigo', 'A100') !default;
-
-$danger-color:             mui-color('red', '500') !default;
-
 $base-font-size: 16;
 $base-line-height: $base-font-size*1.5;
 $base-hgap:  $base-font-size;
@@ -51,13 +41,16 @@ $bp-wide:  px2em((1.25*$content-width)+$side-width+(2*$base-hgap)); //with sidep
 
 
 //colors
+$default-color:            #fafaff;
+$primary-color:            #2455c3;//mui-color('blue', '500') !default;
+$accent-color:             mui-color('pink', 'A400') !default;
+$danger-color:             mui-color('red', 'A700') !default;
+
 $brand:         #221144;
-$brand-text:    text-contrast($brand);
-$brand-hilight: contrast($brand);
 
 
 $header-color:  $brand;
 $footer-color:  darken($brand,15%);
 $body-color:    darken($brand,10%);
-//$site-color: #ffffff;
-$content-color:  #fafaff;
+
+$content-color:  $default-color;

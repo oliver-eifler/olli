@@ -10,12 +10,28 @@
  **/
 $content-color:  #fafaff !default;
 $colors: getColors($content-color);
-$content-link: #2455c3;//$accent-color;
+$content-link: $primary-color !default;
 
 $content-gap: $base-hgap;
-
 .Site-contentContainer {
+  & > * + * {
+    margin-top: px2em($base-vgap);
+  }
 }
+
+.Site-content {
+   & > * + .Sheet-item {
+     padding-top:0;
+   }
+   & > * + .content--aside {
+      margin-top: px2em($base-vgap);
+   }
+   & > .content--header,
+   & > .content--header + .Sheet-item,
+   & > .content--aside {
+      padding-top: px2em($base-vgap);
+   }
+ }
 
 p > code, li > code, dd > code, td > code {
     background: none repeat scroll 0% 0% #AAA;
@@ -34,21 +50,6 @@ p > code, li > code, dd > code, td > code {
   color: text($colors);
   h1,h2,h3,h4,h5,h6 {
     color: hilight($colors);
-  }
-  a {
-    color:$content-link;
-    //border-bottom:1px solid transparent;
-    &:visited {
-    color:$content-link;
-    }
-
-    &:focus,&:hover {
-      color:text($colors);
-      color:$content-link;
-
-      //border-color: text($colors);
-      text-decoration: underline
-    }
   }
   hr {
     display:block;
@@ -81,11 +82,12 @@ p > code, li > code, dd > code, td > code {
 
     color: info($colors);
 }
-
+/*
 .content--header + * {
   padding-top:0;
   margin-top:0;
 }
+*/
 
 
 @media (min-width: $bp-large){
@@ -101,4 +103,3 @@ p > code, li > code, dd > code, td > code {
      font-size:20px;
     }
 }
-@import 'modules/articlelist';

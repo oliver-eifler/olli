@@ -14,6 +14,7 @@
 
 @import 'olli/normalize';
 /* Page Base Layout */
+@import 'page/base';
 @import 'page/layout';
 @import 'page/fonts';
 @import 'page/typography';
@@ -23,3 +24,8 @@
 @import 'page/footer';
 @import 'page/content';
 @import 'page/forms';
+@import 'page/buttons';
+/* Page Modules extending components*/
+@import 'page/modules/articles';
+@import 'page/modules/contact';
+

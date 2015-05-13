@@ -18,11 +18,19 @@ $footer-hgap: $base-hgap;
 $footer-vgap: $base-vgap;
 
 .Site-footerContainer {
+  & > * + * {
+    margin-top: px2em($base-vgap);
+  }
+
 }
 
 .Site-footer {
-    text-align:center;
+  text-align:center;
+  & > * + * {
+    margin-top: px2em($base-vgap);
+  }
 }
+
 .Footer:last-child {
   padding-bottom:0;
 }
@@ -32,7 +40,6 @@ $footer-vgap: $base-vgap;
   background-color:base($colors);
   color:text($colors);
   a {
-    vertical-align: middle;
     &:link,&:visited {
       color:$footer-link;
       border-bottom:1px solid transparent;
@@ -42,14 +49,15 @@ $footer-vgap: $base-vgap;
     &:hover,&:focus {
       color:text($colors);
       border-color: text($colors);
+      text-decoration:none;
       svg {fill: text($colors);}
     }
-    svg {
-      @include inline-block;
+    & > svg {
       width:1em;
       height:1em;
       fill: text($colors);
       margin-right:.5em;
+      vertical-align:middle;
     }
 
   }

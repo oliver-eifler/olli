@@ -1,0 +1,34 @@
+/**
+ * defaults.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+
+ /* base styles of html elements */
+[disabled],.btn[disabled]  {
+    cursor: default;
+    pointer-events:none;
+    @include opacity(.6);
+}
+
+a {
+  color:$primary-color;
+  text-decoration:none;
+  &:visited {
+    color:$primary-color;
+  }
+  &:focus,&:hover {
+    color:$primary-color;
+    text-decoration: underline
+  }
+  & > svg {
+    width:1em;
+    height:1em;
+  }
+
+}

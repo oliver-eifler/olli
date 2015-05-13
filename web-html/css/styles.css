@@ -490,6 +490,48 @@ th {
 
 /* Page Base Layout */
 /**
+ * defaults.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* base styles of html elements */
+/* line 13, ../../../web-html/_assets/sass/page/_base.scss */
+[disabled], .btn[disabled] {
+  cursor: default;
+  pointer-events: none;
+  /* Content for ie 8.
+  Min version: 7.
+  User threshold to keep: 0.1%. If ie 8 are omitted: 4.46163%. */
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+}
+
+/* line 19, ../../../web-html/_assets/sass/page/_base.scss */
+a {
+  color: #2455c3;
+  text-decoration: none;
+}
+/* line 22, ../../../web-html/_assets/sass/page/_base.scss */
+a:visited {
+  color: #2455c3;
+}
+/* line 25, ../../../web-html/_assets/sass/page/_base.scss */
+a:focus, a:hover {
+  color: #2455c3;
+  text-decoration: underline;
+}
+/* line 29, ../../../web-html/_assets/sass/page/_base.scss */
+a > svg {
+  width: 1em;
+  height: 1em;
+}
+
+/**
  * styles.scss
  * This file is part of the Olli Web Page
  * Copyright (c) 2015 Oliver Jean Eifler
@@ -600,24 +642,34 @@ a {
   .Site-headerContainer {display:table-caption;}
 }
 */
-/* line 74, ../../../web-html/_assets/sass/page/_layout.scss */
+/*
+.Sheet {
+ // font-size:px2em($base-font);
+ // line-height:$base-line-height;
+  margin:0 auto;
+  padding:0 px2em($base-hgap);
+  & > *+* {
+    margin-top: px2em($base-vgap);
+  }
+}
+.Sheet-item {
+  padding: px2em($base-vgap);
+}
+*/
+/* line 87, ../../../web-html/_assets/sass/page/_layout.scss */
 .Sheet {
   margin: 0 auto;
   padding: 0 1em;
 }
-/* line 79, ../../../web-html/_assets/sass/page/_layout.scss */
-.Sheet > * + * {
-  margin-top: 1.5em;
-}
 
-/* line 83, ../../../web-html/_assets/sass/page/_layout.scss */
+/* line 93, ../../../web-html/_assets/sass/page/_layout.scss */
 .Sheet-item {
   padding: 1.5em;
 }
 
 /*Medium Display and lower*/
 @media (max-width: 42em) {
-  /* line 89, ../../../web-html/_assets/sass/page/_layout.scss */
+  /* line 99, ../../../web-html/_assets/sass/page/_layout.scss */
   .Sheet {
     padding-left: 0;
     padding-right: 0;
@@ -625,7 +677,7 @@ a {
   }
 }
 @media (max-width: 20em) {
-  /* line 96, ../../../web-html/_assets/sass/page/_layout.scss */
+  /* line 106, ../../../web-html/_assets/sass/page/_layout.scss */
   .Sheet-item {
     padding-left: .5em;
     padding-right: .5em;
@@ -772,7 +824,7 @@ p, div, hr, pre, form, fieldset, .p {
 }
 
 /* line 52, ../../../web-html/_assets/sass/page/_typography.scss */
-*:first-child {
+*:first-child, .no-gap {
   margin-top: 0;
 }
 
@@ -997,10 +1049,12 @@ textarea {
 /* line 44, ../../../web-html/_assets/sass/page/_header.scss */
 .Header a:focus {
   color: #FFEA00;
+  text-decoration: none;
 }
 /* line 45, ../../../web-html/_assets/sass/page/_header.scss */
 .Header a:hover {
   color: #FFEA00;
+  text-decoration: none;
 }
 /* line 48, ../../../web-html/_assets/sass/page/_header.scss */
 .Header a.cur {
@@ -1273,58 +1327,60 @@ textarea {
  * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  **/
-/* line 23, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 21, ../../../web-html/_assets/sass/page/_footer.scss */
+.Site-footerContainer > * + * {
+  margin-top: 1.5em;
+}
+
+/* line 27, ../../../web-html/_assets/sass/page/_footer.scss */
 .Site-footer {
   text-align: center;
 }
+/* line 29, ../../../web-html/_assets/sass/page/_footer.scss */
+.Site-footer > * + * {
+  margin-top: 1.5em;
+}
 
-/* line 26, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 34, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer:last-child {
   padding-bottom: 0;
 }
 
-/* line 30, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 38, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer {
   text-align: left;
   background-color: #030207;
   color: #c0bfc1;
 }
-/* line 34, ../../../web-html/_assets/sass/page/_footer.scss */
-.Footer a {
-  vertical-align: middle;
-}
-/* line 36, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 43, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer a:link, .Footer a:visited {
   color: #FFF;
   border-bottom: 1px solid transparent;
 }
-/* line 39, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 46, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer a:link svg, .Footer a:visited svg {
   fill: #FFF;
 }
-/* line 42, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 49, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer a:hover, .Footer a:focus {
   color: #c0bfc1;
   border-color: #c0bfc1;
+  text-decoration: none;
 }
-/* line 45, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 53, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer a:hover svg, .Footer a:focus svg {
   fill: #c0bfc1;
 }
-/* line 47, ../../../web-html/_assets/sass/page/_footer.scss */
-.Footer a svg {
-  display: inline-block;
-  vertical-align: middle;
-  *vertical-align: auto;
-  *zoom: 1;
-  *display: inline;
+/* line 55, ../../../web-html/_assets/sass/page/_footer.scss */
+.Footer a > svg {
   width: 1em;
   height: 1em;
   fill: #c0bfc1;
   margin-right: .5em;
+  vertical-align: middle;
 }
 
-/* line 57, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 65, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer-legende {
   padding: 0 1.5em;
   border-top: 1px solid #212024;
@@ -1332,13 +1388,13 @@ textarea {
   color: #8b8a8c;
 }
 
-/* line 65, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 73, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer--nav ul, .Footer--nav li {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-/* line 70, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 78, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer--nav ul {
   display: inline-block;
   vertical-align: top;
@@ -1347,7 +1403,7 @@ textarea {
   *display: inline;
   padding: 0 1.5em 0 1.5em;
 }
-/* line 74, ../../../web-html/_assets/sass/page/_footer.scss */
+/* line 82, ../../../web-html/_assets/sass/page/_footer.scss */
 .Footer--nav .ident {
   margin-left: -1.5em;
   margin-right: -1.5em;
@@ -1363,7 +1419,25 @@ textarea {
  * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  **/
-/* line 20, ../../../web-html/_assets/sass/page/_content.scss */
+/* line 17, ../../../web-html/_assets/sass/page/_content.scss */
+.Site-contentContainer > * + * {
+  margin-top: 1.5em;
+}
+
+/* line 23, ../../../web-html/_assets/sass/page/_content.scss */
+.Site-content > * + .Sheet-item {
+  padding-top: 0;
+}
+/* line 26, ../../../web-html/_assets/sass/page/_content.scss */
+.Site-content > * + .content--aside {
+  margin-top: 1.5em;
+}
+/* line 29, ../../../web-html/_assets/sass/page/_content.scss */
+.Site-content > .content--header, .Site-content > .content--header + .Sheet-item, .Site-content > .content--aside {
+  padding-top: 1.5em;
+}
+
+/* line 36, ../../../web-html/_assets/sass/page/_content.scss */
 p > code, li > code, dd > code, td > code {
   background: none repeat scroll 0% 0% #AAA;
   color: #000;
@@ -1376,7 +1450,7 @@ p > code, li > code, dd > code, td > code {
   line-height: 1;
 }
 
-/* line 32, ../../../web-html/_assets/sass/page/_content.scss */
+/* line 48, ../../../web-html/_assets/sass/page/_content.scss */
 .content {
   background-color: #fafaff;
   color: #3e3e3f;
@@ -1384,25 +1458,11 @@ p > code, li > code, dd > code, td > code {
   background-image: linear-gradient(to top, #888888 1px, rgba(0, 0, 0, 0) 1px);
   background-size: 100% 1.5em;
 }
-/* line 35, ../../../web-html/_assets/sass/page/_content.scss */
+/* line 51, ../../../web-html/_assets/sass/page/_content.scss */
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
   color: #000;
 }
-/* line 38, ../../../web-html/_assets/sass/page/_content.scss */
-.content a {
-  color: #2455c3;
-}
-/* line 41, ../../../web-html/_assets/sass/page/_content.scss */
-.content a:visited {
-  color: #2455c3;
-}
-/* line 45, ../../../web-html/_assets/sass/page/_content.scss */
-.content a:focus, .content a:hover {
-  color: #3e3e3f;
-  color: #2455c3;
-  text-decoration: underline;
-}
-/* line 53, ../../../web-html/_assets/sass/page/_content.scss */
+/* line 54, ../../../web-html/_assets/sass/page/_content.scss */
 .content hr {
   display: block;
   box-sizing: border-box;
@@ -1412,7 +1472,7 @@ p > code, li > code, dd > code, td > code {
   border: none;
   border-bottom: 1px solid #dcdce0;
 }
-/* line 62, ../../../web-html/_assets/sass/page/_content.scss */
+/* line 63, ../../../web-html/_assets/sass/page/_content.scss */
 .content .hljs {
   white-space: pre-wrap;
   padding: 0.75em 0.5em;
@@ -1420,12 +1480,12 @@ p > code, li > code, dd > code, td > code {
   font-family: monospace,monospace;
 }
 
-/* line 73, ../../../web-html/_assets/sass/page/_content.scss */
+/* line 74, ../../../web-html/_assets/sass/page/_content.scss */
 .content-tagline, .content-description {
   font-weight: bold;
 }
 
-/* line 76, ../../../web-html/_assets/sass/page/_content.scss */
+/* line 77, ../../../web-html/_assets/sass/page/_content.scss */
 .content-published {
   font-family: monospace,monospace;
   font-size: 0.8em;
@@ -1435,14 +1495,14 @@ p > code, li > code, dd > code, td > code {
   color: #727275;
 }
 
-/* line 85, ../../../web-html/_assets/sass/page/_content.scss */
+/*
 .content--header + * {
-  padding-top: 0;
-  margin-top: 0;
+  padding-top:0;
+  margin-top:0;
 }
-
+*/
 @media (min-width: 62em) {
-  /* line 92, ../../../web-html/_assets/sass/page/_content.scss */
+  /* line 94, ../../../web-html/_assets/sass/page/_content.scss */
   .content {
     margin-left: 0;
     margin-right: 0;
@@ -1450,48 +1510,11 @@ p > code, li > code, dd > code, td > code {
   }
 }
 @media (min-width: 72em) {
-  /* line 100, ../../../web-html/_assets/sass/page/_content.scss */
+  /* line 102, ../../../web-html/_assets/sass/page/_content.scss */
   .Site-content {
     font-size: 20px;
   }
 }
-/**
- * Module: articlelist.scss
- * This file is part of the Olli Web Page
- * Copyright (c) 2015 Oliver Jean Eifler
- *
- * @version 0.0.1
- * @link http://www.oliver-eifler.de/
- * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
- * @license http://www.opensource.org/licenses/mit-license.php MIT License
- **/
-/* line 11, ../../../web-html/_assets/sass/page/modules/_articlelist.scss */
-.articleList {
-  list-style: none;
-}
-/* line 13, ../../../web-html/_assets/sass/page/modules/_articlelist.scss */
-.articleList li {
-  margin: 0;
-}
-/* line 16, ../../../web-html/_assets/sass/page/modules/_articlelist.scss */
-.articleList li + li {
-  margin-top: 1.5em;
-}
-
-/* line 21, ../../../web-html/_assets/sass/page/modules/_articlelist.scss */
-.articleList-item .published {
-  display: block;
-  font-family: monospace,monospace;
-  font-size: 0.8em;
-  line-height: 1.875;
-  text-transform: uppercase;
-  color: #727275;
-}
-/* line 28, ../../../web-html/_assets/sass/page/modules/_articlelist.scss */
-.articleList-item .excerpt {
-  margin: 0 0 0 1em;
-}
-
 /**
  * forms.scss
  * This file is part of the Olli Web Page
@@ -1502,7 +1525,7 @@ p > code, li > code, dd > code, td > code {
  * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  **/
-/* line 19, ../../../web-html/_assets/sass/page/_forms.scss */
+/* line 20, ../../../web-html/_assets/sass/page/_forms.scss */
 .form {
   padding: 0.75em 0.5em;
   width: 100%;
@@ -1515,6 +1538,11 @@ p > code, li > code, dd > code, td > code {
 }
 
 /* line 30, ../../../web-html/_assets/sass/page/_forms.scss */
+.form-buttons {
+  padding: 0 0.5em;
+}
+
+/* line 34, ../../../web-html/_assets/sass/page/_forms.scss */
 .form-group {
   display: block;
   position: relative;
@@ -1540,11 +1568,11 @@ p > code, li > code, dd > code, td > code {
   }
   */
 }
-/* line 38, ../../../web-html/_assets/sass/page/_forms.scss */
+/* line 42, ../../../web-html/_assets/sass/page/_forms.scss */
 .form-group:focus {
   background: #ff0;
 }
-/* line 42, ../../../web-html/_assets/sass/page/_forms.scss */
+/* line 46, ../../../web-html/_assets/sass/page/_forms.scss */
 .form-group > label {
   color: #727275;
   -webkit-transition: .3s linear;
@@ -1560,12 +1588,12 @@ p > code, li > code, dd > code, td > code {
   text-transform: uppercase;
   padding-left: 0;
 }
-/* line 57, ../../../web-html/_assets/sass/page/_forms.scss */
+/* line 61, ../../../web-html/_assets/sass/page/_forms.scss */
 .form-group > * {
   cursor: pointer;
 }
 
-/* line 79, ../../../web-html/_assets/sass/page/_forms.scss */
+/* line 83, ../../../web-html/_assets/sass/page/_forms.scss */
 .form-control {
   display: block;
   width: 100%;
@@ -1583,7 +1611,7 @@ p > code, li > code, dd > code, td > code {
   resize: none;
 }
 
-/* line 94, ../../../web-html/_assets/sass/page/_forms.scss */
+/* line 98, ../../../web-html/_assets/sass/page/_forms.scss */
 textarea.form-control {
   height: 7.5625em;
   background-image: -webkit-linear-gradient(bottom, #dcdce0 1px, rgba(0, 0, 0, 0) 1px);
@@ -1591,18 +1619,18 @@ textarea.form-control {
   background-size: 0 1.5em;
   background-repeat: repeat-y;
 }
-/* line 99, ../../../web-html/_assets/sass/page/_forms.scss */
+/* line 103, ../../../web-html/_assets/sass/page/_forms.scss */
 textarea.form-control:focus {
   background-size: 100% 1.5em;
 }
 
-/* line 105, ../../../web-html/_assets/sass/page/_forms.scss */
+/* line 109, ../../../web-html/_assets/sass/page/_forms.scss */
 .form-control:focus {
   border-color: #2455c3;
   margin-bottom: -1px;
   cursor: text;
 }
-/* line 109, ../../../web-html/_assets/sass/page/_forms.scss */
+/* line 113, ../../../web-html/_assets/sass/page/_forms.scss */
 .form-control:focus + label {
   cursor: text;
   color: #2455c3;
@@ -1617,13 +1645,366 @@ textarea.form-control:focus {
 }
 */
 @media (min-width: 30em) {
-  /* line 124, ../../../web-html/_assets/sass/page/_forms.scss */
+  /* line 128, ../../../web-html/_assets/sass/page/_forms.scss */
   .form-row {
     display: table;
     width: 100%;
   }
-  /* line 127, ../../../web-html/_assets/sass/page/_forms.scss */
+  /* line 131, ../../../web-html/_assets/sass/page/_forms.scss */
   .form-row > * {
     display: table-cell;
   }
+}
+/**
+ * buttons.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* line 68, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn {
+  position: relative;
+  overflow: hidden;
+  line-height: 2em;
+  height: 2em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 0 1em;
+  background: #2455c3;
+  color: #FFF;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: center;
+  *zoom: 1;
+  *display: inline;
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 0.25em;
+  border-radius: .25em;
+}
+/* line 21, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn > svg {
+  margin-right: .5em;
+  width: 1.5em;
+  height: 100%;
+  vertical-align: top;
+}
+/* line 31, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn:visited {
+  background: #2455c3;
+  color: #FFF;
+}
+/* line 35, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn:focus {
+  text-decoration: underline;
+}
+/* line 39, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn:hover, .btn:active {
+  background: #1c4298;
+}
+/* line 42, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn:visited:focus, .btn:hover:focus, .btn:active:focus, .btn:hover, .btn:focus {
+  text-decoration: none;
+}
+/* line 45, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn > svg {
+  fill: #FFF;
+}
+/* line 80, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn + .btn {
+  margin-left: .5em;
+}
+/* line 84, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn:active {
+  left: 1px;
+  top: 1px;
+}
+/* line 89, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0;
+  padding-top: 0;
+  border-radius: 100%;
+  background-color: rgba(250, 250, 255, 0.3);
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+/* line 106, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+  -webkit-transition: width .2s ease-out, padding-top .2s ease-out;
+          transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+/* line 113, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-large {
+  line-height: 4em;
+  height: 4em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  padding: 0 2em;
+}
+/* line 21, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-large > svg {
+  margin-right: .5em;
+  width: 1.5em;
+  height: 100%;
+  vertical-align: top;
+}
+
+/* button colors */
+/* line 118, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-default {
+  background: #fafaff;
+  color: #000;
+  font-weight: bold;
+}
+/* line 31, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-default:visited {
+  background: #fafaff;
+  color: #000;
+}
+/* line 35, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-default:focus {
+  text-decoration: underline;
+}
+/* line 39, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-default:hover, .btn-default:active {
+  background: #c7c7ff;
+}
+/* line 42, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-default:visited:focus, .btn-default:hover:focus, .btn-default:active:focus, .btn-default:hover, .btn-default:focus {
+  text-decoration: none;
+}
+/* line 45, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-default > svg {
+  fill: #000;
+}
+
+/*
+.btn-primary {
+  @include button-color($primary-color);
+}
+*/
+/* line 127, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-danger {
+  background: #D50000;
+  color: #FFF;
+}
+/* line 31, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-danger:visited {
+  background: #D50000;
+  color: #FFF;
+}
+/* line 35, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-danger:focus {
+  text-decoration: underline;
+}
+/* line 39, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-danger:hover, .btn-danger:active {
+  background: #a20000;
+}
+/* line 42, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-danger:visited:focus, .btn-danger:hover:focus, .btn-danger:active:focus, .btn-danger:hover, .btn-danger:focus {
+  text-decoration: none;
+}
+/* line 45, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-danger > svg {
+  fill: #FFF;
+}
+
+/* line 130, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-accent {
+  background: #F50057;
+  color: #FFF;
+}
+/* line 31, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-accent:visited {
+  background: #F50057;
+  color: #FFF;
+}
+/* line 35, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-accent:focus {
+  text-decoration: underline;
+}
+/* line 39, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-accent:hover, .btn-accent:active {
+  background: #c20045;
+}
+/* line 42, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-accent:visited:focus, .btn-accent:hover:focus, .btn-accent:active:focus, .btn-accent:hover, .btn-accent:focus {
+  text-decoration: none;
+}
+/* line 45, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-accent > svg {
+  fill: #FFF;
+}
+
+/* line 133, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat {
+  background: none;
+  color: #2455c3;
+  /*
+  &.btn-primary {
+      @include button-flat-color($primary-color);
+  }
+  */
+}
+/* line 53, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat:visited, .btn-flat:active {
+  background: none;
+  color: #2455c3;
+}
+/* line 58, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat:hover, .btn-flat:active {
+  color: #2455c3;
+  background: #c7c7ff;
+}
+/* line 63, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat > svg {
+  fill: #2455c3;
+}
+/* line 135, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-default {
+  background: none;
+  color: #000;
+  font-weight: bold;
+}
+/* line 53, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-default:visited, .btn-flat.btn-default:active {
+  background: none;
+  color: #000;
+}
+/* line 58, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-default:hover, .btn-flat.btn-default:active {
+  color: #000;
+  background: #c7c7ff;
+}
+/* line 63, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-default > svg {
+  fill: #000;
+}
+/* line 144, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-danger {
+  background: none;
+  color: #D50000;
+}
+/* line 53, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-danger:visited, .btn-flat.btn-danger:active {
+  background: none;
+  color: #D50000;
+}
+/* line 58, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-danger:hover, .btn-flat.btn-danger:active {
+  color: #D50000;
+  background: #c7c7ff;
+}
+/* line 63, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-danger > svg {
+  fill: #D50000;
+}
+/* line 147, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-accent {
+  background: none;
+  color: #F50057;
+}
+/* line 53, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-accent:visited, .btn-flat.btn-accent:active {
+  background: none;
+  color: #F50057;
+}
+/* line 58, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-accent:hover, .btn-flat.btn-accent:active {
+  color: #F50057;
+  background: #c7c7ff;
+}
+/* line 63, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-flat.btn-accent > svg {
+  fill: #F50057;
+}
+
+/* line 151, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-raised {
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+}
+/* line 153, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-raised:active {
+  box-shadow: none;
+}
+/* line 157, ../../../web-html/_assets/sass/page/_buttons.scss */
+.btn-raised:hover {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+}
+
+/* Page Modules extending components*/
+/**
+ * Module: articles.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* line 14, ../../../web-html/_assets/sass/page/modules/_articles.scss */
+.articleList {
+  list-style: none;
+}
+/* line 16, ../../../web-html/_assets/sass/page/modules/_articles.scss */
+.articleList li {
+  margin: 0;
+}
+/* line 19, ../../../web-html/_assets/sass/page/modules/_articles.scss */
+.articleList li + li {
+  margin-top: 1.5em;
+}
+
+/* line 24, ../../../web-html/_assets/sass/page/modules/_articles.scss */
+.articleList-item .published {
+  display: block;
+  font-family: monospace,monospace;
+  font-size: 0.8em;
+  line-height: 1.875;
+  text-transform: uppercase;
+  color: #727275;
+}
+/* line 31, ../../../web-html/_assets/sass/page/modules/_articles.scss */
+.articleList-item .excerpt {
+  margin: 0 0 0 1em;
+}
+
+/**
+ * Module: contact.scss
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+/* line 14, ../../../web-html/_assets/sass/page/modules/_contact.scss */
+.Site-contact .content--header {
+  color: #9977dd;
+  background: #221144;
+  background-image: -webkit-linear-gradient(rgba(34, 17, 68, 0.5), rgba(34, 17, 68, 0.5)), url(/img/baselope.png);
+  background-image: linear-gradient(rgba(34, 17, 68, 0.5), rgba(34, 17, 68, 0.5)), url(/img/baselope.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* line 27, ../../../web-html/_assets/sass/page/modules/_contact.scss */
+.Site-contact .content--header h1 {
+  color: #FFF;
 }
