@@ -38,15 +38,16 @@ $footer-vgap: $base-vgap;
 .Footer {
   text-align:left;
   background-color:base($colors);
+
   color:text($colors);
   a {
-    &:link,&:visited {
+    &:link,&:visited,&:focus {
       color:$footer-link;
       border-bottom:1px solid transparent;
       svg {fill: $footer-link;}
 
     }
-    &:hover,&:focus {
+    &:hover {
       color:text($colors);
       border-color: text($colors);
       text-decoration:none;

@@ -4,6 +4,7 @@
     "inline/loadCSS-inline.js"
   ],
   "init":[
+    "components/classie.js",
     "components/modernizr-custom.js",
     "components/webfontloader.js",
     "init.js"

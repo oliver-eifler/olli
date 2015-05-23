@@ -10,6 +10,7 @@
   $jsfile ="/js/init_".$jsupdate.".js";
   $svgupdate = filemtime("img/icons.svg");
   $svgfile ="/img/icons_".$svgupdate.".svg";
+  $cachecss = (isset($_COOKIE["css"]) && $_COOKIE["css"] == $cssfile);
 
     $page_links = array(
         array("title" => "Home"         ,"href" => "/"          ),
@@ -86,7 +87,7 @@ function buildLinkList()
         $entry["type"] = "socialicon";
         $entry["ajax"] = "false";
         $entry["class"] = "SocialNav-icon SocialNav-icon--".$icon;
-        $entry["content"] = "<svg><use xlink:href='#icon-".$icon."'></use></svg><em>".$title."</em>";
+        $entry["content"] = "<svg width='16' height='16'><use xlink:href='#icon-".$icon."'></use></svg><em>".$title."</em>";
         $entry["title"] = $title;
         $entry["href"] = $href;
         $ret[] = $entry;
@@ -101,7 +102,7 @@ function buildLinkList()
         $entry["type"] = "socialtext";
         $entry["ajax"] = "false";
         $entry["class"] = "";
-        $entry["content"] = "<svg><use xlink:href='#icon-".$icon."'></use></svg>".$title;
+        $entry["content"] = "<svg width='16' height='16'><use xlink:href='#icon-".$icon."'></use></svg>".$title;
         $entry["title"] = $title;
         $entry["href"] = $href;
         $ret[] = $entry;
@@ -182,8 +183,8 @@ function SiteHeader()
 
   $html.= "<div class='Header-info'>";
   $html.=   "<a class='Logo' title='Home' href='/'>";
-  $html.=     "<h1 class='Logo-title'>Oliver Jean Eifler</h1>";
-  $html.=     "<p class='Logo-tagline'>Programmierer Techniker Künstler</p>";
+  $html.=     "<div class='h1 Logo-title'>Oliver Jean Eifler</div>";
+  $html.=     "<div class='Logo-tagline'>Programmierer Techniker Künstler</div>";
   $html.=   "</a>";
   $html.= "</div>";
 
@@ -248,7 +249,7 @@ function SiteContent()
     $class[] = "Site-".$page->cmd;
 
   $html = "";//$page->debugData();
-  $html.="<article class='".implode(" ",$class)."'".($page->getData("isArticle")?" itemscope itemtype='http://schema.org/BlogPosting'":"").">";
+  $html.="<article id='content' class='".implode(" ",$class)."'".($page->getData("isArticle")?" itemscope itemtype='http://schema.org/BlogPosting'":"").">";
   //$html.=  $page->debugData();
   $html.=  $page->getHtml();
   $html.="</article>";
@@ -259,19 +260,24 @@ function PreLoad()
 global $cssfile;
 global $jsfile;
 global $svgfile;
+global $cachecss;
 
   $html = "";
-  $html.=  "<style type='text/css'>";
-  $html.=    file_get_contents("css/inline.css");
-  $html.=  "</style>";
 
+  $html.=  "<style type='text/css'>";
+  $html.=    file_get_contents($cachecss?"css/html5shiv.css":"css/inline.css");
+  $html.=  "</style>";
 
   $html.=  "<script  type='text/javascript'>";
   $html.=    file_get_contents("js/inline.js");
+  if (!$cachecss)
+    $html.=    "loadCSS('".$cssfile."')";
   $html.=  "</script>";
 
-  $html.=  "<noscript><link rel='stylesheet' href='".$cssfile."'></noscript>";
-  $html.=  "<link rel='stylesheet' href='".$cssfile."'>";
+  if (!$cachecss)
+    $html.=  "<noscript><link rel='stylesheet' href='".$cssfile."'></noscript>";
+  else
+    $html.=  "<link rel='stylesheet' href='".$cssfile."'>";
 
   return $html;
 }
@@ -284,7 +290,6 @@ global $svgfile;
   $html = "";
   $html.=  "<script  type='text/javascript'>";
   $html.=    "var _cfg = {css:'".$cssfile."',svg:'".$svgfile."'};";
-  //$html.=    "loadCSS('".$cssfile."')";
   $html.=  "</script>";
   $html.=  "<script src='".$jsfile."' async></script>";
   $arr = array(
@@ -304,7 +309,6 @@ function HTMLHeader()
   $title = htmlentities($page->getPreparedTitle(),ENT_QUOTES|ENT_HTML401);
   $desc = htmlentities($page->getPreparedDescription(),ENT_QUOTES|ENT_HTML401);
   $tags = htmlentities($page->getPreparedTags(),ENT_QUOTES|ENT_HTML401);
-
 
   $html = "";
   $html.= "<head>";
@@ -326,6 +330,8 @@ function HTMLHeader()
 function HTMLBody()
 {
   $html = "<body>";
+  $html .= "<a id='skiptocontent' href='#content' rel='nofollow' title='Skip to content'>Skip to content</a>";
+
   $html.=   "<div class='Site'>";
 
   $html.=     "<div class='Site-headerContainer'>";
@@ -344,6 +350,7 @@ function HTMLBody()
   $html.=       "</div>";
   $html.=     "</div>";
   $html.=   "</div>";
+
   $html.= PostLoad();
   $html.= "</body>";
 
@@ -352,10 +359,17 @@ function HTMLBody()
 function HTML()
 {
   $html = "<!DOCTYPE HTML>";
-  $html.= "<!--[if lte IE 7]><html lang='de' class='no-js ie ie-7 no-content no-flex'><![endif]-->";
-  $html.= "<!--[if IE 8]><html lang='de' class='no-js ie ie-8 no-flex'><![endif]-->";
-  $html.= "<!--[if IE 9]><html lang='de' class='no-js ie ie-9 no-flex'><![endif]-->";
-  $html.= "<!--[if !IE]>--><html  lang='de' class='no-js no-ie'><!--<![endif]-->";
+  if (isset($_COOKIE["class"]) && !empty($_COOKIE["class"]))
+  {
+    $html.= "<html  lang='de' class='no-js ".$_COOKIE["class"]." php'>";
+  }
+  else
+  {
+    $html.= "<!--[if lte IE 7]><html lang='de' class='no-js ie ie-7 no-flex'><![endif]-->";
+    $html.= "<!--[if IE 8]><html lang='de' class='no-js ie ie-8 no-flex'><![endif]-->";
+    $html.= "<!--[if IE 9]><html lang='de' class='no-js ie ie-9 no-flex'><![endif]-->";
+    $html.= "<!--[if !IE]>--><html  lang='de' class='no-js no-ie'><!--<![endif]-->";
+  }
   $html.= HTMLHeader();
   $html.= HTMLBody();
   $html.= "</html>";

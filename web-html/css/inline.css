@@ -54,49 +54,33 @@
  * @requires {function} top-shadow
  * @requires {function} bottom-shadow
  */
-/* line 21, ../../../web-html/_assets/sass/inline.scss */
+/* line 15, ../../../web-html/_assets/sass/inline.scss */
 article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
-/* line 22, ../../../web-html/_assets/sass/inline.scss */
+/* line 16, ../../../web-html/_assets/sass/inline.scss */
 mark {
   background: #FF0;
   color: #000;
 }
 
-/* line 22, ../../../web-html/_assets/sass/inline.scss */
+/* line 16, ../../../web-html/_assets/sass/inline.scss */
 svg, template {
   display: none;
 }
 
-/* line 23, ../../../web-html/_assets/sass/inline.scss */
+/* line 17, ../../../web-html/_assets/sass/inline.scss */
 img {
   max-width: 100%;
 }
 
-/*
-body {
-  background: $color;
-  color: $text3;
-}
-a {
-  text-decoration:none;
-  color:$text;
-}
-* {
-  margin:0;
-}
-* + * {
-  margin-top:1em;
-}
-*/
-/* line 43, ../../../web-html/_assets/sass/inline.scss */
+/* line 20, ../../../web-html/_assets/sass/inline.scss */
 .Header, .Footer {
   text-align: center;
 }
 
-/* line 46, ../../../web-html/_assets/sass/inline.scss */
+/* line 23, ../../../web-html/_assets/sass/inline.scss */
 .Header > *, .Header ul, .Header li {
   list-style: none;
   display: inline-block;
@@ -105,22 +89,29 @@ a {
   padding: .5em;
 }
 
-/* line 53, ../../../web-html/_assets/sass/inline.scss */
+/* line 30, ../../../web-html/_assets/sass/inline.scss */
+.logo-text {
+  font-size: 2em;
+}
+
+/* line 34, ../../../web-html/_assets/sass/inline.scss */
 .Header * {
   margin: 0;
 }
 
-/* line 56, ../../../web-html/_assets/sass/inline.scss */
+/* line 37, ../../../web-html/_assets/sass/inline.scss */
 .Site {
   padding: 0 2em;
   max-width: 80em;
   margin: 0 auto;
 }
 
-/* line 61, ../../../web-html/_assets/sass/inline.scss */
-.content {
+/* line 42, ../../../web-html/_assets/sass/inline.scss */
+.Site-content {
   padding: 1em 0;
   max-width: 40em;
   margin: 0 auto;
   line-height: 1.5;
 }
+
+/*# sourceMappingURL=inline.css.map */

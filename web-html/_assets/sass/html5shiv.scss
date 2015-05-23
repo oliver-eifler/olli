@@ -1,0 +1,12 @@
+/**
+ * html5.scss - for critical render path
+ * This file is part of the Olli Web Page
+ * Copyright (c) 2015 Oliver Jean Eifler
+ *
+ * @version 0.0.1
+ * @link http://www.oliver-eifler.de/
+ * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ **/
+article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section {display:block;}
+mark{background:#FF0;color:#000} svg,template{display:none}

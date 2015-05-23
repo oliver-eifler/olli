@@ -71,6 +71,8 @@
     @include button-size(2*$base-font-size);
     @include button-color($primary-color);
     @include inline-block(middle,center);
+    touch-action: manipulation;
+    user-select: none;
 
     text-transform: uppercase;
     white-space: nowrap;

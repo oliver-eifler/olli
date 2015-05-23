@@ -39,6 +39,7 @@ module.exports = function(grunt) {
         },
         dev: {                    // Another target
             options: {
+                sourcemap: true,
                 sassDir: '<%= dir.assets %>/sass',
                 cssDir: '<%= dir.build %>/temp/css',
                 fontsDir: '<%= dir.assets %>/fonts',
@@ -81,7 +82,10 @@ module.exports = function(grunt) {
       // Task-specific options go here.
     },
     release: {
-      options: {browsers:['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']},
+      options: {
+        browsers:['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'],
+        map:false
+      },
       expand: true,
       flatten: true,
       cwd: '<%= dir.build %>/temp/css/',
@@ -89,7 +93,10 @@ module.exports = function(grunt) {
       dest: '<%= dir.build %>/css/'
     },
     dev: {
-      options: {browsers:['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']},
+      options: {
+        browsers:['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'],
+        map:{inline:false}
+      },
       expand: true,
       flatten: true,
       cwd: '<%= dir.build %>/temp/css/',

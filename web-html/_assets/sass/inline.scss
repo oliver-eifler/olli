@@ -11,35 +11,12 @@
 
  /* Compass & mixin & config*/
 @import 'config';
-$color:  #FFF;
-$text:   contrast($color);
-$text1:   mix($text,$color,12);
-$text2:   mix($text,$color,30);
-$text3:   mix($text,$color,70);
-$text4:   mix($text,$color,100);
 
 article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section {display:block;}
 mark{background:#FF0;color:#000} svg,template{display:none}
 img {
   max-width:100%;
 }
-
-/*
-body {
-  background: $color;
-  color: $text3;
-}
-a {
-  text-decoration:none;
-  color:$text;
-}
-* {
-  margin:0;
-}
-* + * {
-  margin-top:1em;
-}
-*/
 .Header,.Footer {
   text-align:center;
 }
@@ -50,6 +27,10 @@ a {
   *zoom:1;
   padding:.5em;
 }
+.logo-text {
+  font-size:2em;
+}
+
 .Header * {
   margin:0;
 }
@@ -58,7 +39,7 @@ a {
   max-width:px2em($page-width);
   margin:0 auto;
 }
-.content {
+.Site-content {
   padding:1em 0;
   max-width:px2em($content-width);
   margin:0 auto;

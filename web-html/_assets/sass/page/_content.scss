@@ -48,6 +48,9 @@ p > code, li > code, dd > code, td > code {
 .content {
   background-color: base($colors);
   color: text($colors);
+  *:focus {
+    outline-color: hilight($colors);
+  }
   h1,h2,h3,h4,h5,h6 {
     color: hilight($colors);
   }
@@ -90,16 +93,3 @@ p > code, li > code, dd > code, td > code {
 */
 
 
-@media (min-width: $bp-large){
-    .content {
-      margin-left: 0;
-      margin-right: 0;
-      max-width:none;
-    }
-
-}
-@media (min-width: $bp-wide){
-    .Site-content {
-     font-size:20px;
-    }
-}

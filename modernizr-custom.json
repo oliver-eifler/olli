@@ -19,7 +19,11 @@
     "css/flexboxlegacy",
     "css/flexboxtweener",
     "css/flexwrap",
-    "css/generatedcontent",
-    "svg/inline"
+    "svg/inline",
+    "canvas",
+    "queryselector",
+    "es5/array",
+    "json",
+    "history"
   ]
 }

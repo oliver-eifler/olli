@@ -12,6 +12,7 @@ function loadCSS( href, before, media){
 	     var style = d.createElement('p');
          style.innerHTML = 'x<style type="text/css" media='+(media || "all")+'>' + xhr.responseText + '</style>';
          ref.parentNode.insertBefore(style.lastChild, ref);
+         d.cookie = encodeURIComponent("css") + "=" + encodeURIComponent(href);
        }
 	 }
      xhr.send();

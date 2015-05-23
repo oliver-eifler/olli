@@ -14,8 +14,6 @@ $colors: getColors($header-color);
 
 $header-link: text($colors);
 $header-link-hover:         mui-color('yellow', 'A400') !default;
-$header-link-focus:         mui-color('yellow', 'A400') !default;
-$header-link-active:        mui-color('yellow', 'A400') !default;
 
 $header-gap: 4;
 /* BASE STYLE */
@@ -40,8 +38,7 @@ $header-gap: 4;
   }
   a {
     color: $header-link;
-    &:visited {color: $header-link;}
-    &:focus {color: $header-link-focus;text-decoration:none;}
+    &:visited,&:focus {color: $header-link;text-decoration:none;}
     &:hover {color: $header-link-hover;text-decoration:none;}
     padding:px2em($header-gap);
   }
@@ -64,7 +61,7 @@ $header-gap: 4;
 /* LOGO */
 .Logo {
     color: hilight($colors);
-    &:focus > .Logo-title {color: $header-link-focus;}
+    &:focus > .Logo-title {color: hilight($colors);}
     &:hover > .Logo-title  {color: $header-link-hover;}
     &:visited > .Logo-tagline,
     &:focus > .Logo-tagline,
@@ -174,19 +171,9 @@ $facebook: #3b5998;
 
 /* large display */
 @media (min-width: $bp-large){
-  .Site {
-    max-width: px2em($page-width+$side-width);
-    & > * {
+  .Site > * {
       padding-left:px2em($side-width);
     }
-  }
-  /*
-  .no-flex {
-    .Site {display:block;}
-    .Site > * {display:block;}
-  }
-  */
-
   .Site-headerContainer {
     position:fixed;
     width: px2em($side-width);
