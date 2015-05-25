@@ -19,6 +19,13 @@ $colors: getColors($content-color);
   li+li {
     margin-top: px2em($base-line-height);
   }
+  a[visited]:after {
+    content: "\2713";
+    color: $accent-color;
+    text-decoration:underline;
+    text-decoration-color: base($colors);
+  }
+
 }
 .articleList-item {
   .published {

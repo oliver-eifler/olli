@@ -43,6 +43,8 @@ $bp-wide:  px2em((1.25*$content-width)+$side-width+(2*$base-hgap)); //with sidep
 //colors
 $default-color:            #fafaff;
 $primary-color:            #2455c3;//mui-color('blue', '500') !default;
+$primary-color-dark:       darken($primary-color,15%);//mui-color('blue', '500') !default;
+
 $accent-color:             mui-color('pink', 'A400') !default;
 $danger-color:             mui-color('red', 'A700') !default;
 

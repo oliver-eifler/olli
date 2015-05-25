@@ -8,5 +8,13 @@
     "components/modernizr-custom.js",
     "components/webfontloader.js",
     "init.js"
+  ],
+    "olli":[
+    "olli/olli.base.js",
+    "olli/olli.lib.js",
+    "olli/olli.docready.js",
+    "olli/olli.events.js",
+    "olli/olli.dom.js"
   ]
+
 }

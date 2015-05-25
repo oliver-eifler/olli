@@ -542,6 +542,15 @@ a > svg {
   height: 1em;
 }
 
+/* line 43, ../../../web-html/_assets/sass/page/_base.scss */
+a[visited] {
+  color: #183982;
+}
+/* line 45, ../../../web-html/_assets/sass/page/_base.scss */
+a[visited]:visited, a[visited]:focus, a[visited]:hover {
+  color: #183982;
+}
+
 /**
  * styles.scss
  * This file is part of the Olli Web Page
@@ -1668,7 +1677,7 @@ textarea.form-control:focus {
  * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  **/
-/* line 68, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 66, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn {
   position: relative;
   overflow: hidden;
@@ -1707,32 +1716,29 @@ textarea.form-control:focus {
   background: #2455c3;
   color: #FFF;
 }
-/* line 35, ../../../web-html/_assets/sass/page/_buttons.scss */
-.btn:focus {
-  text-decoration: underline;
-}
-/* line 39, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 36, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn:hover, .btn:active {
   background: #1c4298;
+  color: #FFF;
 }
-/* line 42, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 40, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn:visited:focus, .btn:hover:focus, .btn:active:focus, .btn:hover, .btn:focus {
   text-decoration: none;
 }
-/* line 45, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 43, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn > svg {
   fill: #FFF;
 }
-/* line 82, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 80, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn + .btn {
   margin-left: .5em;
 }
-/* line 86, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 84, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn:active {
   left: 1px;
   top: 1px;
 }
-/* line 91, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 89, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn:before {
   content: "";
   position: absolute;
@@ -1747,7 +1753,7 @@ textarea.form-control:focus {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
-/* line 108, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 106, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn:active:before {
   width: 120%;
   padding-top: 120%;
@@ -1755,7 +1761,7 @@ textarea.form-control:focus {
           transition: width .2s ease-out, padding-top .2s ease-out;
 }
 
-/* line 115, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 113, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-large {
   line-height: 4em;
   height: 4em;
@@ -1772,7 +1778,7 @@ textarea.form-control:focus {
 }
 
 /* button colors */
-/* line 120, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 118, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-default {
   background: #fafaff;
   color: #000;
@@ -1783,19 +1789,16 @@ textarea.form-control:focus {
   background: #fafaff;
   color: #000;
 }
-/* line 35, ../../../web-html/_assets/sass/page/_buttons.scss */
-.btn-default:focus {
-  text-decoration: underline;
-}
-/* line 39, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 36, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-default:hover, .btn-default:active {
   background: #c7c7ff;
+  color: #000;
 }
-/* line 42, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 40, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-default:visited:focus, .btn-default:hover:focus, .btn-default:active:focus, .btn-default:hover, .btn-default:focus {
   text-decoration: none;
 }
-/* line 45, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 43, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-default > svg {
   fill: #000;
 }
@@ -1805,7 +1808,7 @@ textarea.form-control:focus {
   @include button-color($primary-color);
 }
 */
-/* line 129, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 127, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-danger {
   background: #D50000;
   color: #FFF;
@@ -1815,24 +1818,21 @@ textarea.form-control:focus {
   background: #D50000;
   color: #FFF;
 }
-/* line 35, ../../../web-html/_assets/sass/page/_buttons.scss */
-.btn-danger:focus {
-  text-decoration: underline;
-}
-/* line 39, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 36, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-danger:hover, .btn-danger:active {
   background: #a20000;
+  color: #FFF;
 }
-/* line 42, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 40, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-danger:visited:focus, .btn-danger:hover:focus, .btn-danger:active:focus, .btn-danger:hover, .btn-danger:focus {
   text-decoration: none;
 }
-/* line 45, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 43, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-danger > svg {
   fill: #FFF;
 }
 
-/* line 132, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 130, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-accent {
   background: #F50057;
   color: #FFF;
@@ -1842,24 +1842,21 @@ textarea.form-control:focus {
   background: #F50057;
   color: #FFF;
 }
-/* line 35, ../../../web-html/_assets/sass/page/_buttons.scss */
-.btn-accent:focus {
-  text-decoration: underline;
-}
-/* line 39, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 36, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-accent:hover, .btn-accent:active {
   background: #c20045;
+  color: #FFF;
 }
-/* line 42, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 40, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-accent:visited:focus, .btn-accent:hover:focus, .btn-accent:active:focus, .btn-accent:hover, .btn-accent:focus {
   text-decoration: none;
 }
-/* line 45, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 43, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-accent > svg {
   fill: #FFF;
 }
 
-/* line 135, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 133, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat {
   background: none;
   color: #2455c3;
@@ -1869,88 +1866,88 @@ textarea.form-control:focus {
   }
   */
 }
-/* line 53, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 51, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat:visited, .btn-flat:active {
   background: none;
   color: #2455c3;
 }
-/* line 58, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 56, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat:hover, .btn-flat:active {
   color: #2455c3;
   background: #c7c7ff;
 }
-/* line 63, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 61, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat > svg {
   fill: #2455c3;
 }
-/* line 137, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 135, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-default {
   background: none;
   color: #000;
   font-weight: bold;
 }
-/* line 53, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 51, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-default:visited, .btn-flat.btn-default:active {
   background: none;
   color: #000;
 }
-/* line 58, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 56, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-default:hover, .btn-flat.btn-default:active {
   color: #000;
   background: #c7c7ff;
 }
-/* line 63, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 61, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-default > svg {
   fill: #000;
 }
-/* line 146, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 144, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-danger {
   background: none;
   color: #D50000;
 }
-/* line 53, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 51, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-danger:visited, .btn-flat.btn-danger:active {
   background: none;
   color: #D50000;
 }
-/* line 58, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 56, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-danger:hover, .btn-flat.btn-danger:active {
   color: #D50000;
   background: #c7c7ff;
 }
-/* line 63, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 61, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-danger > svg {
   fill: #D50000;
 }
-/* line 149, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 147, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-accent {
   background: none;
   color: #F50057;
 }
-/* line 53, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 51, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-accent:visited, .btn-flat.btn-accent:active {
   background: none;
   color: #F50057;
 }
-/* line 58, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 56, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-accent:hover, .btn-flat.btn-accent:active {
   color: #F50057;
   background: #c7c7ff;
 }
-/* line 63, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 61, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-flat.btn-accent > svg {
   fill: #F50057;
 }
 
-/* line 153, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 151, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-raised {
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
 }
-/* line 155, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 153, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-raised:active {
   box-shadow: none;
 }
-/* line 159, ../../../web-html/_assets/sass/page/_buttons.scss */
+/* line 157, ../../../web-html/_assets/sass/page/_buttons.scss */
 .btn-raised:hover {
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
 }
@@ -1978,8 +1975,16 @@ textarea.form-control:focus {
 .articleList li + li {
   margin-top: 1.5em;
 }
+/* line 22, ../../../web-html/_assets/sass/page/modules/_articles.scss */
+.articleList a[visited]:after {
+  content: "\2713";
+  color: #F50057;
+  text-decoration: underline;
+  -moz-text-decoration-color: #fafaff;
+       text-decoration-color: #fafaff;
+}
 
-/* line 24, ../../../web-html/_assets/sass/page/modules/_articles.scss */
+/* line 31, ../../../web-html/_assets/sass/page/modules/_articles.scss */
 .articleList-item .published {
   display: block;
   font-family: monospace,monospace;
@@ -1988,7 +1993,7 @@ textarea.form-control:focus {
   text-transform: uppercase;
   color: #727275;
 }
-/* line 31, ../../../web-html/_assets/sass/page/modules/_articles.scss */
+/* line 38, ../../../web-html/_assets/sass/page/modules/_articles.scss */
 .articleList-item .excerpt {
   margin: 0 0 0 1em;
 }

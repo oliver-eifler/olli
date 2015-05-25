@@ -71,7 +71,7 @@ function buildLinkList()
         $href = $link["href"];
         $entry = $default;
         $entry["type"] = "main";
-        $entry["ajax"] = "true";
+        $entry["ajax"] = true;
         $entry["content"] = $title;
         $entry["title"] = $title;
         $entry["href"] = $href;
@@ -85,7 +85,7 @@ function buildLinkList()
 
         $entry = $default;
         $entry["type"] = "socialicon";
-        $entry["ajax"] = "false";
+        $entry["ajax"] = false;
         $entry["class"] = "SocialNav-icon SocialNav-icon--".$icon;
         $entry["content"] = "<svg width='16' height='16'><use xlink:href='#icon-".$icon."'></use></svg><em>".$title."</em>";
         $entry["title"] = $title;
@@ -100,7 +100,7 @@ function buildLinkList()
 
         $entry = $default;
         $entry["type"] = "socialtext";
-        $entry["ajax"] = "false";
+        $entry["ajax"] = false;
         $entry["class"] = "";
         $entry["content"] = "<svg width='16' height='16'><use xlink:href='#icon-".$icon."'></use></svg>".$title;
         $entry["title"] = $title;
@@ -132,7 +132,7 @@ function getLinkList($type="main")
         if (!empty($class))
             $tag .= " class='".trim(implode(" ",$class))."'";
         if ($link["ajax"]==true)
-            $tag .= " ajax='true'";
+            $tag .= " ajax";
         $tag.=">";
         $tag.= $content;
         $tag.="</a>";
@@ -261,6 +261,7 @@ global $cssfile;
 global $jsfile;
 global $svgfile;
 global $cachecss;
+  $cachecss = true;
 
   $html = "";
 
@@ -269,6 +270,7 @@ global $cachecss;
   $html.=  "</style>";
 
   $html.=  "<script  type='text/javascript'>";
+  $html.=    "var _cfg = {css:'".$cssfile."',svg:'".$svgfile."'};";
   $html.=    file_get_contents("js/inline.js");
   if (!$cachecss)
     $html.=    "loadCSS('".$cssfile."')";
@@ -279,6 +281,8 @@ global $cachecss;
   else
     $html.=  "<link rel='stylesheet' href='".$cssfile."'>";
 
+  $html.=  "<script src='".$jsfile."'></script>";
+
   return $html;
 }
 function PostLoad()
@@ -288,9 +292,11 @@ global $jsfile;
 global $svgfile;
 
   $html = "";
+  /*
   $html.=  "<script  type='text/javascript'>";
   $html.=    "var _cfg = {css:'".$cssfile."',svg:'".$svgfile."'};";
   $html.=  "</script>";
+  */
   $html.=  "<script src='".$jsfile."' async></script>";
   $arr = array(
        "@context"       => "http://schema.org",
@@ -300,6 +306,12 @@ global $svgfile;
        "url"            => "http://".$_SERVER["SERVER_NAME"]
        );
   $html.="<script type='application/ld+json'>".json_encode($arr)."</script>";
+  $html.=  "<script src='/_assets/js/olli/olli.base.js'></script>";
+  $html.=  "<script src='/_assets/js/olli/olli.lib.js'></script>";
+  $html.=  "<script src='/_assets/js/olli/olli.docready.js'></script>";
+  $html.=  "<script src='/_assets/js/olli/olli.events.js'></script>";
+  $html.=  "<script src='/_assets/js/olli/olli.dom.js'></script>";
+  $html.=  "<script src='/_assets/js/app.js'></script>";
   return $html;
 }
 

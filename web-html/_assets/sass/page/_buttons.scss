@@ -32,12 +32,10 @@
       background: $color;
       color: contrast($color);
     }
-    &:focus {
-        text-decoration:underline;
-    }
 
     &:hover,&:active {
       background: darken($color,10%);
+      color: contrast($color);
     }
     &:visited:focus,&:hover:focus,&:active:focus,&:hover,&:focus {
       text-decoration:none;

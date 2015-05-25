@@ -28,7 +28,9 @@
     "tweenjs": "*",
     "mui": "~0.0.4",
     "fontfaceobserver": "~1.4.2",
-    "loadcss": "~0.1.6"
+    "loadcss": "~0.1.6",
+    "history.js": "~1.8.0",
+    "better-xhr": "~0.4.4"
   },
   "dependencies": {
     "inuit-starter-kit": "~0.2.9",
