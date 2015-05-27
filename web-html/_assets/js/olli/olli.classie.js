@@ -8,7 +8,7 @@
  * @author Oliver Jean Eifler <oliver.eifler@gmx.de>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  *
- * Olli Library; Add base dom functions ;)
+ * Olli Library; Add base class functions ;)
  @include('olli.base')
  @include('olli.lib')
  */

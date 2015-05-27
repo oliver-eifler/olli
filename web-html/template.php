@@ -2,6 +2,11 @@
   require_once("php/config.php");
   require_once("php/page.php");
 
+  if ( isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
+  {
+     sendJSONPage();
+     exit();
+  }
 
 
   $cssupdate = filemtime("css/styles.css");
@@ -27,12 +32,28 @@
     $links=buildLinkList();
     $links[] = array("type"=>"misc","ajax"=>true,"title" => "Impressum","content" => "Impressum","href" => "/impressum","class"=>"");
 
-    $page = Page::getInstance();
+  sendHTMLPage();
+exit();
+function sendJSONPage()
+{
+  $page = Page::getInstance();
+  $json = array();
+  $json['uri']      = $page->uri;
+  $json['uricmd']   = $page->uri_cmd;
+  $json['title']    = $page->getPreparedTitle();
+  $json['content']  = SiteContent();
 
+  header("X-Powered-By: Olli PHP Framework");
+  header("Content-type: application/x-javascript; charset=utf-8");
+  echo json_encode($json);
+}
+function sendHTMLPage()
+{
+  $page = Page::getInstance();
 
   header("Content-Type: text/html; charset=utf-8");
   header("X-UA-Compatible: IE=edge");
-
+  header("X-Powered-By: Olli PHP Framework");
   if ($page->getError())
   {
     header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
@@ -43,11 +64,9 @@
   $status = 200;
   //if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) == $modified)
   //  $status = 304;
-
   header ("Last-Modified: ".gmdate("D, d M Y H:i:s", $modified )." GMT",true,$status);
-
-echo HTML();
-exit();
+  echo HTML();
+}
 function get_request_url()
 {
     return get_request_scheme() . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -250,7 +269,7 @@ function SiteContent()
 
   $html = "";//$page->debugData();
   $html.="<article id='content' class='".implode(" ",$class)."'".($page->getData("isArticle")?" itemscope itemtype='http://schema.org/BlogPosting'":"").">";
-  //$html.=  $page->debugData();
+  $html.=  $page->debugData();
   $html.=  $page->getHtml();
   $html.="</article>";
   return $html;
@@ -310,7 +329,7 @@ global $svgfile;
   $html.=  "<script src='/_assets/js/olli/olli.lib.js'></script>";
   $html.=  "<script src='/_assets/js/olli/olli.docready.js'></script>";
   $html.=  "<script src='/_assets/js/olli/olli.events.js'></script>";
-  $html.=  "<script src='/_assets/js/olli/olli.dom.js'></script>";
+  $html.=  "<script src='/_assets/js/olli/olli.classie.js'></script>";
   $html.=  "<script src='/_assets/js/app.js'></script>";
   return $html;
 }
@@ -350,7 +369,7 @@ function HTMLBody()
   $html.=       SiteHeader();
   $html.=     "</div>";
 
-  $html.=     "<div class='Site-contentContainer'>";
+  $html.=     "<div id='SCC' class='Site-contentContainer'>";
   $html.=       SiteContent(3);
   $html.=     "</div>";
 

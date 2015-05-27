@@ -8,7 +8,7 @@ var _self = this;
     var ready = function()
     {
         $.on(_body,'click.ajax','a',function(e){
-            loadpage(e.currentTarget,e) && e.stop();
+            doajax(e.currentTarget,e) && e.stop();
         });
         visitedLinks();
     };
@@ -52,6 +52,59 @@ var _self = this;
                 link.setAttribute('visited','');
             }
         }
+    }
+    var doajax = function(link,event)
+    {
+      if (link.host != window.location.host)
+        return false; //default
+      if (olli.hasClass(link,"cur"))
+        return true; //do nothing
+       oPageInfo = {
+            title: null
+            ,url: link.getAttribute("href")
+      };
+      var ajax = new XMLHttpRequest();
+      ajax.open("GET", link.pathname, true);
+      ajax.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+      ajax.onerror = ajax.ontimeout = function() {setcontent(ajax.statusText);}
+      ajax.onreadystatechange = function(e) {
+        if (ajax.readyState === 4)
+        {
+          if (ajax.status >= 200 && ajax.status < 300 || ajax.status === 304)
+          {
+            var data = JSON.parse(ajax.responseText);;
+            _doc.title = oPageInfo.title = "*"+data.title;
+            setcontent(data.content);
+            history.pushState(oPageInfo, oPageInfo.title, oPageInfo.url);
+            $.loop(_$$('a'),function(el){
+             if (el.host == window.location.host && (el.pathname == data.uri || el.pathname == data.uricmd))
+               $.addClass(el,"cur");
+             else
+               $.remClass(el,"cur");
+            });
+            visitedLinks();
+          }
+          else
+          {
+            setcontent(ajax.statusText);
+          }
+        }
+      }
+      ajax.send();
+      return true;
+    }
+    var setcontent = function(content)
+    {
+        _$('#SCC').innerHTML = content;
+    }
+    var setcurlink=function(href)
+    {
+        $.loop(_$$('a'),function(el){
+          if (el.getAttribute("href") == href)
+            $.addClass(el,"cur");
+          else
+            $.remClass(el,"cur");
+        });
     }
 
 $.docReady(ready);
