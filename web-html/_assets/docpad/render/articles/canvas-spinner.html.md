@@ -5,5 +5,5 @@ description: "a canvas loading spinner inspired by Google Material Design. It's 
 tags: "javascript,canvas,spinner,loader"
 ---
 Look at my Pen:
-<p data-height="300" data-theme-id="0" data-slug-hash="qEKMZm" data-default-tab="result" data-user="olli" class='codepen'>See the Pen <a href='http://codepen.io/olli/pen/qEKMZm/'>Olli's canvas spinner animation</a> by Oliver Jean Eifler  (<a href='http://codepen.io/olli'>@olli</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+<iframe height='300' scrolling='no' src='//codepen.io/olli/embed/qEKMZm/?height=300&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/olli/pen/qEKMZm/'>Olli's canvas spinner animation</a> by Oliver Jean Eifler  (<a href='http://codepen.io/olli'>@olli</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>

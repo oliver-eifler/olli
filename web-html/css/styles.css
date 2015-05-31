@@ -526,29 +526,34 @@ th {
 a {
   color: #2455c3;
   text-decoration: none;
+  -webkit-transition: color .25s linear;
+          transition: color .25s linear;
 }
-/* line 31, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 32, ../../../web-html/_assets/sass/page/_base.scss */
 a:visited, a:focus {
   color: #2455c3;
 }
-/* line 34, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 35, ../../../web-html/_assets/sass/page/_base.scss */
 a:hover {
-  color: #2455c3;
-  text-decoration: underline;
+  color: #9977dd;
 }
-/* line 38, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 39, ../../../web-html/_assets/sass/page/_base.scss */
 a > svg {
   width: 1em;
   height: 1em;
 }
 
-/* line 43, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 44, ../../../web-html/_assets/sass/page/_base.scss */
 a[visited] {
   color: #183982;
 }
-/* line 45, ../../../web-html/_assets/sass/page/_base.scss */
+/* line 46, ../../../web-html/_assets/sass/page/_base.scss */
 a[visited]:visited, a[visited]:focus, a[visited]:hover {
   color: #183982;
+}
+/* line 49, ../../../web-html/_assets/sass/page/_base.scss */
+a[visited]:hover {
+  color: #6b3ace;
 }
 
 /**
@@ -1976,15 +1981,23 @@ textarea.form-control:focus {
   margin-top: 1.5em;
 }
 /* line 22, ../../../web-html/_assets/sass/page/modules/_articles.scss */
+.articleList a {
+  position: relative;
+}
+/* line 26, ../../../web-html/_assets/sass/page/modules/_articles.scss */
 .articleList a[visited]:after {
+  display: inline-block;
   content: "\2713";
+  /*
+  z-index:100;
+  color: $accent-color;
+  background:base($colors);
+  */
   color: #F50057;
-  text-decoration: underline;
-  -moz-text-decoration-color: #fafaff;
-       text-decoration-color: #fafaff;
+  height: 100%;
 }
 
-/* line 31, ../../../web-html/_assets/sass/page/modules/_articles.scss */
+/* line 40, ../../../web-html/_assets/sass/page/modules/_articles.scss */
 .articleList-item .published {
   display: block;
   font-family: monospace,monospace;
@@ -1993,7 +2006,7 @@ textarea.form-control:focus {
   text-transform: uppercase;
   color: #727275;
 }
-/* line 38, ../../../web-html/_assets/sass/page/modules/_articles.scss */
+/* line 47, ../../../web-html/_assets/sass/page/modules/_articles.scss */
 .articleList-item .excerpt {
   margin: 0 0 0 1em;
 }

@@ -19,11 +19,20 @@ $colors: getColors($content-color);
   li+li {
     margin-top: px2em($base-line-height);
   }
+  a {
+    position:relative;
+  }
+
   a[visited]:after {
+    display:inline-block;
     content: "\2713";
+    /*
+    z-index:100;
     color: $accent-color;
-    text-decoration:underline;
-    text-decoration-color: base($colors);
+    background:base($colors);
+    */
+    color: $accent-color;
+    height:100%;
   }
 
 }

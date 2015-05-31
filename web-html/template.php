@@ -1,8 +1,7 @@
 <?php
   require_once("php/config.php");
   require_once("php/page.php");
-
-  if ( isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
+  if (isset($_GET['json']) || ( isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ))
   {
      sendJSONPage();
      exit();
@@ -41,10 +40,11 @@ function sendJSONPage()
   $json['uri']      = $page->uri;
   $json['uricmd']   = $page->uri_cmd;
   $json['title']    = $page->getPreparedTitle();
+  $json['scripts']  = $page->scripts;
   $json['content']  = SiteContent();
+  $json['bc']       = breadcrumbs();
 
-  header("X-Powered-By: Olli PHP Framework");
-  header("Content-type: application/x-javascript; charset=utf-8");
+  header("Content-type: application/json; charset=utf-8");
   echo json_encode($json);
 }
 function sendHTMLPage()
@@ -165,7 +165,7 @@ function breadcrumbs($text = 'You are here: ', $sep = ' &raquo; ', $home = 'Home
     $page = Page::getInstance();
     $cur_uri = $page->uri;
     //Use RDFa breadcrumb, can also be used for microformats etc.
-    $bc     =   '<div xmlns:v="http://rdf.data-vocabulary.org/#" id="crums" class="Breadcrumbs">'.$text;
+    $bc     =   '<div xmlns:v="http://rdf.data-vocabulary.org/#" id="bc" class="Breadcrumbs">'.$text;
     //Get the website:
     $site   =   get_request_scheme() . '://' . $_SERVER['HTTP_HOST'];
     //Get all vars en skip the empty ones
@@ -269,7 +269,7 @@ function SiteContent()
 
   $html = "";//$page->debugData();
   $html.="<article id='content' class='".implode(" ",$class)."'".($page->getData("isArticle")?" itemscope itemtype='http://schema.org/BlogPosting'":"").">";
-  $html.=  $page->debugData();
+  //$html.=  $page->debugData();
   $html.=  $page->getHtml();
   $html.="</article>";
   return $html;
@@ -309,6 +309,7 @@ function PostLoad()
 global $cssfile;
 global $jsfile;
 global $svgfile;
+  $page = Page::getInstance();
 
   $html = "";
   /*
@@ -316,7 +317,14 @@ global $svgfile;
   $html.=    "var _cfg = {css:'".$cssfile."',svg:'".$svgfile."'};";
   $html.=  "</script>";
   */
-  $html.=  "<script src='".$jsfile."' async></script>";
+  //$html.=  "<script src='".$jsfile."' async></script>";
+  if (isset($page->scripts))
+  {
+    foreach($page->scripts as $src)#
+    {
+      $html.=  "<script src='".$src."' async ajax='true'></script>";
+    }
+  }
   $arr = array(
        "@context"       => "http://schema.org",
        "@type"          => "WebSite",
@@ -327,7 +335,9 @@ global $svgfile;
   $html.="<script type='application/ld+json'>".json_encode($arr)."</script>";
   $html.=  "<script src='/_assets/js/olli/olli.base.js'></script>";
   $html.=  "<script src='/_assets/js/olli/olli.lib.js'></script>";
+  $html.=  "<script src='/_assets/js/olli/olli.ajax.js'></script>";
   $html.=  "<script src='/_assets/js/olli/olli.docready.js'></script>";
+  $html.=  "<script src='/_assets/js/olli/olli.dom.js'></script>";
   $html.=  "<script src='/_assets/js/olli/olli.events.js'></script>";
   $html.=  "<script src='/_assets/js/olli/olli.classie.js'></script>";
   $html.=  "<script src='/_assets/js/app.js'></script>";
@@ -432,4 +442,11 @@ function error_page()
 
   echo $html;
 }
+/*
+<iframe height='268' scrolling='no' src='//codepen.io/olli/embed/qEKMZm/?height=268&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/olli/pen/qEKMZm/'>Olli's canvas spinner animation</a> by Oliver Jean Eifler  (<a href='http://codepen.io/olli'>@olli</a>) on <a href='http://codepen.io'>CodePen</a>.
+</iframe>
+
+
+
+*/
 ?>

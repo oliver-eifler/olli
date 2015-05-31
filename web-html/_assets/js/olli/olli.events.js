@@ -721,10 +721,8 @@
 
     , exp = {
           'on'                : on
-        , 'add'               : add
         , 'one'               : one
         , 'off'               : off
-        , 'remove'            : off
         , 'clone'             : clone
         , 'fire'              : fire
         , 'Event'             : Event

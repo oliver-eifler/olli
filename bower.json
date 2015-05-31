@@ -30,7 +30,8 @@
     "fontfaceobserver": "~1.4.2",
     "loadcss": "~0.1.6",
     "history.js": "~1.8.0",
-    "better-xhr": "~0.4.4"
+    "better-xhr": "~0.4.4",
+    "ajax": "https://github.com/ForbesLindesay/ajax.git#~0.0.2"
   },
   "dependencies": {
     "inuit-starter-kit": "~0.2.9",

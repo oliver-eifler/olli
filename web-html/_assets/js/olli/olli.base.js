@@ -42,6 +42,7 @@ function _$$ (selector, el) {
      // If you'd like to convert it to a Array for convenience, use this instead:
      return Array.prototype.slice.call(el.querySelectorAll(selector));
 };
+var _isBlank = function(str) {return (str.length === 0 || !/[^\s]+/.test(str));}
 var _isArray = function(ar) {return Array.isArray(ar);}
 var _toArray = function(values) {
     if (typeof values === 'string' && !_isBlank(values))
@@ -69,12 +70,18 @@ Element.prototype._$$ = function (selector) { // Only for HTML
     return Array.prototype.slice.call(this.querySelectorAll(selector));
 };
 Object.prototype.extend = function(obj) {
-  for (var i in obj) {
-    if (obj.hasOwnProperty(i)) {
-      this[i] = obj[i];
+    for (var i in obj) {
+      if (obj.hasOwnProperty(i)) {
+        this[i] = obj[i];
+      }
     }
-  }
 };
+var _extend = function(target) {
+  Array.prototype.slice.call(arguments, 1).forEach(function(source) {
+    target.extend(source);
+  })
+  return target
+}
 String.prototype._isBlank = function() {
   return (this.length === 0 || !/[^\s]+/.test(this));
 };

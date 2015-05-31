@@ -76,7 +76,15 @@ class BasePage extends _registry
     {
         $html="<ul>";
         foreach($this as $k => $v)
-            $html.="<li><b>".$k."</b>: ".htmlentities($v,ENT_QUOTES|ENT_HTML401)."</li>";
+            $html.="<li><b>".$k."</b>: ".htmlentities(print_r($v,true),ENT_QUOTES|ENT_HTML401)."</li>";
+        foreach ($_SERVER as $name => $value)
+        {
+           if (substr($name, 0, 5) == 'HTTP_' || substr($name, 0, 6) == 'HTTPS_')
+           {
+               $html.="<li>".$name." = ".$value."</li>";
+           }
+        }
+
         $html.="</ul>";
         return $html;
     }

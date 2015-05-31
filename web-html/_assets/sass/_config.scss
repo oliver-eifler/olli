@@ -46,9 +46,12 @@ $primary-color:            #2455c3;//mui-color('blue', '500') !default;
 $primary-color-dark:       darken($primary-color,15%);//mui-color('blue', '500') !default;
 
 $accent-color:             mui-color('pink', 'A400') !default;
+$accent-color-dark:        mui-color('pink', 'A700') !default;//mui-color('blue', '500') !default;
 $danger-color:             mui-color('red', 'A700') !default;
 
 $brand:         #221144;
+$hover-color:            text-contrast($brand) !default;
+$hover-color-dark:       darken($hover-color,15%);//mui-color('blue', '500') !default;
 
 
 $header-color:  $brand;
