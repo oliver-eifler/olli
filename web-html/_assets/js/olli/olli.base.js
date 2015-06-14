@@ -87,9 +87,10 @@ String.prototype._isBlank = function() {
 };
 
 /* Variables */
-_w = _root = this; //window
-_doc = _w.document; //document
-_html = _doc.documentElement;
-_body = _$("body");
+var _w = window //window
+,_root = this
+,_doc = _w.document //document
+,_html = _doc.documentElement
+,_body = _$("body");
 
 _w[olli_name] = {};

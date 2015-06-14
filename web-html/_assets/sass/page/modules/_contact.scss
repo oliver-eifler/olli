@@ -24,6 +24,12 @@ $colors: getColors($brand);
       background-repeat:no-repeat;
       background-position:center;
 
+      max-width:none;
+      & > * {
+          max-width: px2em($content-width);
+          margin: 0 auto;
+      }
+
       h1 {
         color: hilight($colors)
       }

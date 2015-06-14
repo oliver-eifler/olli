@@ -16,25 +16,25 @@
     "tests"
   ],
   "devDependencies": {
-    "html5shiv": "~3.7.2",
+    "html5shiv": "html5shiv#latest",
     "webfontloader": "webfontloader#latest",
     "velocity1.1.x": "velocity#1.1",
     "velocity": "velocity#latest",
-    "normalize.css": "~3.0.2",
+    "normalize.css": "normalize.css#latest",
     "jquery1.x": "jquery#1",
     "jquery": "jquery#latest",
-    "fastclick": "~1.0.3",
+    "fastclick": "fastclick#latest",
     "better-dom": "better-dom#latest",
-    "tweenjs": "*",
-    "mui": "~0.0.4",
-    "fontfaceobserver": "~1.4.2",
-    "loadcss": "~0.1.6",
-    "history.js": "~1.8.0",
-    "better-xhr": "~0.4.4",
-    "ajax": "https://github.com/ForbesLindesay/ajax.git#~0.0.2"
+    "tweenjs": "tweenjs#latest",
+    "mui": "mui#latest",
+    "fontfaceobserver": "fontfaceobserver#latest",
+    "loadcss": "loadcss#latest",
+    "history.js": "history.js#latest",
+    "better-xhr": "better-xhr#latest",
+    "ajax": "https://github.com/ForbesLindesay/ajax.git#latest"
   },
   "dependencies": {
-    "inuit-starter-kit": "~0.2.9",
-    "susy": "~2.2.3"
+    "inuit-starter-kit": "inuit-starter-kit#latest",
+    "susy": "susy#latest"
   }
 }

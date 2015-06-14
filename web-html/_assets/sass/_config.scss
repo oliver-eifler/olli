@@ -27,18 +27,24 @@ $base-line-height: $base-font-size*1.5;
 $base-hgap:  $base-font-size;
 $base-vgap:  $base-line-height;
 
+$screen-width:1920;
 $page-width:1280;
 
-$content-width: $page-width/2;
+$content-width: ($page-width/2) + (2*$base-vgap);
 $side-width:320;
 
 //Breakpoints
 $bp-tiny: px2em(320);
 $bp-handy: px2em(480);
 $bp-medium: px2em($content-width + 2*$base-hgap);//width toppanel
-$bp-large:  px2em($content-width+$side-width+(2*$base-hgap)); //with sidepanel
-$bp-wide:  px2em((1.25*$content-width)+$side-width+(2*$base-hgap)); //with sidepanel
+$_cw: $content-width+(2*$base-hgap);
+$bp-large:  px2em($_cw + $side-width); //with sidepanel
+$bp-wide:  px2em(1.25*$_cw + $side-width); //with sidepanel
+$bp-max:  px2em(2*$_cw + $side-width); //with sidepanel
 
+
+
+$font-scale: $base-font-size/(($content-width+$side-width+(2*$base-hgap))/100);
 
 //colors
 $default-color:            #fafaff;

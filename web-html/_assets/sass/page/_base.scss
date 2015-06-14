@@ -10,6 +10,12 @@
  **/
 
  /* base styles of html elements */
+svg {display:none}
+.svg svg {
+   display:inline-block;
+   vertical-align:center;
+}
+
 [disabled],.btn[disabled]  {
     cursor: default;
     pointer-events:none;
@@ -24,13 +30,15 @@
     }
 
 }
-
+.loading * {
+   transition:none !important;
+}
 a {
   color:$primary-color;
   text-decoration:none;
-  transition: color .25s linear;
+  //transition: color .25s linear;
   &:visited,&:focus {
-    color:$primary-color;
+    //color:$primary-color;
   }
   &:hover {
     color:$hover-color;
@@ -41,6 +49,7 @@ a {
     height:1em;
   }
 }
+
 a[visited] {
   color:$primary-color-dark;
   &:visited,&:focus,&:hover {
@@ -50,3 +59,8 @@ a[visited] {
     color:$hover-color-dark;
   }
 }
+
+img {
+  max-width:100%;
+}
+

@@ -66,52 +66,26 @@ mark {
 }
 
 /* line 16, ../../../web-html/_assets/sass/inline.scss */
-svg, template {
+svg, template, #STC {
   display: none;
 }
 
 /* line 17, ../../../web-html/_assets/sass/inline.scss */
 img {
+  display: block;
   max-width: 100%;
 }
 
-/* line 20, ../../../web-html/_assets/sass/inline.scss */
-.Header, .Footer {
-  text-align: center;
-}
-
-/* line 23, ../../../web-html/_assets/sass/inline.scss */
-.Header > *, .Header ul, .Header li {
-  list-style: none;
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-  padding: .5em;
-}
-
-/* line 30, ../../../web-html/_assets/sass/inline.scss */
-.logo-text {
+/* line 21, ../../../web-html/_assets/sass/inline.scss */
+.h1 {
   font-size: 2em;
 }
 
-/* line 34, ../../../web-html/_assets/sass/inline.scss */
-.Header * {
-  margin: 0;
-}
-
-/* line 37, ../../../web-html/_assets/sass/inline.scss */
+/* line 24, ../../../web-html/_assets/sass/inline.scss */
 .Site {
   padding: 0 2em;
   max-width: 80em;
   margin: 0 auto;
-}
-
-/* line 42, ../../../web-html/_assets/sass/inline.scss */
-.Site-content {
-  padding: 1em 0;
-  max-width: 40em;
-  margin: 0 auto;
-  line-height: 1.5;
 }
 
 /*# sourceMappingURL=inline.css.map */

@@ -6,7 +6,8 @@
      sendJSONPage();
      exit();
   }
-
+  /* for debug only*/
+  $useJS = true;
 
   $cssupdate = filemtime("css/styles.css");
   $cssfile ="/css/styles_".$cssupdate.".css";
@@ -15,11 +16,13 @@
   $svgupdate = filemtime("img/icons.svg");
   $svgfile ="/img/icons_".$svgupdate.".svg";
   $cachecss = (isset($_COOKIE["css"]) && $_COOKIE["css"] == $cssfile);
+  $cachecss = false;
 
     $page_links = array(
         array("title" => "Home"         ,"href" => "/"          ),
         array("title" => "Articles"     ,"href" => "/articles"  ),
         array("title" => "About"        ,"href" => "/about"     ),
+        array("title" => "test"        ,"href" => "/foobar"     ),
         array("title" => "Contact"      ,"href" => "/contact"   )
     );
     $social_links = array(
@@ -36,13 +39,20 @@ exit();
 function sendJSONPage()
 {
   $page = Page::getInstance();
+  $error = $page->getError();
   $json = array();
+  $json['error']    = $error;
   $json['uri']      = $page->uri;
   $json['uricmd']   = $page->uri_cmd;
-  $json['title']    = $page->getPreparedTitle();
-  $json['scripts']  = $page->scripts;
-  $json['content']  = SiteContent();
-  $json['bc']       = breadcrumbs();
+  if (!$error) {
+    $json['title']    = $page->getPreparedTitle();
+    $json['scripts']  = $page->scripts;
+    $json['content']  = SiteContent();
+    $json['bc']       = breadcrumbs();
+  }
+  else {
+    header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+  }
 
   header("Content-type: application/json; charset=utf-8");
   echo json_encode($json);
@@ -280,28 +290,36 @@ global $cssfile;
 global $jsfile;
 global $svgfile;
 global $cachecss;
-  $cachecss = true;
+global $useJS;
 
   $html = "";
-
   $html.=  "<style type='text/css'>";
-  $html.=    file_get_contents($cachecss?"css/html5shiv.css":"css/inline.css");
+  $html.=    file_get_contents("css/inline.css");
   $html.=  "</style>";
+  $html.=  "<!--[IF (!IE)|(IE 9)]> -->";		// ==> Code für andere Browser als IE < 9
 
-  $html.=  "<script  type='text/javascript'>";
-  $html.=    "var _cfg = {css:'".$cssfile."',svg:'".$svgfile."'};";
-  $html.=    file_get_contents("js/inline.js");
-  if (!$cachecss)
-    $html.=    "loadCSS('".$cssfile."')";
-  $html.=  "</script>";
+  if ($useJS)
+  {
+    $html.=  "<script  type='text/javascript'>";
+    $html.=    "var _cfg = {css:'".$cssfile."',svg:'".$svgfile."'};";
+    $html.=    file_get_contents("js/inline.js");
+    if (!$cachecss)
+        $html.=    "loadCSS('".$cssfile."')";
+    $html.=  "</script>";
 
-  if (!$cachecss)
-    $html.=  "<noscript><link rel='stylesheet' href='".$cssfile."'></noscript>";
+    if (!$cachecss)
+        $html.=  "<noscript><link rel='stylesheet' href='".$cssfile."'></noscript>";
+    else
+        $html.=  "<link rel='stylesheet' href='".$cssfile."'>";
+
+    $html.=  "<script src='".$jsfile."'></script>";
+  }
   else
-    $html.=  "<link rel='stylesheet' href='".$cssfile."'>";
+  {
+     $html.=  "<link rel='stylesheet' href='".$cssfile."'>";
+  }
 
-  $html.=  "<script src='".$jsfile."'></script>";
-
+  $html.=  "<!-- <![ENDIF]-->";  // <== Code für andere Browser als IE < 9
   return $html;
 }
 function PostLoad()
@@ -309,18 +327,15 @@ function PostLoad()
 global $cssfile;
 global $jsfile;
 global $svgfile;
+global $useJS;
+  if (!$useJS)
+    return "";
   $page = Page::getInstance();
 
   $html = "";
-  /*
-  $html.=  "<script  type='text/javascript'>";
-  $html.=    "var _cfg = {css:'".$cssfile."',svg:'".$svgfile."'};";
-  $html.=  "</script>";
-  */
-  //$html.=  "<script src='".$jsfile."' async></script>";
   if (isset($page->scripts))
   {
-    foreach($page->scripts as $src)#
+    foreach($page->scripts as $src)
     {
       $html.=  "<script src='".$src."' async ajax='true'></script>";
     }
@@ -335,6 +350,7 @@ global $svgfile;
   $html.="<script type='application/ld+json'>".json_encode($arr)."</script>";
   $html.=  "<script src='/_assets/js/olli/olli.base.js'></script>";
   $html.=  "<script src='/_assets/js/olli/olli.lib.js'></script>";
+  $html.=  "<script src='/_assets/js/olli/olli.helper.js'></script>";
   $html.=  "<script src='/_assets/js/olli/olli.ajax.js'></script>";
   $html.=  "<script src='/_assets/js/olli/olli.docready.js'></script>";
   $html.=  "<script src='/_assets/js/olli/olli.dom.js'></script>";
@@ -363,17 +379,36 @@ function HTMLHeader()
   $html.=   "<meta name=\"author\" content=\"Oliver Jean Eifler\" />";
   $html.=   "<meta name=\"description\" content=\"".$desc."\" />";
   $html.=   "<meta name=\"keywords\" content=\"".$tags."\" />";
-
+  $html.= Favicons();
   $html.=   PreLoad();
   $html.= "</head>";
+  return $html;
+}
+function Favicons()
+{
+  $html = "";
+  $html.= "<link rel='apple-touch-icon' sizes='57x57' href='/app/apple-touch-icon-57x57.png'>";
+  $html.= "<link rel='apple-touch-icon' sizes='60x60' href='/app/apple-touch-icon-60x60.png'>";
+  $html.= "<link rel='apple-touch-icon' sizes='72x72' href='/app/apple-touch-icon-72x72.png'>";
+  $html.= "<link rel='apple-touch-icon' sizes='76x76' href='/app/apple-touch-icon-76x76.png'>";
+  $html.= "<link rel='apple-touch-icon' sizes='114x114' href='/app/apple-touch-icon-114x114.png'>";
+  $html.= "<link rel='apple-touch-icon' sizes='120x120' href='/app/apple-touch-icon-120x120.png'>";
+  $html.= "<link rel='icon' type='image/png' href='/app/favicon-32x32.png' sizes='32x32'>";
+  $html.= "<link rel='icon' type='image/png' href='/app/favicon-96x96.png' sizes='96x96'>";
+  $html.= "<link rel='icon' type='image/png' href='/app/favicon-16x16.png' sizes='16x16'>";
+  $html.= "<link rel='manifest' href='/app/manifest.json'>";
+  $html.= "<link rel='shortcut icon' href='/app/favicon.ico'>";
+  $html.= "<meta name='msapplication-TileColor' content='#221144'>";
+  $html.= "<meta name='msapplication-config' content='/app/browserconfig.xml'>";
+  $html.= "<meta name='theme-color' content='#221144'>";
   return $html;
 }
 function HTMLBody()
 {
   $html = "<body>";
-  $html .= "<a id='skiptocontent' href='#content' rel='nofollow' title='Skip to content'>Skip to content</a>";
+  $html .= "<a id='STC' href='#content' rel='nofollow' title='Skip to content'>Skip to content</a>";
 
-  $html.=   "<div class='Site'>";
+  $html.=   "<div id='Site' class='Site loading'>";
 
   $html.=     "<div class='Site-headerContainer'>";
   $html.=       SiteHeader();
@@ -400,6 +435,7 @@ function HTMLBody()
 function HTML()
 {
   $html = "<!DOCTYPE HTML>";
+  /*
   if (isset($_COOKIE["class"]) && !empty($_COOKIE["class"]))
   {
     $html.= "<html  lang='de' class='no-js ".$_COOKIE["class"]." php'>";
@@ -411,6 +447,9 @@ function HTML()
     $html.= "<!--[if IE 9]><html lang='de' class='no-js ie ie-9 no-flex'><![endif]-->";
     $html.= "<!--[if !IE]>--><html  lang='de' class='no-js no-ie'><!--<![endif]-->";
   }
+  */
+  $html.= "<html  lang='de' class='no-js no-ie'>";
+
   $html.= HTMLHeader();
   $html.= HTMLBody();
   $html.= "</html>";

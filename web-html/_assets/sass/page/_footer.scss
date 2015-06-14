@@ -41,22 +41,21 @@ $footer-vgap: $base-vgap;
 
   color:text($colors);
   a {
+    transition: color .25s linear,border-color .25s linear;
     &:link,&:visited,&:focus {
       color:$footer-link;
+      fill: $footer-link;
       border-bottom:1px solid transparent;
-      svg {fill: $footer-link;}
-
     }
     &:hover {
       color:text($colors);
+      fill:text($colors);
       border-color: text($colors);
       text-decoration:none;
-      svg {fill: text($colors);}
     }
     & > svg {
       width:1em;
       height:1em;
-      fill: text($colors);
       margin-right:.5em;
       vertical-align:middle;
     }

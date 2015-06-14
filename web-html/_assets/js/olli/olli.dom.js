@@ -22,6 +22,7 @@ var _self = this;
 var remove = function(element) {
   element.parentNode.removeChild(element);
 }
+
 var exp = {
     remove: _lib.fn.bind(_lib,remove)
 }

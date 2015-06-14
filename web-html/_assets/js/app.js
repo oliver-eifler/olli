@@ -2,26 +2,44 @@
 (function (root, ns, factory) {
     var lib = _namespace(root,ns);
     var app = _namespace(lib,"theAPP");
-    factory.call(app,lib);
+    factory.call(root,lib);
 }(this,olli_name,function ($,undefined) {
-
 var _self = this
     ,oPageInfo = {title:null,url:null}
     ,bIsLoading = false
     ,bUpdateURL = false
-    ,support = {localStorage:testLocalStorage()};
-
+    ,support = {localStorage:testLocalStorage()}
+    ,vp = {width:0}
+    ,resize_ticking = false;
     var ready = function()
     {
         oPageInfo.title = _doc.title;
         oPageInfo.url = _w.location;
-
         $.on(_body,'click.ajax','a',function(e){
             requestPage(e.currentTarget) && e.stop();
         });
         _w.onpopstate = popState;
+        resize();
+        $.on(_w,"resize",function(e){onResize(e);});
         setVisitedLinks();
+        $.remClass(_$('#Site'),"loading");
     };
+    var onResize = function(e)
+    {
+        var v = $.getViewport();
+        if (v.width != vp.width)
+        {
+          if (!resize_ticking)
+            requestAnimationFrame(resize);
+          resize_ticking = true;
+          vp = v;
+        }
+    }
+    var resize = function()
+    {
+        $.setCSS(_body,"max-width",""+(vp.minWidth) +"px");
+        resize_ticking = false;
+    }
     var setVisitedLinks = function()
     {
         if (support.localStorage !== true)
@@ -29,7 +47,7 @@ var _self = this
         // http://joelcalifa.com/blog/revisiting-visited
         localStorage.setItem('visited-'+window.location.pathname.toLowerCase(),true);
         var links = document.getElementsByTagName('a');
-        for (i=0;i<links.length;i++)
+        for (var i=0;i<links.length;i++)
         {
             var link = links[i];
             if (link.host != window.location.host)
@@ -67,7 +85,8 @@ var _self = this
         $.ajaxGet(oPageInfo.url+"?json",{error:pageError,success:pageLoad});
     }
     var pageError = function(xhr) {
-        alert("XHR Error "+xhr.status+" "+xhr.statusText);
+        //alert("XHR Error "+xhr.status+" "+xhr.statusText);
+        _w.location.assign(oPageInfo.url);
     }
     var pageLoad = function(xhr) {
       var data = JSON.parse(xhr.responseText);;
@@ -76,17 +95,22 @@ var _self = this
          history.pushState(oPageInfo, oPageInfo.title, oPageInfo.url);
          bUpdateURL = false;
        }
+
+       $.addClass(_$('#Site'),"loading");
+
        _$('#SCC').innerHTML = data.content;
        _w.scrollTo(0,0);
        _$('#bc').outerHTML = data.bc;
 
+       $.remClass(_$$('a.cur'),'cur');
        $.loop(_$$('a'),function(el) {
          if (el.host == _w.location.host && (el.pathname == data.uri || el.pathname == data.uricmd))
             $.addClass(el,"cur");
-         else
-            $.remClass(el,"cur");
          });
         setVisitedLinks();
+        resize();
+       $.remClass(_$('#Site'),"loading");
+
          if (_isArray(data.scripts)) {
            for (var i = 0, n = data.scripts.length; i < n; i++) {
               loadJS(data.scripts[i]);

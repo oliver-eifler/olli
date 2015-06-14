@@ -13,35 +13,16 @@
 @import 'config';
 
 article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section {display:block;}
-mark{background:#FF0;color:#000} svg,template{display:none}
+mark{background:#FF0;color:#000} svg,template,#STC{display:none}
 img {
+  display:block;
   max-width:100%;
 }
-.Header,.Footer {
-  text-align:center;
-}
-.Header > *,.Header ul,.Header li {
-  list-style:none;
-  display:inline-block;
-  *display:inline;
-  *zoom:1;
-  padding:.5em;
-}
-.logo-text {
+.h1 {
   font-size:2em;
-}
-
-.Header * {
-  margin:0;
 }
 .Site {
   padding:0 2em;
   max-width:px2em($page-width);
   margin:0 auto;
-}
-.Site-content {
-  padding:1em 0;
-  max-width:px2em($content-width);
-  margin:0 auto;
-  line-height:1.5;
 }

@@ -29,11 +29,11 @@ class ContactPage extends BasePage
         $html.="<form class='form' action='#'>";
         $html.="<div class='form-row'>";
         $html.=  "<div class='form-group form-group--name'>";
-        $html.=    "<input class='form-control' type='text' id='name' required>";
+        $html.=    "<input class='form-control' type='text' id='name' required placeholder='John Doe'>";
         $html.=    "<label for='name'>your name</label>";
         $html.=  "</div>";
         $html.=  "<div class='form-group form-group--email'>";
-        $html.=    "<input class='form-control' type='email' id='email' required>";
+        $html.=    "<input class='form-control' type='email' id='email' placeholder='johndoe@foo.com' required>";
         $html.=    "<label for='email'>your eMail</label>";
         $html.=  "</div>";
         $html.="</div>";

@@ -20,9 +20,6 @@ $label-height: $base-line-height;//$label-font-size*1.4;
 .form {
   padding: px2em($base-line-height/2) px2em($base-hgap/2);
   width:100%;
-  max-width: px2em($form-width);
-  margin-left:auto;
-  margin-right:auto;
   background: base($colors);
   border-radius: px2em($base-hgap/4);
   @include card(1);
@@ -38,14 +35,10 @@ $label-height: $base-line-height;//$label-font-size*1.4;
   padding: px2em($label-height) px2em($base-hgap/2) px2em($base-line-height - $label-height) px2em($base-hgap/2);
   border:none;
   background: base($colors);
-  float:clear;
-  &:focus {
-    background:#ff0;
-  }
 
   & > label {
     color: info($colors);
-    transition: .3s linear;
+    transition: color .3s linear;
 
     display:block;
     position:absolute;
@@ -61,23 +54,6 @@ $label-height: $base-line-height;//$label-font-size*1.4;
   & > * {
     cursor:pointer;
   }
-  /*
-  & > .form-control:focus + label,
-  & > .form-control:invalid:focus + label,
-  & > .form-control:valid + label {
-    display:block;
-    position:absolute;
-    top:0;
-    left: px2em($base-hgap/2,$label-font-size);
-    z-index:1;
-    width:100%;
-    font-size: px2em($label-font-size);
-    //line-height: ($label-height/$label-font-size);
-    text-transform: uppercase;
-    padding-left:0;
-
-  }
-  */
 }
 
 .form-control {
@@ -92,11 +68,48 @@ $label-height: $base-line-height;//$label-font-size*1.4;
   border-right:1px solid divider($colors);
   margin-right:-1px;
   color: text($colors);
-  transition: .3s linear;
+  transition: color .3s linear,border-color .3s linear;
   resize:none;
+  /*Placeholders*/
+  &::-webkit-input-placeholder {
+    color: divider($colors);
+    opacity: 1;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: divider($colors);
+    opacity: 1;
+  }
+  &::-moz-placeholder {  /* Firefox 19+ */
+    color: divider($colors);
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    color: divider($colors);
+    opacity: 1;
+  }
+  &:focus::-webkit-input-placeholder {
+    color: base($colors);
+    opacity: 1;
+  }
+  &:focus:-moz-placeholder { /* Firefox 18- */
+    color: base($colors);
+    opacity: 1;
+  }
+  &:focus::-moz-placeholder {  /* Firefox 19+ */
+    color: base($colors);
+    opacity: 1;
+  }
+  &:focus:-ms-input-placeholder {
+    color: base($colors);
+    opacity: 1;
+  }
+}
+.form-control:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px base($colors) inset;
+    -webkit-text-fill-color: text($colors) !important;
 }
 textarea.form-control {
-  height:px2em(5*$base-line-height + 1);
+  height:px2em(5*$base-line-height+1);
   background-image: linear-gradient(to top, divider($colors) 1px, transparent 1px);
   background-size: 0 px2em($base-line-height);
   background-repeat: repeat-y;
@@ -107,13 +120,17 @@ textarea.form-control {
 }
 
 .form-control:focus {
+  color:hilight($colors);
   border-color: $active-color;
-  margin-bottom:-1px;
   cursor: text;
   & + label {
     cursor: text;
     color:  $active-color;
   }
+}
+.form-control:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px base($colors) inset;
+    -webkit-text-fill-color: hilight($colors) !important;
 }
 
 /*

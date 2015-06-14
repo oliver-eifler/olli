@@ -17,6 +17,7 @@ $content-gap: $base-hgap;
   & > * + * {
     margin-top: px2em($base-vgap);
   }
+  background-color: base($colors);
 }
 
 .Site-content {
@@ -45,9 +46,14 @@ p > code, li > code, dd > code, td > code {
     top: -1px;
     line-height:1;
 }
+.content a {
+  transition: color .25s linear;
+}
+
 .content {
-  background-color: base($colors);
   color: text($colors);
+  max-width: px2em($content-width);
+  margin: 0 auto;
   *:focus {
     outline-color: hilight($colors);
   }

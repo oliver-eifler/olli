@@ -16,9 +16,8 @@
     var lib = _namespace(root,ns);
     lib.extend(factory(lib));
 }(this,olli_name,function (_lib,undefined) {
-
 var _self = this
-x = _w.classie;
+,x = _w.classie;
 
     /* for the moment, we use classie as base */
     var hasClass = function(element,name) {return x.has(element,name);}
